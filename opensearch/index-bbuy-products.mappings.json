@@ -1,0 +1,287 @@
+{
+    "settings": {
+        "index": {
+            "query": {
+                "default_field": "name"
+            }
+        },
+        "analysis": {
+            "char_filter": {
+                "xml_unescape_char_filter": {
+                    "type": "mapping",
+                    "mappings": [
+                        "&lt; => <",
+                        "&gt; => >",
+                        "&amp; => &",
+                        "&quot; => \"",
+                        "&apos; => '"
+                    ]
+                }
+            },
+            "filter": {
+                "english_stop": {
+                    "type": "stop",
+                    "stopwords": "_english_"
+                },
+                "english_stemmer": {
+                    "type": "stemmer",
+                    "language": "english"
+                },
+                "english_possessive_stemmer": {
+                    "type": "stemmer",
+                    "language": "possessive_english"
+                }
+            },
+            "analyzer": {
+                "english_html": {
+                    "char_filter": [
+                        "xml_unescape_char_filter",
+                        "html_strip"
+                    ],
+                    "tokenizer": "standard",
+                    "filter": [
+                        "english_possessive_stemmer",
+                        "lowercase",
+                        "english_stop",
+                        "english_stemmer"
+                    ]
+                }
+            }
+        }
+    },
+    "mappings": {
+        "properties": {
+            "productId": {
+                "type": "keyword"
+            },
+            "sku": {
+                "type": "keyword"
+            },
+            "name": {
+                "type": "text",
+                "analyzer": "english"
+            },
+            "type": {
+                "type": "keyword"
+            },
+            "source": {
+                "type": "keyword"
+            },
+            "startDate": {
+                "type": "date",
+                "format": "yyyy-MM-dd'T'HH:mm:ss||yyyy-MM-dd||epoch_millis"
+            },
+            "new": {
+                "type": "boolean"
+            },
+            "active": {
+                "type": "boolean"
+            },
+            "activeUpdateDate": {
+                "type": "date",
+                "format": "yyyy-MM-dd'T'HH:mm:ss||yyyy-MM-dd||epoch_millis"
+            },
+            "regularPrice": {
+                "type": "float"
+            },
+            "salePrice": {
+                "type": "float"
+            },
+            "onSale": {
+                "type": "boolean"
+            },
+            "digital": {
+                "type": "boolean"
+            },
+            "frequentlyPurchasedWith": {
+                "type": "keyword"
+            },
+            "accessories": {
+                "type": "keyword"
+            },
+            "relatedProducts": {
+                "type": "keyword"
+            },
+            "crossSell": {
+                "type": "boolean"
+            },
+            "salesRankShortTerm": {
+                "type": "integer"
+            },
+            "salesRankMediumTerm": {
+                "type": "integer"
+            },
+            "salesRankLongTerm": {
+                "type": "integer"
+            },
+            "bestSellingRank": {
+                "type": "integer"
+            },
+            "url": {
+                "type": "keyword"
+            },
+            "categoryPathNames": {
+                "type": "text",
+                "analyzer": "english"
+            },
+            "categoryPathIds": {
+                "type": "keyword"
+            },
+            "categoryPathLeafId": {
+                "type": "keyword"
+            },
+            "categoryPathCount": {
+                "type": "short"
+            },
+            "customerReviewCount": {
+                "type": "integer"
+            },
+            "customerReviewAverage": {
+                "type": "float"
+            },
+            "inStoreAvailability": {
+                "type": "boolean"
+            },
+            "inStoreAvailabilityText": {
+                "type": "text",
+                "analyzer": "english"
+            },
+            "inStoreAvailabilityUpdateDate": {
+                "type": "date",
+                "format": "yyyy-MM-dd'T'HH:mm:ss||yyyy-MM-dd||epoch_millis"
+            },
+            "onlineAvailability": {
+                "type": "boolean"
+            },
+            "onlineAvailabilityText": {
+                "type": "text",
+                "analyzer": "english"
+            },
+            "onlineAvailabilityUpdateDate": {
+                "type": "date",
+                "format": "yyyy-MM-dd'T'HH:mm:ss||yyyy-MM-dd||epoch_millis"
+            },
+            "releaseDate": {
+                "type": "date",
+                "format": "yyyy-MM-dd'T'HH:mm:ss||yyyy-MM-dd||epoch_millis"
+            },
+            "shippingCost": {
+                "type": "float"
+            },
+            "shortDescription": {
+                "type": "text",
+                "analyzer": "english"
+            },
+            "shortDescriptionHtml": {
+                "type": "text",
+                "analyzer": "english_html"
+            },
+            "longDescription": {
+                "type": "text",
+                "analyzer": "english"
+            },
+            "longDescriptionHtml": {
+                "type": "text",
+                "analyzer": "english_html"
+            },
+            "class": {
+                "type": "text",
+                "analyzer": "english",
+                "fields": {
+                    "keyword": {
+                        "type": "keyword"
+                    }
+                }
+            },
+            "classId": {
+                "type": "keyword"
+            },
+            "subclass": {
+                "type": "text",
+                "analyzer": "english",
+                "fields": {
+                    "keyword": {
+                        "type": "keyword"
+                    }
+                }
+            },
+            "subclassId": {
+                "type": "keyword"
+            },
+            "department": {
+                "type": "text",
+                "analyzer": "english",
+                "fields": {
+                    "keyword": {
+                        "type": "keyword"
+                    }
+                }
+            },
+            "departmentId": {
+                "type": "keyword"
+            },
+            "bestBuyItemId": {
+                "type": "keyword"
+            },
+            "description": {
+                "type": "text",
+                "analyzer": "english"
+            },
+            "manufacturer": {
+                "type": "text",
+                "analyzer": "english",
+                "fields": {
+                    "keyword": {
+                        "type": "keyword"
+                    }
+                }
+            },
+            "modelNumber": {
+                "type": "keyword"
+            },
+            "image": {
+                "type": "keyword"
+            },
+            "condition": {
+                "type": "text",
+                "analyzer": "english",
+                "fields": {
+                    "keyword": {
+                        "type": "keyword"
+                    }
+                }
+            },
+            "inStorePickup": {
+                "type": "boolean"
+            },
+            "homeDelivery": {
+                "type": "boolean"
+            },
+            "quantityLimit": {
+                "type": "integer"
+            },
+            "color": {
+                "type": "keyword"
+            },
+            "depth": {
+                "type": "text"
+            },
+            "height": {
+                "type": "text"
+            },
+            "width": {
+                "type": "text"
+            },
+            "weight": {
+                "type": "text"
+            },
+            "shippingWeight": {
+                "type": "float"
+            },
+            "features": {
+                "type": "text",
+                "analyzer": "english"
+            }
+        }
+    }
+}

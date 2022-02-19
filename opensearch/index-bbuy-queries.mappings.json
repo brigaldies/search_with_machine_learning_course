@@ -1,0 +1,34 @@
+{
+    "settings": {
+        "index": {
+            "query": {
+                "default_field": "query"
+            }
+        }
+    },
+    "mappings": {
+        "properties": {
+            "user": {
+                "type": "keyword"
+            },
+            "sku": {
+                "type": "keyword"
+            },
+            "category": {
+                "type": "keyword"
+            },
+            "query": {
+                "type": "text",
+                "analyzer": "english"
+            },
+            "click_time": {
+                "type": "date",
+                "format": "yyyy-MM-dd HH:mm:ss.SSS||yyyy-MM-dd HH:mm:ss.SS||yyyy-MM-dd HH:mm:ss.S||yyyy-MM-dd HH:mm:ss"
+            },
+            "query_time": {
+                "type": "date",
+                "format": "yyyy-MM-dd HH:mm:ss.SSS||yyyy-MM-dd HH:mm:ss.SS||yyyy-MM-dd HH:mm:ss.S||yyyy-MM-dd HH:mm:ss"
+            }
+        }
+    }
+}

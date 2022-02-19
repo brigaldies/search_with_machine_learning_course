@@ -7,6 +7,8 @@ from flask import (
 
 from week1.opensearch import get_opensearch
 
+import json
+
 bp = Blueprint('search', __name__, url_prefix='/search')
 
 
@@ -22,18 +24,50 @@ def process_filters(filters_input):
     for filter in filters_input:
         type = request.args.get(filter + ".type")
         display_name = request.args.get(filter + ".displayName", filter)
+        print(f"Filter: {display_name}, type={type}")
         #
         # We need to capture and return what filters are already applied so they can be automatically added to any existing links we display in aggregations.jinja2
-        applied_filters += "&filter.name={}&{}.type={}&{}.displayName={}".format(filter, filter, type, filter,
-                                                                                 display_name)
+        applied_filters += "&filter.name={}&{}.type={}&{}.displayName={}".format(filter, filter, type, filter, display_name)
+        
         #TODO: IMPLEMENT AND SET filters, display_filters and applied_filters.
         # filters get used in create_query below.  display_filters gets used by display_filters.jinja2 and applied_filters gets used by aggregations.jinja2 (and any other links that would execute a search.)
         if type == "range":
-            pass
+            price_range_from = request.args.get(filter + '.from')
+            if not price_range_from:
+                price_range_from = 0
+            price_range_to = request.args.get(filter + '.to')
+            if price_range_to:
+                price_range_filter = {
+                    "range": {
+                        "regularPrice": {
+                            "gte": price_range_from,
+                            "lt": price_range_to
+                        }
+                    }
+                }
+            else:
+                price_range_filter = {
+                    "range": {
+                        "regularPrice": {
+                            "gte": price_range_from
+                        }
+                    }
+                }
+            filters.append(price_range_filter)
+            applied_filters += f"&{filter}.from={price_range_from}&{filter}.to={price_range_to}"
+            display_filters.append(filter)
         elif type == "terms":
-            pass #TODO: IMPLEMENT
-    print("Filters: {}".format(filters))
-
+            term_department_keyword = request.args.get(filter + ".key")
+            filters.append({
+                "term": {
+                    "department.keyword": term_department_keyword
+                }
+            })
+            applied_filters += f"&{filter}.key={term_department_keyword}"
+            display_filters.append(filter)
+    print(f"Filters          : {filters}")
+    print(f"Applied filters  : {applied_filters}")
+    print(f"Displayed filters: {display_filters}")
     return filters, display_filters, applied_filters
 
 
@@ -60,6 +94,7 @@ def query():
         sortDir = request.form["sortDir"]
         if not sortDir:
             sortDir = "desc"
+        print(f"POST: user_query={user_query}, sort={sort}, sortDir={sortDir}")
         query_obj = create_query(user_query, [], sort, sortDir)
     elif request.method == 'GET':  # Handle the case where there is no query or just loading the page
         user_query = request.args.get("query", "*")
@@ -68,13 +103,29 @@ def query():
         sortDir = request.args.get("sortDir", sortDir)
         if filters_input:
             (filters, display_filters, applied_filters) = process_filters(filters_input)
-
+        print(f"GET: user_query={user_query}, sort={sort}, sortDir={sortDir}, filters={filters_input}")
         query_obj = create_query(user_query, filters, sort, sortDir)
     else:
         query_obj = create_query("*", [], sort, sortDir)
 
-    print("query obj: {}".format(query_obj))
-    response = None   # TODO: Replace me with an appropriate call to OpenSearch
+    # TODO: Replace me with an appropriate call to OpenSearch
+    response = opensearch.search(
+        body = query_obj,
+        index = "bbuy_products"
+    )
+
+    print(f"Hits count: {response['hits']['total']['value']}")
+
+    hits = response['hits']['hits']
+    for i, hit in enumerate(hits):
+        _source = hit['_source']
+        print(f"[i+1] _id={hit['_id']}, score={hit['_score']}, name={_source['name']}, description={_source['shortDescription'] if 'shortDescription' in _source.keys() else ''}")
+
+    debug_aggregations = False
+    if debug_aggregations and 'aggregations' in response.keys():
+        aggs = response['aggregations']
+        print(f"Aggregations: {json.dumps(aggs, indent=4)}")
+
     # Postprocess results here if you so desire
 
     #print(response)
@@ -88,13 +139,97 @@ def query():
 
 def create_query(user_query, filters, sort="_score", sortDir="desc"):
     print("Query: {} Filters: {} Sort: {}".format(user_query, filters, sort))
+    if user_query == '' or user_query == '*':
+        search_query = {
+            "match_all": {}
+        }
+    else:
+        search_query = {
+            "multi_match": {
+                "fields": [
+                    "name^100",
+                    "shortDescription^50",
+                    "longDescription^10",
+                    "department"
+                ],
+                "query": user_query
+            }
+        }
     query_obj = {
         'size': 10,
+        # Build a query that both searches and filters
         "query": {
-            "match_all": {} # Replace me with a query that both searches and filters
+            "bool": {
+                "must": [
+                    {
+                        "function_score": {
+                            "query": search_query,
+                            "boost_mode": "multiply",
+                            "score_mode": "avg",
+                            "functions": [
+                                {
+                                "field_value_factor": {
+                                    "field": "salesRankShortTerm",
+                                    "factor": 1,
+                                    "modifier": "reciprocal",
+                                    "missing": 100000000
+                                }
+                                },
+                                {
+                                "field_value_factor": {
+                                    "field": "salesRankMediumTerm",
+                                    "factor": 1,
+                                    "modifier": "reciprocal",
+                                    "missing": 100000000
+                                }
+                                },
+                                {
+                                "field_value_factor": {
+                                    "field": "salesRankLongTerm",
+                                    "factor": 1,
+                                    "modifier": "reciprocal",
+                                    "missing": 100000000
+                                }
+                                }
+                            ]
+                        }
+                    } 
+                ],
+                "filter": filters
+            }
         },
+        "sort": [
+            {
+                sort: {
+                    "order": sortDir
+                }
+            }
+        ],
         "aggs": {
-            #TODO: FILL ME IN
+            "department": {
+                "terms": {
+                    "field": "department.keyword"
+                }
+            },
+            "regularPrice": {
+                "range": {
+                    "field": "regularPrice",
+                    "ranges": [
+                        { "key": "$", "to": 10 },
+                        { "key": "$$", "from": 10, "to": 50 },
+                        { "key": "$$$", "from": 50, "to": 100 },
+                        { "key": "$$$$", "from": 100, "to": 500 },
+                        { "key": "$$$$$", "from": 500, "to": 1000 },
+                        { "key": "$$$$$$", "from": 1000 }
+                    ]
+                }
+            },
+            "missing_images": {
+                "missing": {
+                    "field": "image"
+                }
+            }
         }
     }
+    print("query obj: {}".format(query_obj))
     return query_obj

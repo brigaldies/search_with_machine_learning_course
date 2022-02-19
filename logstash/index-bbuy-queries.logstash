@@ -1,7 +1,12 @@
 input {
   file {
     path => ["/workspace/datasets/train.csv"]  #Put in the path to the train CSV query data.  To start smaller, simply select a smaller number of files or copy a few files to a different directory.
-    start_position => "beginning"
+    # start_position => "beginning"
+    mode => "read"
+    exit_after_read => true
+    sincedb_path => "/dev/null"
+    file_completed_action => "log"
+    file_completed_log_path => "/dev/null"
   }
 }
 
@@ -9,10 +14,10 @@ filter {
   csv {
     autodetect_column_names => true
     skip_header => true
-    convert => {
-      "click_time" => "date_time"
-      "query_time" => "date_time"
-    }
+    #convert => {
+    #  "click_time" => "date_time"
+    #  "query_time" => "date_time"
+    #}
   }
   mutate {
     remove_field => ["message", "host", "path"] # clean up some stuff we don't need
@@ -27,4 +32,6 @@ output {
     password => "admin"
     ssl_certificate_verification => false
   }
+
+  # stdout {}
 }

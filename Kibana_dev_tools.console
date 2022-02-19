@@ -1,0 +1,1096 @@
+GET _search
+{
+  "query": {
+    "match_all": {}
+  }
+}
+
+# Index some documents
+PUT /searchml_test/_doc/doc_a
+{ "title": "Fox and Hounds",
+"body": "The quick red fox jumped over the lazy brown dogs.",
+"category": "childrens" }
+
+PUT /searchml_test/_doc/doc_b
+{ "title": "Fox wins championship",
+"body": "Wearing all red, the Fox jumped out to a lead in the race over the Dog.",
+"category": "sports" }
+
+PUT /searchml_test/_doc/doc_c
+{ "title": "Lead Paint Removal",
+"body": "All lead must be removed from the brown and red paint.",
+"category": "instructional" }
+
+PUT /searchml_test/_doc/doc_d
+{ "title": "The Three Little Pigs Revisted",
+"body": "The big, bad wolf huffed and puffed and blew the house down. The end.",
+"category": "childrens" }
+
+GET /searchml_test/_doc/doc_b
+
+GET /searchml_test/_search?q=dog
+
+GET _search?q=jumped
+
+GET _search
+{
+  "size": 0,
+  "aggs": {
+    "CATEGORY": {
+      "terms": {
+        "field": "category.keyword"
+      }
+    }
+  }
+}
+
+GET _cat/indices
+
+GET _cat/health
+
+GET /searchml_revisited/_settings
+GET /searchml_revisited_custom_mappings/_settings
+
+GET /searchml_revisited_custom_mappings/_mapping
+
+POST /searchml_revisited_custom_mappings/_analyze
+{
+  "analyzer": "english",
+  "text": "The 2 QUICK Brown-Foxes jumped over the lazy dog's bone."
+}
+
+GET searchml_revisited/_search?q=body:dogs
+GET searchml_revisited_custom_mappings/_search?q=body:dogs
+
+GET logstash_test/_search?q=*
+
+# --------------------------------------
+# Index: bbuy_products
+# --------------------------------------
+DELETE /bbuy_products
+PUT /bbuy_products
+{
+  "settings": {
+    "index": {
+      "query": {
+        "default_field": "name"
+      }
+    },
+    "analysis": {
+      "char_filter": {
+        "xml_unescape_char_filter": {
+          "type": "mapping",
+          "mappings": [
+            "&lt; => <",
+            "&gt; => >",
+            "&amp; => &",
+            "&quot; => \"",
+            "&apos; => '"
+          ]
+        }
+      },
+      "filter": {
+        "english_stop": {
+          "type": "stop",
+          "stopwords": "_english_"
+        },
+        "english_stemmer": {
+          "type": "stemmer",
+          "language": "english"
+        },
+        "english_possessive_stemmer": {
+          "type": "stemmer",
+          "language": "possessive_english"
+        }
+      },
+      "analyzer": {
+        "english_html": {
+          "char_filter": [
+            "xml_unescape_char_filter",
+            "html_strip"
+          ],
+          "tokenizer": "standard",
+          "filter": [
+            "english_possessive_stemmer",
+            "lowercase",
+            "english_stop",
+            "english_stemmer"
+          ]
+        }
+      }
+    }
+  },
+  "mappings": {
+    "properties": {
+      "productId": {
+        "type": "keyword"
+      },
+      "sku": {
+        "type": "keyword"
+      },
+      "name": {
+        "type": "text",
+        "analyzer": "english"
+      },
+      "type": {
+        "type": "keyword"
+      },
+      "source": {
+        "type": "keyword"
+      },
+      "startDate": {
+        "type": "date",
+        "format": "yyyy-MM-dd'T'HH:mm:ss||yyyy-MM-dd||epoch_millis"
+      },
+      "new": {
+        "type": "boolean"
+      },
+      "active": {
+        "type": "boolean"
+      },
+      "activeUpdateDate": {
+        "type": "date",
+        "format": "yyyy-MM-dd'T'HH:mm:ss||yyyy-MM-dd||epoch_millis"
+      },
+      "regularPrice": {
+        "type": "float"
+      },
+      "salePrice": {
+        "type": "float"
+      },
+      "onSale": {
+        "type": "boolean"
+      },
+      "digital": {
+        "type": "boolean"
+      },
+      "frequentlyPurchasedWith": {
+        "type": "keyword"
+      },
+      "accessories": {
+        "type": "keyword"
+      },
+      "relatedProducts": {
+        "type": "keyword"
+      },
+      "crossSell": {
+        "type": "boolean"
+      },
+      "salesRankShortTerm": {
+        "type": "integer"
+      },
+      "salesRankMediumTerm": {
+        "type": "integer"
+      },
+      "salesRankLongTerm": {
+        "type": "integer"
+      },
+      "bestSellingRank": {
+        "type": "integer"
+      },
+      "url": {
+        "type": "keyword"
+      },
+      "categoryPathNames": {
+        "type": "text",
+        "analyzer": "english"
+      },
+      "categoryPathIds": {
+        "type": "keyword"
+      },
+      "categoryPathLeafId": {
+        "type": "keyword"
+      },
+      "categoryPathCount": {
+        "type": "short"
+      },
+      "customerReviewCount": {
+        "type": "integer"
+      },
+      "customerReviewAverage": {
+        "type": "float"
+      },
+      "inStoreAvailability": {
+        "type": "boolean"
+      },
+      "inStoreAvailabilityText": {
+        "type": "text",
+        "analyzer": "english"
+      },
+      "inStoreAvailabilityUpdateDate": {
+        "type": "date",
+        "format": "yyyy-MM-dd'T'HH:mm:ss||yyyy-MM-dd||epoch_millis"
+      },
+      "onlineAvailability": {
+        "type": "boolean"
+      },
+      "onlineAvailabilityText": {
+        "type": "text",
+        "analyzer": "english"
+      },
+      "onlineAvailabilityUpdateDate": {
+        "type": "date",
+        "format": "yyyy-MM-dd'T'HH:mm:ss||yyyy-MM-dd||epoch_millis"
+      },
+      "releaseDate": {
+        "type": "date",
+        "format": "yyyy-MM-dd'T'HH:mm:ss||yyyy-MM-dd||epoch_millis"
+      },
+      "shippingCost": {
+        "type": "float"
+      },
+      "shortDescription": {
+        "type": "text",
+        "analyzer": "english"
+      },
+      "shortDescriptionHtml": {
+        "type": "text",
+        "analyzer": "english_html"
+      },
+      "class": {
+        "type": "text",
+        "analyzer": "english",
+        "fields": {
+          "keyword": {
+            "type": "keyword"
+          }
+        }
+      },
+      "classId": {
+        "type": "keyword"
+      },
+      "subclass": {
+        "type": "text",
+        "analyzer": "english",
+        "fields": {
+          "keyword": {
+            "type": "keyword"
+          }
+        }
+      },
+      "subclassId": {
+        "type": "keyword"
+      },
+      "department": {
+        "type": "text",
+        "analyzer": "english",
+        "fields": {
+          "keyword": {
+            "type": "keyword"
+          }
+        }
+      },
+      "departmentId": {
+        "type": "keyword"
+      }
+    }
+  }
+}
+
+PUT /bbuy_products/_settings
+{
+  "index": {
+    "query": {
+      "default_field": "name"
+    }
+  },
+  "analysis": {
+    "filter": {
+      "english_stop": {
+        "type": "stop",
+        "stopwords": "_english_"
+      },
+      "english_stemmer": {
+        "type": "stemmer",
+        "language": "english"
+      },
+      "english_possessive_stemmer": {
+        "type": "stemmer",
+        "language": "possessive_english"
+      }
+    },
+    "analyzer": {
+      "english_html": {
+        "char_filter": [
+          "html_strip"
+        ],
+        "tokenizer": "standard",
+        "filter": [
+          "english_possessive_stemmer",
+          "lowercase",
+          "english_stop",
+          "english_stemmer"
+        ]
+      }
+    }
+  }
+}
+
+# Update index mappings
+PUT /bbuy_products/_mapping
+{
+  "properties": {
+    "productId": {
+      "type": "keyword"
+    },
+    "sku": {
+      "type": "keyword"
+    },
+    "name": {
+      "type": "text",
+      "analyzer": "english"
+    },
+    "type": {
+      "type": "keyword"
+    },
+    "source": {
+      "type": "keyword"
+    },
+    "startDate": {
+      "type": "date",
+      "format": "yyyy-MM-dd'T'HH:mm:ss||yyyy-MM-dd||epoch_millis"
+    },
+    "new": {
+      "type": "boolean"
+    },
+    "active": {
+      "type": "boolean"
+    },
+    "activeUpdateDate": {
+      "type": "date",
+      "format": "yyyy-MM-dd'T'HH:mm:ss||yyyy-MM-dd||epoch_millis"
+    },
+    "regularPrice": {
+      "type": "float"
+    },
+    "salePrice": {
+      "type": "float"
+    },
+    "onSale": {
+      "type": "boolean"
+    },
+    "digital": {
+      "type": "boolean"
+    },
+    "frequentlyPurchasedWith": {
+      "type": "keyword"
+    },
+    "accessories": {
+      "type": "keyword"
+    },
+    "relatedProducts": {
+      "type": "keyword"
+    },
+    "crossSell": {
+      "type": "boolean"
+    },
+    "salesRankShortTerm": {
+      "type": "integer"
+    },
+    "salesRankMediumTerm": {
+      "type": "integer"
+    },
+    "salesRankLongTerm": {
+      "type": "integer"
+    },
+    "bestSellingRank": {
+      "type": "integer"
+    },
+    "url": {
+      "type": "keyword"
+    },
+    "categoryPathNames": {
+      "type": "text",
+      "analyzer": "english"
+    },
+    "categoryPathIds": {
+      "type": "keyword"
+    },
+    "categoryPathLeafId": {
+      "type": "keyword"
+    },
+    "categoryPathCount": {
+      "type": "short"
+    },
+    "customerReviewCount": {
+      "type": "integer"
+    },
+    "customerReviewAverage": {
+      "type": "float"
+    },
+    "inStoreAvailability": {
+      "type": "boolean"
+    },
+    "inStoreAvailabilityText": {
+      "type": "text",
+      "analyzer": "english"
+    },
+    "inStoreAvailabilityUpdateDate": {
+      "type": "date",
+      "format": "yyyy-MM-dd'T'HH:mm:ss||yyyy-MM-dd||epoch_millis"
+    },
+    "onlineAvailability": {
+      "type": "boolean"
+    },
+    "onlineAvailabilityText": {
+      "type": "text",
+      "analyzer": "english"
+    },
+    "onlineAvailabilityUpdateDate": {
+      "type": "date",
+      "format": "yyyy-MM-dd'T'HH:mm:ss||yyyy-MM-dd||epoch_millis"
+    },
+    "releaseDate": {
+      "type": "date",
+      "format": "yyyy-MM-dd'T'HH:mm:ss||yyyy-MM-dd||epoch_millis"
+    },
+    "shippingCost": {
+      "type": "float"
+    },
+    "shortDescription": {
+      "type": "text",
+      "analyzer": "english"
+    },
+    "shortDescriptionHtml": {
+      "type": "text",
+      "analyzer": "english_html"
+    },
+    "longDescription": {
+      "type": "text",
+      "analyzer": "english"
+    },
+    "longDescriptionHtml": {
+      "type": "text",
+      "analyzer": "english_html"
+    },
+    "class": {
+      "type": "text",
+      "analyzer": "english",
+      "fields": {
+        "keyword": {
+          "type": "keyword"
+        }
+      }
+    },
+    "classId": {
+      "type": "keyword"
+    },
+    "subclass": {
+      "type": "text",
+      "analyzer": "english",
+      "fields": {
+        "keyword": {
+          "type": "keyword"
+        }
+      }
+    },
+    "subclassId": {
+      "type": "keyword"
+    },
+    "department": {
+      "type": "text",
+      "analyzer": "english",
+      "fields": {
+        "keyword": {
+          "type": "keyword"
+        }
+      }
+    },
+    "departmentId": {
+      "type": "keyword"
+    },
+    "bestBuyItemId": {
+      "type": "keyword"
+    },
+    "description": {
+      "type": "text",
+      "analyzer": "english"
+    },
+    "manufacturer": {
+      "type": "text",
+      "analyzer": "english",
+      "fields": {
+        "keyword": {
+          "type": "keyword"
+        }
+      }
+    },
+    "modelNumber": {
+      "type": "keyword"
+    },
+    "image": {
+      "type": "keyword"
+    },
+    "condition": {
+      "type": "text",
+      "analyzer": "english",
+      "fields": {
+        "keyword": {
+          "type": "keyword"
+        }
+      }
+    },
+    "inStorePickup": {
+      "type": "boolean"
+    },
+    "homeDelivery": {
+      "type": "boolean"
+    },
+    "quantityLimit": {
+      "type": "integer"
+    },
+    "color": {
+      "type": "keyword"
+    },
+    "depth": {
+      "type": "text"
+    },
+    "height": {
+      "type": "text"
+    },
+    "width": {
+      "type": "text"
+    },
+    "weight": {
+      "type": "text"
+    },
+    "shippingWeight": {
+      "type": "float"
+    },
+    "features": {
+      "type": "text",
+      "analyzer": "english"
+    }
+  }
+} 
+
+POST _analyze
+{
+  "analyzer": "english",
+  "text": "fits Apple® iPad"
+}
+GET /bbuy_products/_search?q=name:battery
+
+# <b>From our expanded online assortment</b>; compatible with select GM vehicles; plastic material
+POST /bbuy_products/_analyze
+{
+  "analyzer": "english_html",
+  "text": "&lt;b&gt;From our expanded online assortment&lt;/b&gt;"
+}
+
+GET /bbuy_products/_mapping
+GET /bbuy_products/_settings
+POST /bbuy_products/_forcemerge
+GET /bbuy_products/_count
+GET /bbuy_products/_search?q=*
+POST /bbuy_products/_search
+{
+  "query": {
+    "match_all": {}
+  },
+  "fields": [
+    "@timestamp",
+    "sku",
+    "name",
+    "features"
+  ],
+  "stored_fields": [],
+  "_source": false,
+  "aggs": {
+    "reviews": {
+      "histogram": {
+        "field": "customerReviewAverage",
+        "interval": 1
+      }
+    }
+  }
+}
+
+# Sample docs
+GET /bbuy_products/_search?q=sku:430420
+GET /bbuy_products/_search?q=frequentlyPurchasedWith:7884514
+GET /bbuy_products/_search?q=relatedProducts:9179943
+GET /bbuy_products/_search?q=categoryPathNames:battery
+GET /bbuy_products/_search?q=shortDescriptionHtml:assortment
+GET /bbuy_products/_search?q=class:battery
+GET /bbuy_products/_search?q=class.keyword:battery
+GET /bbuy_products/_search?q=class.keyword:BATTERIES
+GET /bbuy_products/_search?q=subclass:alkaline
+GET /bbuy_products/_search?q=subclass.keyword:alkaline
+GET /bbuy_products/_search?q=subclass.keyword:ALKALINE
+GET /bbuy_products/_search?q=department:photo
+GET /bbuy_products/_search?q=department.keyword:"PHOTO/COMMODITIES"
+
+
+
+DELETE /bbuy_products/_doc/312995
+DELETE /bbuy_products/_doc/309062
+DELETE /bbuy_products/_doc/43900
+
+# Delete all docs
+POST /bbuy_products/_delete_by_query
+{
+  "query": {
+    "match_all": {}
+  }
+}
+
+# Explain query
+POST /bbuy_products/_validate/query?explain
+{
+  "query": {
+    "multi_match": {
+      "fields": [
+        "name^100",
+        "shortDescription^50",
+        "longDescription^10",
+        "department"
+      ],
+      "query": "apple ipad 2"
+    }
+  }
+}
+
+POST /bbuy_products/_validate/query?explain
+{
+  "query": {
+    "bool": {
+      "should": [
+        {
+          "multi_match": {
+            "fields": [
+              "name^5",
+              "shortDescription^3",
+              "longDescription^2",
+              "department"
+            ],
+            "query": "Apple iPad 2"
+          }
+        },
+        {
+          "match_phrase": {
+            "name": {
+              "query": "Apple iPad 2",
+              "boost": 10
+            }
+          }
+        }
+      ]
+    }
+  }
+}
+
+# Explain score
+POST /bbuy_products/_explain/2339322
+{
+  "query": {
+    "multi_match": {
+      "fields": [
+        "name^100",
+        "shortDescription^50",
+        "longDescription^10",
+        "department"
+      ],
+      "query": "apple ipad 2"
+    }
+  }
+}
+
+POST /bbuy_products/_search
+{
+  "query": {
+    "terms": {
+      "_id": [
+        "2339322"
+      ]
+    }
+  },
+  "_source": false,
+  "fields": [
+    "name",
+    "shortDescription",
+    "longDescription",
+    "department"
+  ]
+}
+
+# iPad 2: 2339322
+# Accessory: 3640066
+# {
+#          "terms": {
+#            "_id": [
+#              "2339322",
+#              "3640066"
+#            ]
+#          }
+#        }
+POST /bbuy_products/_search
+{
+  "size": 10,
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "bool": {
+            "should": [
+              {
+                "multi_match": {
+                  "fields": [
+                    "name^5",
+                    "shortDescription^3",
+                    "longDescription^2",
+                    "department"
+                  ],
+                  "query": "Apple iPad 2"
+                }
+              },
+              {
+                "match_phrase": {
+                  "name": {
+                    "query": "Apple iPad 2",
+                    "boost": 10
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "filter": [
+        {
+          "terms": {
+            "_id": ["2339322", "2538136"]
+          }
+        }
+        ]
+    }
+  },
+  "_source": false,
+  "fields": [
+    "name",
+    "shortDescription",
+    "longDescription",
+    "department",
+    "regularPrice"
+  ],
+  "sort": [
+    {
+      "_score": {
+        "order": "desc"
+      }
+    }
+  ],
+  "aggs": {
+    "department": {
+      "terms": {
+        "field": "department.keyword"
+      }
+    },
+    "regularPrice": {
+      "range": {
+        "field": "regularPrice",
+        "ranges": [
+          {
+            "key": "$",
+            "to": 10
+          },
+          {
+            "key": "$$",
+            "from": 10,
+            "to": 100
+          },
+          {
+            "key": "$$$",
+            "from": 1000
+          }
+        ]
+      }
+    },
+    "missing_images": {
+      "missing": {
+        "field": "image"
+      }
+    }
+  }
+}
+
+# -------------------------------
+# Index: Queries
+# -------------------------------
+GET /bbuy_queries/_mapping
+GET /bbuy_queries/_settings
+POST /bbuy_queries/_forcemerge
+GET /bbuy_queries/_count
+GET /bbuy_queries/_search?q=*
+POST /bbuy_queries/_search
+{
+  "query": {
+    "range": {
+      "query_time": {
+        "lte": "2011-09-01 00:00:00"
+      }
+    }
+  }
+}
+POST /bbuy_queries/_search
+{
+  "query": {
+    "range": {
+      "query_time": {
+        "lte": "now"
+      }
+    }
+  }
+}
+POST /bbuy_queries/_search
+{
+  "query": {
+    "match_all": {}
+  },
+  "fields": [
+    "query",
+    "query_time"
+  ],
+  "sort": [
+    {
+      "click_time": {
+        "order": "asc"
+      }
+    }
+  ],
+  "_source": false,
+  "aggs": {
+    "click_date": {
+      "date_histogram": {
+        "field": "query_time",
+        "interval": "month",
+        "format" : "yyyy-MM-dd"
+      }
+    }
+  }
+}
+
+# --------------------------------
+# Week 1 - Project Level 2
+# --------------------------------
+
+# View the parsed Lucene query for a given ES query
+POST /bbuy_products/_validate/query?explain
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "query_string": {
+            "query": "\"ipad 2\"",
+            "fields": [
+              "name^100",
+              "shortDescription^50",
+              "longDescription^10",
+              "department"
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
+
+# Explain the score for a particular document
+POST /bbuy_products/_explain/2339322
+{
+  "query": {
+    "multi_match": {
+      "fields": [
+        "name^100",
+        "shortDescription^50",
+        "longDescription^10",
+        "department"
+      ],
+      "query": "apple ipad 2"
+    }
+  }
+}
+
+# Analyze some text
+POST _analyze
+{
+  "analyzer": "english",
+  "text": "Apple® - iPad® 2"
+}
+
+POST /bbuy_products/_search
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "match_phrase": {
+            "name": {
+              "query": "Apple iPad 2",
+              "slop": 2
+            }
+          }
+        }
+      ],
+      "filter": [
+        {
+          "terms": {
+            "_id": [
+              "2339322"
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
+
+# Run a baseline query
+GET bbuy_products/_search
+{
+  "size": 10,
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "query_string": {
+            "query": "\"ipad 2\"",
+            "fields": [
+              "name^100",
+              "shortDescription^50",
+              "longDescription^10",
+              "department"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "_source": [
+    "productId",
+    "name",
+    "shortDescription",
+    "longDescription",
+    "department",
+    "salesRankShortTerm",
+    "salesRankMediumTerm",
+    "salesRankLongTerm",
+    "regularPrice"
+  ]
+}
+
+# Write a "boosting" query with a "negative" component to de-boost observed irrelevant matches.
+# This would not scale as the negative component depends on each query.
+GET bbuy_products/_search
+{
+  "size": 10,
+  "query": {
+    "boosting": {
+      "positive": {
+        "query_string": {
+          "query": "\"ipad 2\"",
+          "fields": [
+            "name^100",
+            "shortDescription^50",
+            "longDescription^10",
+            "department"
+          ]
+        }
+      },
+      "negative": {
+        "bool": {
+          "should": [
+            {
+              "query_string": {
+                "query": "\"compatible iPad\"~20 OR \"fit iPad\"~3 OR \"outfit iPad\"~3 OR \"connect iPad\"~3 OR protector OR protect OR jacket OR headset OR microphone OR keyboard OR charging OR adapter OR speaker OR stylus OR sleeve OR \"hands free\"",
+                "fields": [
+                  "name",
+                  "shortDescription",
+                  "longDescription"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "negative_boost": 0.01
+    }
+  },
+  "_source": [
+    "productId",
+    "name",
+    "shortDescription",
+    "longDescription",
+    "department",
+    "salesRankShortTerm",
+    "salesRankMediumTerm",
+    "salesRankLongTerm",
+    "regularPrice",
+    "categoryPath"
+  ]
+}
+
+# Get the actual document and review all its fields. What else can we use to increase relevance?
+GET bbuy_products/_doc/2339322
+
+# Write a "function" query
+GET bbuy_products/_search
+{
+  "size": 10,
+  "query": {
+    "function_score": {
+      "query": {
+        "query_string": {
+          "query": "\"ipad 2\"",
+          "fields": [
+            "name^1000",
+            "shortDescription^50",
+            "longDescription^10",
+            "department"
+          ]
+        }
+      },
+      "boost_mode": "replace",
+      "score_mode": "avg",
+      "functions": [
+        {
+          "field_value_factor": {
+            "field": "salesRankShortTerm",
+            "factor": 1,
+            "modifier": "reciprocal",
+            "missing": 100000000
+          }
+        },
+        {
+          "field_value_factor": {
+            "field": "salesRankMediumTerm",
+            "factor": 1,
+            "modifier": "reciprocal",
+            "missing": 100000000
+          }
+        },
+        {
+          "field_value_factor": {
+            "field": "salesRankLongTerm",
+            "factor": 1,
+            "modifier": "reciprocal",
+            "missing": 100000000
+          }
+        }
+      ]
+    }
+  },
+  "_source": [
+    "productId",
+    "name",
+    "shortDescription",
+    "longDescription",
+    "department",
+    "salesRankShortTerm",
+    "salesRankMediumTerm",
+    "salesRankLongTerm",
+    "regularPrice"
+  ]
+}
+
