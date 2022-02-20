@@ -1,6 +1,10 @@
 # Week 1 Project
 
-## Bad relevancy for q=Apple IPad 2
+## Level 1
+
+See Self-Assessment section further down.
+
+## Level 2: Bad relevancy for q=Apple IPad 2
 
 Why is the ranking is bad for q=apple iPad 2?
 
@@ -11,9 +15,9 @@ Why is the ranking is bad for q=apple iPad 2?
 1. Matching on both shortDescription and longDescription increases the score even though the relevancy "signal" is the same. For example, _id=2339322 does not match on shortDescription even though it is the expected top result, while the top result _id=3640066 matches on both fields.
     - Remedy: Index both the short and long description in the same search field.
 
-## Score Analysis
+### Score Analysis
 
-### Expected best result: "Apple® - iPad® 2 with Wi-Fi - 16GB - White”, _id=2339322
+#### Expected best result: "Apple® - iPad® 2 with Wi-Fi - 16GB - White”, _id=2339322
 
 ```
 # Explain score
@@ -113,7 +117,7 @@ Sum (
           }
 ```
 
-### Top non-relevant match: "Rocketfish™ - Bluetooth Speaker for Apple® iPad®, iPad 2 and iPad (3rd Generation)", _id=3640066
+#### Top non-relevant match: "Rocketfish™ - Bluetooth Speaker for Apple® iPad®, iPad 2 and iPad (3rd Generation)", _id=3640066
 
 ```
 # Explain score
@@ -210,7 +214,7 @@ Sum (
 Larger score (813.6284 vs 526.4822) for “iPad” because of the TF=3 
 Is TF applicable in e-commerce????
 
-# Self Assessment Questions :male-detective:
+# Self-Assessment Questions :male-detective:
 ## Do your counts match ours?
 ### Number of documents in the Product index: 1,275,077
 Yes; See query below.
@@ -508,3 +512,83 @@ GET bbuy_products/_search
 }
 ```
 Hand-tuning relevancy is a "whack-a-mole" game, which is very frustrating, hence this class. :-)
+
+## Highlighting
+
+- Added the "highlight" section in the OpenSearch query
+```
+highlighting = {
+        "number_of_fragments" : 1,
+        "fragment_size" : 100,
+        "pre_tags" : ["<em>"],
+        "post_tags" : ["</em>"],
+        "fields" : {
+            "name": {},
+            "shortDescription": {},
+            "longDescription": {}
+        }
+    }
+```
+- Added the css style to make the highlighted text bold and italic:
+```
+em {
+    font-style: italic;
+    font-weight: bold;
+}
+```
+
+# Level 3
+
+## Pagination
+
+Not started.
+
+## Kibana Dashboards
+
+Not started.
+
+## Spell Checking
+
+A very crude spell checking/Did-you-mean functionality was added without requiring re-indexing by adding the following "suggest" component in the OpenSearch search request:
+```
+suggester_min_doc_frequency = 0.001
+    suggester = {
+        "text" : user_query,
+        "name" : {
+            "term" : {
+                "field" : "name",
+                "analyzer": "standard",
+                "suggest_mode": "missing",
+                "min_doc_freq": suggester_min_doc_frequency
+            }
+        },
+        "shortDescription" : {
+            "term" : {
+                "field" : "shortDescription",
+                "analyzer": "standard",
+                "suggest_mode": "missing",
+                "min_doc_freq": suggester_min_doc_frequency
+            }
+        },
+        "longDescription" : {
+            "term" : {
+                "field" : "longDescription",
+                "analyzer": "standard",
+                "suggest_mode": "missing",
+                "min_doc_freq": suggester_min_doc_frequency
+            }
+        }
+    }
+    ```
+Further spell-checking work would be:
+1. Re-index an all-text (from name, short and long descriptions) field without stemming. Spell check dictionaries are typically built from un-stemmed terms.
+1. Tune the many variables such as suggest mode, min doc frequency, etc.
+1. Build a spell check dictionary from the queries log.
+
+## Auto-Suggestion
+
+## Query Re-Writing
+
+## Synonyms Expansion
+
+## Analyze and Index Height/Width Unit of Measure

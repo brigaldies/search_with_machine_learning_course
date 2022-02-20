@@ -1094,3 +1094,179 @@ GET bbuy_products/_search
   ]
 }
 
+# -------------------------------------------
+# Week 1 Self-Assessment
+# Docs counts
+# -------------------------------------------
+GET /bbuy_products/_count
+GET /bbuy_queries/_count
+POST /bbuy_products/_search
+{
+  "size": 0,
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "match_all": {}
+        }
+      ],
+      "filter": [
+        {
+          "terms": {
+            "department.keyword": ["COMPUTERS"]
+          }
+        }
+      ]
+    }
+  },
+  "aggs": {
+    "department": {
+      "terms": {
+        "field": "department.keyword"
+      }
+    }
+  }
+}
+POST /bbuy_products/_search
+{
+  "size": 0,
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "match_all": {}
+        }
+      ],
+      "filter": [
+      ]
+    }
+  },
+  "aggs": {
+    "missing_images": {
+      "missing": {
+        "field": "image"
+      }
+    }
+  }
+}
+
+# Misc. students' questions
+# Multi-value fields
+POST /bbuy_products/_search
+{
+  "size": 1,
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "match_phrase": {
+            "categoryPathNames": {
+              "query": "Best Buy Computers",
+              "slop": 100
+            }
+          }
+        }
+      ],
+      "filter": [
+        {
+          "terms": {
+            "_id": [
+              "2339322"
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "_source": [
+    "name",
+    "categoryPathNames"
+  ]
+}
+
+# Highlighting
+POST /bbuy_products/_search
+{
+  "size": 10,
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "match_phrase": {
+            "name": {
+              "query": "ipad 2",
+              "slop": 2
+            }
+          }
+        }
+      ],
+      "filter": [
+      ]
+    }
+  },
+  "highlight": {
+    "number_of_fragments" : 1,
+    "fragment_size" : 100,
+    "fields" : {
+      "name": {},
+      "shortDescription": {},
+      "longDescription": {}
+    }
+  }, 
+  "_source": [
+    "name",
+    "shortDescription",
+    "longDescription"
+  ]
+}
+
+# Spell checking
+POST /bbuy_products/_search
+{
+  "size": 1, 
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "multi_match": {
+            "query": "Apple iPad 2",
+            "fields": [ "name", "shortDescription", "longDescription"]
+          }
+        }
+        ],
+      "filter": []
+    }
+  },
+  "suggest": {
+    "text" : "Aple iPad 2",
+    "name" : {
+      "term" : {
+        "field" : "name",
+        "analyzer": "standard",
+        "suggest_mode": "missing",
+        "min_doc_freq": 0.001
+      }
+    },
+    "shortDescription" : {
+      "term" : {
+        "field" : "shortDescription",
+        "analyzer": "standard",
+        "suggest_mode": "missing",
+        "min_doc_freq": 0.001
+      }
+    },
+    "longDescription" : {
+      "term" : {
+        "field" : "longDescription",
+        "analyzer": "standard",
+        "suggest_mode": "missing",
+        "min_doc_freq": 0.001
+      }
+    }
+  },
+  "_source": [
+    "name",
+    "shortDescription",
+    "longDescription"
+  ]
+}

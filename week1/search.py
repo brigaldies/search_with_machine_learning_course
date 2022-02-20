@@ -128,11 +128,38 @@ def query():
 
     # Postprocess results here if you so desire
 
+    # Produce a (very!) crude Did-You-Mean suggestion.
+    # This is a very crude term-level Did-You-Mean suggested, which was added without re-indexing.
+    suggestions = []
+    if 'suggest' in response.keys():
+        # Select the best suggestion across those suggested for name
+        for k, v in response['suggest'].items():
+            print(f"Suggestions for field {k}: {v}")
+            field_suggestions = v
+            field_suggestion = ''
+            field_suggestion_score = 0
+            for term_suggestion in v:
+                options = term_suggestion['options']
+                if len(options) > 0:
+                    field_suggestion += ' ' + options[0]['text']
+                    field_suggestion_score += options[0]['score']
+                else:
+                    field_suggestion += ' ' + term_suggestion['text']
+            suggestions.append(
+                {
+                    "suggestion": field_suggestion.strip(),
+                    "score": field_suggestion_score
+                }
+            )
+
+    suggestions.sort(key=lambda x: x['score'], reverse=True)
+    print(f"suggestions: {json.dumps(suggestions, indent = 4)}")
+    
     #print(response)
     if error is None:
         return render_template("search_results.jinja2", query=user_query, search_response=response,
                                display_filters=display_filters, applied_filters=applied_filters,
-                               sort=sort, sortDir=sortDir)
+                               sort=sort, sortDir=sortDir, suggest=suggestions[0] if (len(suggestions) > 0 and suggestions[0]['suggestion'] != user_query) else None)
     else:
         redirect(url_for("index"))
 
@@ -155,6 +182,48 @@ def create_query(user_query, filters, sort="_score", sortDir="desc"):
                 "query": user_query
             }
         }
+    
+    highlighting = {
+        "number_of_fragments" : 1,
+        "fragment_size" : 100,
+        "pre_tags" : ["<em>"],
+        "post_tags" : ["</em>"],
+        "fields" : {
+            "name": {},
+            "shortDescription": {},
+            "longDescription": {}
+        }
+    }
+
+    suggester_min_doc_frequency = 0.001
+    suggester = {
+        "text" : user_query,
+        "name" : {
+            "term" : {
+                "field" : "name",
+                # "analyzer": "standard",
+                "suggest_mode": "missing",
+                "min_doc_freq": suggester_min_doc_frequency
+            }
+        },
+        "shortDescription" : {
+            "term" : {
+                "field" : "shortDescription",
+                # "analyzer": "standard",
+                "suggest_mode": "missing",
+                "min_doc_freq": suggester_min_doc_frequency
+            }
+        },
+        "longDescription" : {
+            "term" : {
+                "field" : "longDescription",
+                # "analyzer": "standard",
+                "suggest_mode": "missing",
+                "min_doc_freq": suggester_min_doc_frequency
+            }
+        }
+    }
+
     query_obj = {
         'size': 10,
         # Build a query that both searches and filters
@@ -205,6 +274,8 @@ def create_query(user_query, filters, sort="_score", sortDir="desc"):
                 }
             }
         ],
+        "highlight": highlighting,
+        "suggest": suggester,
         "aggs": {
             "department": {
                 "terms": {

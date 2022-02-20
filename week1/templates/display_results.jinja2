@@ -22,7 +22,7 @@
         {% elif hit._source.shortDescription %}
           {#do we have a highlight?#}
           {% if hit.highlight and hit.highlight.shortDescription %}
-            {{ hit.highlight.shortDescription }}
+            {{ hit.highlight.shortDescription[0] }}
           {% else %}
             {{ hit._source.shortDescription[0] }}
           {% endif %}

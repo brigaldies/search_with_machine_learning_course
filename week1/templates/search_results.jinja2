@@ -5,8 +5,12 @@
 {% endblock %}
 
 {% block content %}
-  <div id="did-you-mean">Did You Mean goes here</div>
-  {% if display_filters%}
+  <div id="did-you-mean">
+    {% if suggest %}
+      Did you mean:&nbsp;<a href="{{ url_for("search.query") }}?&query={{ suggest.suggestion }}">{{ suggest.suggestion }}</a>
+    {% endif %}
+  </div>
+  {% if display_filters %}
     <div id="applied-filters">{% include 'display_filters.jinja2' %}</div>
   {% endif %}
   {% if search_response and search_response.hits%}
