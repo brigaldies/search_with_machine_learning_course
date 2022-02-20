@@ -681,6 +681,8 @@ POST /bbuy_products/_search
 
 ### Further Synonyms Work
 
-1. 
+1. Upload a synonyms file per the instructions [here](https://www.elastic.co/guide/en/cloud/current/ec-custom-bundles.html) 
 
 ## Analyze and Index Height/Width Unit of Measure
+
+Not started.
