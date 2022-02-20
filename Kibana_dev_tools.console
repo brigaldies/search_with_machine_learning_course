@@ -1270,3 +1270,67 @@ POST /bbuy_products/_search
     "longDescription"
   ]
 }
+
+# Synonyms
+# View current settings
+GET //bbuy_products/_settings
+
+# Close index. The index must be closed in order to update its settings.
+POST /bbuy_products/_close
+
+# Open index
+POST /bbuy_products/_open
+
+# Add a synonyms analyzer to be used at search time
+# Create a synonyms filter and analyzer
+PUT bbuy_products/_settings
+{
+  "analysis": {
+    "filter": {
+      "synonyms_filter": {
+        "type": "synonym",
+        "synonyms": [
+          "computer,laptop,desktop"
+        ]
+      }
+    },
+    "analyzer": {
+      "synonyms_analyzer": {
+        "tokenizer": "standard",
+        "filter": [
+          "lowercase",
+          "synonyms_filter"
+        ]
+      }
+    }
+  }
+}
+
+# test query-time synonyms expansion
+GET /bbuy_products/_validate/query?explain
+{
+  "query": {
+      "query_string": {
+         "fields": ["name^100", "shortDescription^50", "longDescription"],
+         "query": "apple computer",
+         "analyzer": "synonyms_analyzer"
+      }
+  }
+}
+
+# Search with query-time synonyms expansion
+POST /bbuy_products/_search
+{
+  "query": {
+    "multi_match": {
+      "fields": [
+        "name^100",
+        "shortDescription^50",
+        "longDescription^10",
+        "department"
+      ],
+      "query": "apple computer",
+      "analyzer":   "synonyms_analyzer"
+    }
+  }
+}

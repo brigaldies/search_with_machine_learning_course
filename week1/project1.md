@@ -579,16 +579,108 @@ suggester_min_doc_frequency = 0.001
             }
         }
     }
-    ```
-Further spell-checking work would be:
+```
+### Further Spell-Checking Work
 1. Re-index an all-text (from name, short and long descriptions) field without stemming. Spell check dictionaries are typically built from un-stemmed terms.
-1. Tune the many variables such as suggest mode, min doc frequency, etc.
+1. Tune the [many suggest parameters](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-suggesters.html) such as suggest mode, min doc frequency, etc.
 1. Build a spell check dictionary from the queries log.
 
 ## Auto-Suggestion
 
+Not started.
+
 ## Query Re-Writing
 
+Not started.
+
 ## Synonyms Expansion
+
+A very crude query-time synonyms expansion mechanism was added with the following index settings update (Note: no re-indexing was necessary since the mechanism uses query-time synonyms expansion and not index-time):
+
+### View current settings
+```
+GET /bbuy_products/_settings
+```
+
+### Close index
+The index must be closed in order to update its settings.
+```
+POST /bbuy_products/_close
+```
+### Create a Synonyms Filter and Analyzer
+```json
+PUT bbuy_products/_settings
+{
+  "analysis": {
+    "filter": {
+      "synonyms_filter": {
+        "type": "synonym",
+        "synonyms": [
+          "computer,laptop,desktop"
+        ]
+      }
+    },
+    "analyzer": {
+      "synonyms_analyzer": {
+        "tokenizer": "standard",
+        "filter": [
+          "lowercase",
+          "synonyms_filter"
+        ]
+      }
+    }
+  }
+}
+```
+
+### Re-Open index
+```
+POST /bbuy_products/_open
+```
+
+### Test Query-Time Synonyms Expansion
+```json
+GET /bbuy_products/_validate/query?explain
+{
+  "query": {
+      "query_string": {
+         "fields": ["name^100", "shortDescription^50", "longDescription"],
+         "query": "apple computer",
+         "analyzer": "synonyms_analyzer"
+      }
+  }
+}
+
+Response:
+{
+      "index" : "bbuy_products",
+      "valid" : true,
+      "explanation" : "((longDescription:apple Synonym(longDescription:computer longDescription:desktop longDescription:laptop)) | (name:apple Synonym(name:computer name:desktop name:laptop))^100.0 | (shortDescription:apple Synonym(shortDescription:computer shortDescription:desktop shortDescription:laptop))^50.0)"
+    }
+```
+
+### Search With Query-Time Synonyms Expansion
+```json
+# Search with query-time synonyms expansion
+POST /bbuy_products/_search
+{
+  "query": {
+    "multi_match": {
+      "fields": [
+        "name^100",
+        "shortDescription^50",
+        "longDescription^10",
+        "department"
+      ],
+      "query": "apple computer",
+      "analyzer":   "synonyms_analyzer"
+    }
+  }
+}
+```
+
+### Further Synonyms Work
+
+1. 
 
 ## Analyze and Index Height/Width Unit of Measure

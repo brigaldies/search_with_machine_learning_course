@@ -179,7 +179,8 @@ def create_query(user_query, filters, sort="_score", sortDir="desc"):
                     "longDescription^10",
                     "department"
                 ],
-                "query": user_query
+                "query": user_query,
+                "analyzer": "synonyms_analyzer"
             }
         }
     
