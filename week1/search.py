@@ -132,7 +132,7 @@ def query():
     # This is a very crude term-level Did-You-Mean suggested, which was added without re-indexing.
     suggestions = []
     if 'suggest' in response.keys():
-        # Select the best suggestion across those suggested for name
+        # Select the best suggestion across those suggested for name, short, and long descriptions
         for k, v in response['suggest'].items():
             print(f"Suggestions for field {k}: {v}")
             field_suggestions = v
