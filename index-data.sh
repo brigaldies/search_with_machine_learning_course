@@ -55,4 +55,4 @@ echo " Cleaning up any old indexing information by deleting query_data.  If this
 rm -rf "$LOGSTASH_HOME/query_data"
 nohup bin/logstash --pipeline.workers 1 --path.data ./query_data -f "$QUERIES_LOGSTASH_FILE" > queries_indexing.log &
 # Run in the foreground
-# bin/logstash --pipeline.workers 1 --path.data ./query_data -f "$QUERIES_LOGSTASH_FILE" 2>&1 | tee /workspace/search_with_machine_learning_course/products_indexing.log
+# bin/logstash --pipeline.workers 1 --path.data ./query_data -f "$QUERIES_LOGSTASH_FILE" 2>&1 | tee /workspace/search_with_machine_learning_course/queries_indexing.log

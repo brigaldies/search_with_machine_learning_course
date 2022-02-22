@@ -231,6 +231,9 @@ class Judgment:
         comment = "# %s\t%s" % (self.doc_id, self.query_str)
         return "%s\tqid:%s\t%s %s" % (self.grade, self.query, "\t".join(featuresAsStrs), comment)
 
+    def __str__(self):
+        return f"query={self.query}, query_str={self.query_str if self.query_str is not None else ''}, doc_id={self.doc_id}, display_name={self.display_name}, grade={self.grade}, features={self.features}"
+
 
 # Create a map for tracking queries
 queries = {1: "dogs", 2: "red fox", 3: "wolf huffed AND puffed OR pig"}
@@ -285,6 +288,7 @@ for query in queries:
 #######################
 # Coming out of this loop, we should have an array of judgments
 train_file = tempfile.NamedTemporaryFile(delete=False)
+print(f"Temp features file: {train_file.name}")
 # Log our features by sending our query and it's judged documents to OpenSearch
 for (idx, item) in enumerate(judgments.items()):
     judge_vals = item[1]

@@ -1334,3 +1334,120 @@ POST /bbuy_products/_search
     }
   }
 }
+
+# *************************************************************************
+# Week #2
+# *************************************************************************
+GET /bbuy_products/_count
+GET /bbuy_products/_search?q=*
+GET /bbuy_queries/_count
+GET /searchml_test/_count
+GET /searchml_test/_search?q=*
+GET /searchml_ltr/_count
+GET /searchml_ltr/_search?q=*
+
+# -------------------------------
+# Re-scoring
+# -------------------------------
+# Rescoring: first run the baseline
+GET searchml_test/_search
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "match_all": {}
+        }
+      ],
+      "filter": [
+        {
+          "term": {
+            "category": "childrens"
+          }
+        }
+      ]
+    }
+  }
+}
+
+# Rework week 1 function score as a rescore
+POST searchml_test/_search
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "match_all": {}
+        }
+      ],
+      "filter": [
+        {
+          "term": {
+            "category": "childrens"
+          }
+        }
+      ]
+    }
+  },
+  "rescore": {
+    "query": {
+      "rescore_query": {
+        "function_score": {
+          "field_value_factor": {
+            "field": "price",
+            "missing": 1
+          }
+        }
+      },
+      "query_weight": 1,
+      "rescore_query_weight": 2
+    },
+    "window_size": 1
+  }
+}
+
+# --------------------------------
+# LTR stores & features sets
+# --------------------------------
+GET _ltr
+GET _ltr/searchml_ltr
+GET _ltr/searchml_ltr/_featureset
+
+# --------------------------------
+# Features logging
+# --------------------------------
+POST /searchml_ltr/_search?q=*
+POST /searchml_ltr/_search
+{
+  "query": {
+    "bool": {
+      "filter": [
+        {
+          "terms": {
+            "_id": [
+              "doc_a"
+            ]
+          }
+        },
+        {
+          "sltr": {
+            "_name": "logged_featureset",
+            "featureset": "ltr_toy",
+            "store": "searchml_ltr",
+            "params": {
+              "keywords": "dog"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "ext": {
+    "ltr_log": {
+      "log_specs": {
+        "name": "log_entry",
+        "named_query": "logged_featureset"
+      }
+    }
+  }
+}
