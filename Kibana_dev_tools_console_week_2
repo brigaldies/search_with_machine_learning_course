@@ -1,0 +1,139 @@
+GET _cat/indices
+
+# ltr_toy
+GET /searchml_ltr/_search?q=*
+GET _ltr
+GET _ltr/searchml_ltr
+GET _ltr/searchml_ltr/_featureset
+
+# Features logging
+POST /searchml_ltr/_search
+{
+  "query": {
+    "bool": {
+      "filter": [
+        {
+          "terms": {
+            "_id": [
+              "doc_a", "doc_b"
+            ]
+          }
+        },
+        {
+          "sltr": {
+            "_name": "logged_featureset",
+            "featureset": "ltr_toy",
+            "store": "searchml_ltr",
+            "params": {
+              "keywords": "dog"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "ext": {
+    "ltr_log": {
+      "log_specs": {
+        "name": "log_entry",
+        "named_query": "logged_featureset"
+      }
+    }
+  }
+}
+
+
+# bbuy_products
+GET /bbuy_products/_count
+GET /bbuy_products/_search?q=*
+GET /bbuy_products/_settings
+GET /bbuy_products/_mapping
+
+# bbuy_queries
+GET /bbuy_queries/_count
+GET /bbuy_queries/_search?q=*
+GET /bbuy_queries/_settings
+GET /bbuy_queries/_mapping
+
+# LTR store and features set
+GET _ltr
+GET _ltr/week2
+GET _ltr/week2/_featureset
+
+# Features logging
+POST /bbuy_products/_search
+{
+  "size": 5, 
+  "query": {
+    "bool": {
+      "filter": [
+        {
+          "terms": {
+            "sku": [
+              1831054, 2047641, 2125233, 2127443, 2893174
+            ]
+          }
+        },
+        {
+          "sltr": {
+            "_name": "logged_featureset",
+            "featureset": "bbuy_main_featureset",
+            "store": "week2",
+            "params": {
+              "keywords": "lcd tv"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "ext": {
+    "ltr_log": {
+      "log_specs": {
+        "name": "log_entry",
+        "named_query": "logged_featureset"
+      }
+    }
+  },
+  "_source": [ "name"]
+}
+
+POST /bbuy_products/_search
+{
+  "size": 5,
+  "query": {
+    "bool": {
+      "filter": [
+        {
+          "terms": {
+            "sku": [
+              "1831054",
+              "2047641",
+              "2125233",
+              "2127443",
+              "2893174"
+            ]
+          }
+        },
+        {
+          "sltr": {
+            "_name": "logged_featureset",
+            "featureset": "bbuy_main_featureset",
+            "store": "week2",
+            "params": {
+              "keywords": "lcd tv"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "ext": {
+    "ltr_log": {
+      "log_specs": {
+        "name": "log_entry",
+        "named_query": "logged_featureset"
+      }
+    }
+  }
+}

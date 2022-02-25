@@ -195,6 +195,9 @@ if __name__ == "__main__":
             print("Loading all clicks from %s" % args.all_clicks)
             all_clicks_df = pd.read_csv(args.all_clicks, parse_dates=['click_time', 'query_time'])
             all_clicks_df = data_prepper.filter_junk_clicks(all_clicks_df, args.verify_file, output_dir)
+            print(f"Filtered All Clicks First 5 rows:")
+            assert all_clicks_df.head().shape[0] == 5
+            print(all_clicks_df.head().to_dict(orient = 'records'))
             # all_clicks_df = all_clicks_df.astype({'click_time': 'datetime64', 'query_time':'datetime64'})
         except Exception as e:
             print("Error loading all clicks data")
@@ -281,6 +284,7 @@ if __name__ == "__main__":
     if args.create_xgb_training and args.impressions_file:
         print("Loading impressions from %s/%s" % (output_dir, args.impressions_file))
         impressions_df = pd.read_csv("%s/%s" % (output_dir, args.impressions_file))
+        print(f"Loaded {impressions_df.shape[0]} impressions")
 
         if impressions_df is not None:
             # We need a map of normalize types for our features.  Would be nice if we could store this on the featureset

@@ -270,7 +270,7 @@ for query in queries:
             for input in sys.stdin.readline():
                 grade = input.rstrip()
                 if grade == "0" or grade == "1":
-                    judgment = Judgment(query, hit['_id'], hit['_source']['title'], int(grade))
+                    judgment = Judgment(query, hit['_id'], hit['_source']['title'], int(grade), features=[], query_str=queries[query])
                     judge_vals.append(judgment)
                     break
                 elif grade == "skip" or grade == "s":
@@ -333,7 +333,6 @@ for (idx, item) in enumerate(judgments.items()):
         }
         # Run the query just like any other search
         response = client.search(body=query_obj, index=index_name)
-        print(response)
         # For each response, extract out the features and build our training features
         # We are going to do this by iterating through the hits, which should be in doc_ids order and put the
         # values back onto the Judgment object, which has a place to store these.
@@ -341,15 +340,17 @@ for (idx, item) in enumerate(judgments.items()):
             hits = response['hits']['hits']
             # there should only be one hit
             judgment.features = hits[0]['fields']['_ltrlog'][0]['log_entry']
+            print(f"Logged features from OpenSearch for query id {judgment.query}: {queries[judgment.query]} and _id={judgment.doc_id}: {judgment.features}")
             # 		<grade> qid:<query_id> <feature_number>:<weight>... # <doc_id> <comments>
             # see https://xgboost.readthedocs.io/en/latest/tutorials/input_format.html
             xgb_format = judgment.toXGBFormat() + "\n"
-            print(xgb_format)
+            print(f"\tXGBFormat train sample: \"{xgb_format}\"")
             train_file.write(bytes(xgb_format, 'utf-8'))
         else:
             print("Weirdness. Fix")
 
 train_file.close()
+print(f"Features logged in {train_file.name}")
 
 #######################
 #
@@ -366,6 +367,7 @@ feat_map_file.write(bytes('1\t{}\tq\n'.format(title_query_feature_name), 'utf-8'
 feat_map_file.write(bytes('2\t{}\tq\n'.format(body_query_feature_name), 'utf-8'))
 feat_map_file.write(bytes('3\t{}\tq\n'.format(price_func_feature_name), 'utf-8'))
 feat_map_file.close()
+print(f"Features map written in {feat_map_file.name}")
 dtrain = xgb.DMatrix(train_file.name)
 param = {'max_depth': 5,  'silent': 1, 'objective': 'reg:linear'}
 num_round = 5

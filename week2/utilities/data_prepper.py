@@ -35,6 +35,18 @@ class DataPrepper:
     def filter_junk_clicks(self, clicks_df, verify_file, output_dir):
         # remove sale/promotional queries like: `LaborDay_HomeAppliances_20110902`
         print("Clicks pre filtering: %s" % len(clicks_df))
+
+        # Print the first five "promos" queries to filter out to see what they look like
+        clicks_promos_df = clicks_df[clicks_df["query"].str.match("\w+_(\w+_)?[\w+|\d+]") == True]
+        promos_count = 0
+        print(f"{clicks_promos_df.shape[0]} \"promos\" queries.")
+        for index, row in clicks_promos_df.iterrows():
+            if promos_count < 5:
+                print(f"[{promos_count}] Promo query={row['query']}")
+                promos_count += 1
+            else:
+                break
+
         clicks_df = clicks_df[clicks_df["query"].str.match("\w+_(\w+_)?[\w+|\d+]") == False]
         #print("Clicks post filtering promos: %s" % len(clicks_df))
         verify_file_path = "%s/%s" % (output_dir, verify_file)
@@ -55,8 +67,11 @@ class DataPrepper:
         input_df = self.filter_junk_clicks(input_df, verify_file, output_dir)
         # first we are going to split by date
         half = input_df['click_time'].median()
+        print(f"Click time median: {half}")
         first = input_df[input_df['click_time'] <= half]
+        print(f"len(first)={first.shape[0]}")
         second = input_df[input_df['click_time'] > half]
+        print(f"len(second)={second.shape[0]}")
         # for testing, we should still allow for splitting into less rows
         if train_rows > 0:
             # if we are using less than the full set, then shuffle them
@@ -192,7 +207,7 @@ class DataPrepper:
         query_gb = train_data_df.groupby("query")
         no_results = {}
         ctr = 0
-        #print("Number queries: %s" % query_gb.count())
+        print("Number queries: %s" % query_gb.count())
         for key in query_gb.groups.keys():
             if ctr % 500 == 0:
                 print("Progress[%s]: %s" % (ctr, key))
@@ -228,27 +243,62 @@ class DataPrepper:
     #         {'name': 'price_function', 'value': 0.0}]}]
     # For each query, make a request to OpenSearch with SLTR logging on and extract the features
     def __log_ltr_query_features(self, query_id, key, query_doc_ids, click_prior_query, no_results, terms_field="_id"):
-
+        debug = False
         log_query = lu.create_feature_log_query(key, query_doc_ids, click_prior_query, self.featureset_name,
                                                 self.ltr_store_name,
-                                                size=len(query_doc_ids), terms_field=terms_field)
+                                                size=len(query_doc_ids), terms_field=terms_field, debug = debug)
+                                                # Run the query just like any other search
+        response = self.opensearch.search(body=log_query, index=self.index_name)
+
         # IMPLEMENT_START --
-        print("IMPLEMENT ME: __log_ltr_query_features: Extract log features out of the LTR:EXT response and place in a data frame")
+        if debug: print("IMPLEMENTED: __log_ltr_query_features: Extract log features out of the LTR:EXT response and place in a data frame")
+        
         # Loop over the hits structure returned by running `log_query` and then extract out the features from the response per query_id and doc id.  Also capture and return all query/doc pairs that didn't return features
         # Your structure should look like the data frame below
         feature_results = {}
         feature_results["doc_id"] = []  # capture the doc id so we can join later
         feature_results["query_id"] = []  # ^^^
         feature_results["sku"] = []
-        feature_results["salePrice"] = []
-        feature_results["name_match"] = []
-        rng = np.random.default_rng(12345)
+        # Features:
+        # TODO: Get the list from the featureset
+        features_names = [
+            "name_match",
+            "name_phrase_match",
+            "name_hyphens_min_df",
+            "salePrice",
+            "regularPrice"
+        ]
+        # Initialization
+        for feature_name in features_names:
+            feature_results[feature_name] = []
+
+        # rng = np.random.default_rng(12345)
+        hits = response['hits']['hits']
+        if len(hits) == 0:
+            no_results.append(key)
         for doc_id in query_doc_ids:
+            if debug: print(f"Processing doc id = {doc_id}")
             feature_results["doc_id"].append(doc_id)  # capture the doc id so we can join later
-            feature_results["query_id"].append(query_id)
-            feature_results["sku"].append(doc_id)  # ^^^
-            feature_results["salePrice"].append(rng.random())
-            feature_results["name_match"].append(rng.random())
+            feature_results["query_id"].append(query_id) # ^^^
+            feature_results["sku"].append(doc_id)  
+            features_dict = {}
+            for hit in hits:
+                if debug: print(f"Processing hit _id={hit['_id']}")
+                if hit['_id'] == str(doc_id): # ATTENTION: doc_id is an int, while hit['_id'] is a string.
+                    # Found the hit for doc_id
+                    features_list = hit['fields']['_ltrlog'][0]['log_entry']
+                    if debug: print(f"Processing features {features_list}")
+                    for feature_name in features_names:
+                        for feature in features_list:
+                            if feature['name'] == feature_name:
+                                # Found the feature name in features_list
+                                features_dict[feature_name] = feature['value'] if 'value' in feature.keys() else 0
+                                break
+                    break
+            if len(features_dict) > 0:
+                for feature_name in features_names: 
+                    feature_results[feature_name].append(features_dict[feature_name])
+            
         frame = pd.DataFrame(feature_results)
         return frame.astype({'doc_id': 'int64', 'query_id': 'int64', 'sku': 'int64'})
         # IMPLEMENT_END

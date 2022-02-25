@@ -27,7 +27,7 @@
       },
       "click_time": {
         "type": "date",
-        "format": "yyyy-MM-dd HH:mm:ss.S||yyyy-MM-dd HH:mm:ss.SS||yyyy-MM-dd HH:mm:ss.SSSZ||yyyy-MM-dd HH:mm:ss.SSS||yyyy-MM-dd HH:mm:ssZ||yyyy-MM-dd||epoch_millis||strict_date_optional_time"
+        "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd HH:mm:ss.S||yyyy-MM-dd HH:mm:ss.SS||yyyy-MM-dd HH:mm:ss.SSSZ||yyyy-MM-dd HH:mm:ss.SSS||yyyy-MM-dd HH:mm:ssZ||yyyy-MM-dd||epoch_millis||strict_date_optional_time"
       },
       "query": {
         "type": "text",
@@ -44,7 +44,7 @@
       },
       "query_time": {
         "type": "date",
-        "format": "yyyy-MM-dd HH:mm:ss.S||yyyy-MM-dd HH:mm:ss.SS||yyyy-MM-dd HH:mm:ss.SSSZ||yyyy-MM-dd HH:mm:ss.SSS||yyyy-MM-dd HH:mm:ssZ||yyyy-MM-dd||epoch_millis||strict_date_optional_time"
+        "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd HH:mm:ss.S||yyyy-MM-dd HH:mm:ss.SS||yyyy-MM-dd HH:mm:ss.SSSZ||yyyy-MM-dd HH:mm:ss.SSS||yyyy-MM-dd HH:mm:ssZ||yyyy-MM-dd||epoch_millis||strict_date_optional_time"
       },
       "sku": {
         "type": "text",
