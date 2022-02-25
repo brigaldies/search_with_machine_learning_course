@@ -38,7 +38,7 @@ Reviewed code for:
 - `python week2/utilities/build_ltr.py --output_dir /workspace/ltr_output --split_input /workspace/datasets/train.csv --split_train_rows 1000000 --split_test_rows 1000000`
 - `python week2/utilities/build_ltr.py --generate_impressions --output_dir /workspace/ltr_output --train_file /workspace/ltr_output/train.csv --synthesize` *** TODO: Review again "rank" and "impressions calculations ***
 - `python week2/utilities/build_ltr.py --ltr_terms_field sku --output_dir /workspace/ltr_output --create_xgb_training -f week2/conf/ltr_featureset.json --click_model heuristic`
-- `python week2/utilities/build_ltr.py  --output_dir /workspace/ltr_output -xgb /workspace/ltr_output/training.xgb --xgb_conf week2/conf/xgb-conf.json`
+- `python week2/utilities/build_ltr.py  --output_dir /workspace/ltr_output --xgb /workspace/ltr_output/training.xgb --xgb_conf week2/conf/xgb-conf.json`
 - `python week2/utilities/build_ltr.py --upload_ltr_model --xgb_model /workspace/ltr_output/xgb_model.model`
 - `python week2/utilities/build_ltr.py --xgb_plot --output_dir /workspace/ltr_output`
 - `python week2/utilities/build_ltr.py --xgb_test /workspace/ltr_output/test.csv --train_file /workspace/ltr_output/train.csv --output_dir /workspace/ltr_output --xgb_test_num_queries 200`

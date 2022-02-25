@@ -9,9 +9,21 @@ def binary_func(x):
 
 def step(x):
     # print("IMPLEMENTED: Heuristic rating: CTR >= 0.5 --> Relevant, else Irrelevant")
+    # Class instructions: 
+    # returns zero (0) for any value of x less than 0.05, 
+    # returns 0.5 for any value between 0.05 and 0.10,
+    # returns 0.75 for any value of x between 0.10 and 0.3, 
+    # and return 1 for everything else
     heuristic_rating = 1
-    if x < 0.5:
+    if x <= 0.05:
         heuristic_rating = 0
+    elif x > 0.05 and x <= 0.10:
+        heuristic_rating = 0.5
+    elif x > 0.10 and x <= 0.3:
+        heuristic_rating = 0.75
+    else:
+        heuristic_rating = 1
+
     # return rng.choice([0,0.5, 1.0])
     return heuristic_rating
 

@@ -72,7 +72,7 @@ def create_feature_log_query(query, doc_ids, click_prior_query, featureset_name,
     if debug: print(f"IMPLEMENTED: create_feature_log_query for query={query}, doc_ids={doc_ids}, click_prior_query={click_prior_query}, featureset={featureset_name}, store={ltr_store_name}, size={size}, terms_field={terms_field}")
     features_logging_query = {
         "size": size,
-        "_source": False, # No need to return the source data
+        "_source": [ "name", "sku" ],
         "query": {
             "bool": {
                 "filter": [
