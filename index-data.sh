@@ -4,11 +4,11 @@ usage()
   exit 2
 }
 
-PRODUCTS_JSON_FILE="/workspace/search_with_machine_learning_course/opensearch/index-bbuy_products.mappings.json"
-QUERIES_JSON_FILE="/workspace/search_with_machine_learning_course/opensearch/index-bbuy-queries.mappings.json"
+PRODUCTS_JSON_FILE="/workspace/search_with_machine_learning_course/week2/conf/bbuy_products.json"
+QUERIES_JSON_FILE="/workspace/search_with_machine_learning_course/week2/conf/bbuy_queries.json"
 
-PRODUCTS_LOGSTASH_FILE="/workspace/search_with_machine_learning_course/logstash/index-bbuy-products.logstash"
-QUERIES_LOGSTASH_FILE="/workspace/search_with_machine_learning_course/logstash/index-bbuy-queries.logstash"
+PRODUCTS_LOGSTASH_FILE="/workspace/search_with_machine_learning_course/logstash/index-bbuy-products.week2.logstash"
+QUERIES_LOGSTASH_FILE="/workspace/search_with_machine_learning_course/logstash/index-bbuy-queries.week2.logstash"
 
 LOGSTASH_HOME="/workspace/logstash/logstash-7.13.2"
 
@@ -30,8 +30,8 @@ shift $((OPTIND -1))
 echo "Creating index settings and mappings"
 echo " Product file: $PRODUCTS_JSON_FILE"
 echo " Query file: $QUERIES_JSON_FILE"
-curl -k -X DELETE -u admin:admin  "https://localhost:9200/bbuy_products"
-curl -k -X PUT -u admin:admin  "https://localhost:9200/bbuy_products" -H 'Content-Type: application/json' -d "@$PRODUCTS_JSON_FILE"
+#curl -k -X DELETE -u admin:admin  "https://localhost:9200/bbuy_products"
+#curl -k -X PUT -u admin:admin  "https://localhost:9200/bbuy_products" -H 'Content-Type: application/json' -d "@$PRODUCTS_JSON_FILE"
 echo ""
 curl -k -X DELETE -u admin:admin  "https://localhost:9200/bbuy_queries"
 curl -k -X PUT -u admin:admin  "https://localhost:9200/bbuy_queries" -H 'Content-Type: application/json' -d "@$QUERIES_JSON_FILE"
@@ -44,15 +44,16 @@ echo " Query Logstash file: $QUERIES_LOGSTASH_FILE"
 
 echo "Running Logstash found in $LOGSTASH_HOME"
 cd "$LOGSTASH_HOME"
-echo "Launching Logstash indexing in the background via nohup.  See product_indexing.log and queries_indexing.log for log output"
-echo " Cleaning up any old indexing information by deleting products_data.  If this is the first time you are running this, you might see an error."
-rm -rf "$LOGSTASH_HOME/products_data"
-nohup bin/logstash --pipeline.workers 1 --path.data ./products_data -f "$PRODUCTS_LOGSTASH_FILE" > product_indexing.log &
+#echo "Launching Logstash indexing in the background via nohup.  See product_indexing.log and queries_indexing.log for log output"
+#echo " Cleaning up any old indexing information by deleting products_data.  If this is the first time you are running this, you might see an error."
+#rm -rf "$LOGSTASH_HOME/products_data"
+# nohup bin/logstash --pipeline.workers 1 --path.data ./products_data -f "$PRODUCTS_LOGSTASH_FILE" > product_indexing.log &
 # Run in the foreground
-# bin/logstash --pipeline.workers 1 --path.data ./products_data -f "$PRODUCTS_LOGSTASH_FILE" 2>&1 | tee /workspace/search_with_machine_learning_course/products_indexing.log
+#bin/logstash --pipeline.workers 1 --path.data ./products_data -f "$PRODUCTS_LOGSTASH_FILE" 2>&1 | tee /workspace/search_with_machine_learning_course/products_indexing.log
 
-echo " Cleaning up any old indexing information by deleting query_data.  If this is the first time you are running this, you might see an error."
+#echo " Cleaning up any old indexing information by deleting query_data.  If this is the first time you are running this, you might see an error."
 rm -rf "$LOGSTASH_HOME/query_data"
-nohup bin/logstash --pipeline.workers 1 --path.data ./query_data -f "$QUERIES_LOGSTASH_FILE" > queries_indexing.log &
+#nohup bin/logstash --pipeline.workers 1 --path.data ./query_data -f "$QUERIES_LOGSTASH_FILE" > queries_indexing.log &
 # Run in the foreground
 # bin/logstash --pipeline.workers 1 --path.data ./query_data -f "$QUERIES_LOGSTASH_FILE" 2>&1 | tee /workspace/search_with_machine_learning_course/queries_indexing.log
+bin/logstash --pipeline.workers 1 --path.data ./query_data -f "$QUERIES_LOGSTASH_FILE" 2>&1 | tee /workspace/search_with_machine_learning_course/queries_indexing.log
