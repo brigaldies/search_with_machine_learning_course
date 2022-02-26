@@ -4,6 +4,9 @@
 #
 ###
 
+import warnings
+warnings.filterwarnings("ignore", category=FutureWarning)
+
 import argparse
 import json
 import os
@@ -17,7 +20,6 @@ import pandas as pd
 import search_utils as su
 import xgb_utils as xgbu
 from opensearchpy import OpenSearch
-
 
 
 

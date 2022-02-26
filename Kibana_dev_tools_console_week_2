@@ -56,9 +56,20 @@ GET /bbuy_queries/_settings
 GET /bbuy_queries/_mapping
 
 # LTR store and features set
+# LTR stores
 GET _ltr
+
+# LTR Week 2 store
 GET _ltr/week2
+
+# LTR Week 2 store features sets
 GET _ltr/week2/_featureset
+
+# LTR Week 2 store models
+GET _ltr/week2/_model
+
+# LTR Week 2 store model ltr_model
+GET _ltr/week2/_model/ltr_model
 
 # Features logging
 POST /bbuy_products/_search
@@ -95,7 +106,7 @@ POST /bbuy_products/_search
       }
     }
   },
-  "_source": [ "name"]
+  "_source": [ "name", "sku"]
 }
 
 POST /bbuy_products/_search

@@ -179,6 +179,138 @@ Simple better: 443      LTR_Simple Better: 383  Equal: 1638
 HT better: 1202 LTR_HT Better: 791      Equal: 578
 Saving Better/Equal analysis to /workspace/ltr_output/analysis
 
+Run #5: With gaussian-decayed (origin=1, scale=100) salesRankShortTerm feature
+
+Analyzing results from /workspace/ltr_output/xgb_test_output.csv
+Queries not seen during training: [169]
+                 query
+0      Sony 3D glasses
+1                 Dell
+2    computer monitors
+3         DeHumidifier
+4         fax machines
+..                 ...
+164    streaming video
+165    western digital
+166            MacBook
+167                mp3
+168     speaker stands
+
+[169 rows x 1 columns]
+
+
+Simple MRR is 0.309
+LTR Simple MRR is 0.315
+Hand tuned MRR is 0.398
+LTR Hand Tuned MRR is 0.410
+
+Simple p@10 is 0.099
+LTR simple p@10 is 0.099
+Hand tuned p@10 is 0.170
+LTR hand tuned p@10 is 0.172
+Simple better: 373      LTR_Simple Better: 410  Equal: 1424
+HT better: 1039 LTR_HT Better: 750      Equal: 761
+Saving Better/Equal analysis to /workspace/ltr_output/analysis
+
+Run #6: With gauss-decayed salesRankShortTerm and salesRankMediumTerm features
+
+Analyzing results from /workspace/ltr_output/xgb_test_output.csv
+Queries not seen during training: [168]
+                  query
+0          Refrigerator
+1     Dirt devil vacuum
+2                minisd
+3           Hp touchpad
+4    iPhone accessories
+..                  ...
+163           Zac brown
+164     lion king movie
+165      need for speed
+166               stove
+167         usb headset
+
+[168 rows x 1 columns]
+
+
+Simple MRR is 0.310
+LTR Simple MRR is 0.307
+Hand tuned MRR is 0.447
+LTR Hand Tuned MRR is 0.458
+
+Simple p@10 is 0.116
+LTR simple p@10 is 0.114
+Hand tuned p@10 is 0.188
+LTR hand tuned p@10 is 0.184
+Simple better: 578      LTR_Simple Better: 564  Equal: 1431
+HT better: 1253 LTR_HT Better: 869      Equal: 660
+Saving Better/Equal analysis to /workspace/ltr_output/analysis
+
+Run #7: With gauss-decayed salesRankShortTerm, salesRankMediumTerm, and salesRankLongTerm features
+
+Analyzing results from /workspace/ltr_output/xgb_test_output.csv
+Queries not seen during training: [164]
+             query
+0              Aoc
+1        sling box
+2         wavebird
+3          car dvd
+4      laptop case
+..             ...
+159   call of duty
+160      Gas dryer
+161  Ps3 bluetooth
+162    Smart phone
+163   Westinghouse
+
+[164 rows x 1 columns]
+
+
+Simple MRR is 0.364
+LTR Simple MRR is 0.364
+Hand tuned MRR is 0.417
+LTR Hand Tuned MRR is 0.426
+
+Simple p@10 is 0.133
+LTR simple p@10 is 0.131
+Hand tuned p@10 is 0.164
+LTR hand tuned p@10 is 0.167
+Simple better: 623      LTR_Simple Better: 631  Equal: 1366
+HT better: 1280 LTR_HT Better: 936      Equal: 571
+Saving Better/Equal analysis to /workspace/ltr_output/analysis
+
+Run #8: With "as is" (Not Gaussian-decayed) salesRankShortTerm, salesRankMedium Term, and salesRankLongTerm
+
+Analyzing results from /workspace/ltr_output/xgb_test_output.csv
+Queries not seen during training: [179]
+               query
+0    wireless router
+1              cases
+2          Ipod nano
+3               hdtv
+4        laptop case
+..               ...
+174    s video cable
+175    friday the 13
+176        Wii games
+177            Ipods
+178           dsc-h7
+
+[179 rows x 1 columns]
+
+
+Simple MRR is 0.367
+LTR Simple MRR is 0.363
+Hand tuned MRR is 0.501
+LTR Hand Tuned MRR is 0.482 <-- Best thus far
+
+Simple p@10 is 0.140
+LTR simple p@10 is 0.143
+Hand tuned p@10 is 0.214
+LTR hand tuned p@10 is 0.217
+Simple better: 501      LTR_Simple Better: 537  Equal: 1575
+HT better: 1232 LTR_HT Better: 862      Equal: 751
+Saving Better/Equal analysis to /workspace/ltr_output/analysis
+
 ## Level 2: Exploring Features and Click Models
 
 ## Self Assessment
