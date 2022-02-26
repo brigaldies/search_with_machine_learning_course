@@ -82,7 +82,6 @@ Run #2:
 
 (search_with_ml_week2) gitpod /workspace/search_with_machine_learning_course $ python week2/utilities/build_ltr.py --analyze --output_dir /workspace/ltr_output
 Analyzing results from /workspace/ltr_output/xgb_test_output.csv
-Analyzing results from /workspace/ltr_output/xgb_test_output.csv
 Queries not seen during training: [178]
                query
 0    bobby valentino
@@ -113,4 +112,88 @@ Simple better: 349      LTR_Simple Better: 261  Equal: 1401
 HT better: 1131 LTR_HT Better: 475      Equal: 696
 Saving Better/Equal analysis to /workspace/ltr_output/analysis
 
+Run #3: After re-implemented click_models.step()
+
+(search_with_ml_week2) gitpod /workspace/search_with_machine_learning_course $ python week2/utilities/build_ltr.py --analyze --output_dir /workspace/ltr_output
+Analyzing results from /workspace/ltr_output/xgb_test_output.csv
+Queries not seen during training: [180]
+                        query
+0                     windows
+1                  ipod video
+2                  blue tooth
+3                      remote
+4                         jvc
+..                        ...
+175              speaker wire
+176         computer monitors
+177            evo hdmi cable
+178       my chemical romance
+179  How to train your dragon
+
+[180 rows x 1 columns]
+
+
+Simple MRR is 0.352
+LTR Simple MRR is 0.348
+Hand tuned MRR is 0.435
+LTR Hand Tuned MRR is 0.432
+
+Simple p@10 is 0.136
+LTR simple p@10 is 0.135
+Hand tuned p@10 is 0.192
+LTR hand tuned p@10 is 0.184
+Simple better: 573      LTR_Simple Better: 495  Equal: 1699
+HT better: 1428 LTR_HT Better: 864      Equal: 669
+Saving Better/Equal analysis to /workspace/ltr_output/analysis
+
+Run #4: With Down Sampling
+
+Analyzing results from /workspace/ltr_output/xgb_test_output.csv
+Queries not seen during training: [178]
+                   query
+0    across the universe
+1                   kids
+2              Alienware
+3         computer games
+4      Otterbox iPhone 4
+..                   ...
+173       car subwoofers
+174            backpacks
+175           iPod touch
+176      wireless router
+177          Car in dash
+
+[178 rows x 1 columns]
+
+
+Simple MRR is 0.348
+LTR Simple MRR is 0.336
+Hand tuned MRR is 0.408
+LTR Hand Tuned MRR is 0.402
+
+Simple p@10 is 0.133
+LTR simple p@10 is 0.133
+Hand tuned p@10 is 0.179
+LTR hand tuned p@10 is 0.170
+Simple better: 443      LTR_Simple Better: 383  Equal: 1638
+HT better: 1202 LTR_HT Better: 791      Equal: 578
+Saving Better/Equal analysis to /workspace/ltr_output/analysis
+
 ## Level 2: Exploring Features and Click Models
+
+## Self Assessment
+
+Project Self Assessment
+1. Do you understand the steps involved in creating and deploying an LTR model? Name them and describe what each step does in your own words.
+2. What is a feature and featureset?
+3. What is the difference between precision and recall?
+4. What are some of the traps associated with using click data in your model?
+5. What are some of the ways we are faking our data and how would you prevent that in your application?
+6. What is target leakage and why is it a bad thing?
+7. When can using prior history cause problems in search and LTR?
+8. Submit your project along with your best MRR scores
+Peer Review Questions
+1. What are 1 or 2 things they did well in the homework?
+2. What are 1 or 2 concrete ways they could improve their work?
+3. If they indicated that they were stuck and/or want focused feedback please provide responses if you can...
+4. Feel free to add words of encouragement as well!
