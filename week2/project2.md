@@ -301,7 +301,7 @@ Queries not seen during training: [179]
 Simple MRR is 0.367
 LTR Simple MRR is 0.363
 Hand tuned MRR is 0.501
-LTR Hand Tuned MRR is 0.482 <-- Best thus far
+LTR Hand Tuned MRR is 0.482 <-- Best of all runs thus far.
 
 Simple p@10 is 0.140
 LTR simple p@10 is 0.143
@@ -309,6 +309,39 @@ Hand tuned p@10 is 0.214
 LTR hand tuned p@10 is 0.217
 Simple better: 501      LTR_Simple Better: 537  Equal: 1575
 HT better: 1232 LTR_HT Better: 862      Equal: 751
+Saving Better/Equal analysis to /workspace/ltr_output/analysis
+
+Run #9: With "as is" (Not Gaussian-decayed) salesRankShortTerm, salesRankMedium Term, and salesRankLongTerm; Without name_hyphens_min_df
+
+Analyzing results from /workspace/ltr_output/xgb_test_output.csv
+Queries not seen during training: [178]
+                                       query
+0                                  emachines
+1                                 car stereo
+2                               spider-man 3
+3    2622037 2127204 2127213 2121716 2138291
+4                               Iphone4 case
+..                                       ...
+173                                 t-mobile
+174                                     iPod
+175                                   labtop
+176                                  pioneer
+177                            converter box
+
+[178 rows x 1 columns]
+
+
+Simple MRR is 0.337
+LTR Simple MRR is 0.328
+Hand tuned MRR is 0.447
+LTR Hand Tuned MRR is 0.447
+
+Simple p@10 is 0.128
+LTR simple p@10 is 0.128
+Hand tuned p@10 is 0.191
+LTR hand tuned p@10 is 0.185
+Simple better: 601      LTR_Simple Better: 583  Equal: 1369
+HT better: 1340 LTR_HT Better: 848      Equal: 629
 Saving Better/Equal analysis to /workspace/ltr_output/analysis
 
 ## Level 2: Exploring Features and Click Models

@@ -255,51 +255,6 @@ class DataPrepper:
         
         # Loop over the hits structure returned by running `log_query` and then extract out the features from the response per query_id and doc id.  Also capture and return all query/doc pairs that didn't return features
         # Your structure should look like the data frame below
-        # feature_results = {}
-        # feature_results["doc_id"] = []  # capture the doc id so we can join later
-        # feature_results["query_id"] = []  # ^^^
-        # feature_results["sku"] = []
-        # # Features:
-        # # TODO: Get the list from the featureset
-        # features_names = [
-        #     "name_match",
-        #     "name_phrase_match",
-        #     "name_hyphens_min_df",
-        #     "salePrice",
-        #     "regularPrice"
-        # ]
-        # # Initialization
-        # for feature_name in features_names:
-        #     feature_results[feature_name] = []
-
-        # # rng = np.random.default_rng(12345)
-        # hits = response['hits']['hits']
-        # if len(hits) == 0:
-        #     no_results.append(key)
-        # for doc_id in query_doc_ids:
-        #     if debug: print(f"Processing doc id = {doc_id}")
-        #     feature_results["doc_id"].append(doc_id)  # capture the doc id so we can join later
-        #     feature_results["query_id"].append(query_id) # ^^^
-        #     feature_results["sku"].append(doc_id)  
-        #     features_dict = {}
-        #     for hit in hits:
-        #         if debug: print(f"Processing hit _id={hit['_id']}")
-        #         if hit['_id'] == str(doc_id): # ATTENTION: doc_id is an int, while hit['_id'] is a string.
-        #             # Found the hit for doc_id
-        #             features_list = hit['fields']['_ltrlog'][0]['log_entry']
-        #             if debug: print(f"Processing features {features_list}")
-        #             for feature_name in features_names:
-        #                 for feature in features_list:
-        #                     if feature['name'] == feature_name:
-        #                         # Found the feature name in features_list
-        #                         features_dict[feature_name] = feature['value'] if 'value' in feature.keys() else 0
-        #                         break
-        #             break
-        #     if len(features_dict) > 0:
-        #         for feature_name in features_names: 
-        #             feature_results[feature_name].append(features_dict[feature_name])
-
-        # New implementation
         docs_with_features_list = []
         returned_doc_ids = []
         for hit in response['hits']['hits']:
