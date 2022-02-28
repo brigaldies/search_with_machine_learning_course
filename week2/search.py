@@ -90,21 +90,33 @@ def query():
         model = request.form.get("model", "simple")
         click_prior = get_click_prior(user_query)
 
+        fields_list = [
+            "productId",
+            "sku",
+            "name",
+            "regularPrice",
+            "salePrice",
+            "salesRankShortTerm",
+            "salesRankMediumTerm",
+            "salesRankLongTerm",
+            "image"
+        ]
+
         if model == "simple_LTR":
-            query_obj = qu.create_simple_baseline(user_query, click_prior, [], sort, sortDir, size=500)  # We moved create_query to a utility class so we could use it elsewhere.
+            query_obj = qu.create_simple_baseline(user_query, click_prior, [], sort, sortDir, size=10, source=fields_list)  # We moved create_query to a utility class so we could use it elsewhere.
             query_obj = lu.create_rescore_ltr_query(user_query, query_obj, click_prior, ltr_model_name, ltr_store_name,
-                                                    rescore_size=500, main_query_weight=0)
+                                                    rescore_size=500, main_query_weight=0, rescore_query_weight=1)
             print("Simple LTR q: %s" % query_obj)
         elif model == "ht_LTR":
-            query_obj = qu.create_query(user_query, click_prior, [], sort, sortDir, size=500)  # We moved create_query to a utility class so we could use it elsewhere.
+            query_obj = qu.create_query(user_query, click_prior, [], sort, sortDir, size=500,source=fields_list)  # We moved create_query to a utility class so we could use it elsewhere.
             query_obj = lu.create_rescore_ltr_query(user_query, query_obj, click_prior, ltr_model_name, ltr_store_name,
                                                     rescore_size=500, main_query_weight=0)
             print("LTR q: %s" % query_obj)
         elif model == "hand_tuned":
-            query_obj = qu.create_query(user_query, click_prior, [], sort, sortDir, size=100)  # We moved create_query to a utility class so we could use it elsewhere.
+            query_obj = qu.create_query(user_query, click_prior, [], sort, sortDir, size=100, source=fields_list)  # We moved create_query to a utility class so we could use it elsewhere.
             print("Hand tuned q: %s" % query_obj)
         else:
-            query_obj = qu.create_simple_baseline(user_query, click_prior, [], sort, sortDir, size=100)  # We moved create_query to a utility class so we could use it elsewhere.
+            query_obj = qu.create_simple_baseline(user_query, click_prior, [], sort, sortDir, size=100, source=fields_list)  # We moved create_query to a utility class so we could use it elsewhere.
             print("Plain ol q: %s" % query_obj)
     elif request.method == 'GET':  # Handle the case where there is no query or just loading the page
         user_query = request.args.get("query", "*")
