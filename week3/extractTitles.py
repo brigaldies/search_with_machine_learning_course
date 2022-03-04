@@ -3,11 +3,16 @@ import random
 import xml.etree.ElementTree as ET
 import argparse
 from pathlib import Path
+import nltk
+from nltk.stem import SnowballStemmer
+nltk.download("punkt")
+tokenizer = nltk.RegexpTokenizer(r"\w+")
+stemmer = SnowballStemmer("english")
 
 directory = r'/workspace/search_with_machine_learning_course/data/pruned_products'
 parser = argparse.ArgumentParser(description='Process some integers.')
 general = parser.add_argument_group("general")
-general.add_argument("--input", default=directory,  help="The directory containing the products")
+general.add_argument("--input", default=directory, help="The directory containing the products")
 general.add_argument("--output", default="/workspace/datasets/fasttext/titles.txt", help="the file to output to")
 
 # Consuming all of the product data takes a while. But we still want to be able to obtain a representative sample.
@@ -25,9 +30,17 @@ if args.input:
 
 sample_rate = args.sample_rate
 
+# TODO: Add argument
+stem = False
+
 def transform_training_data(name):
-    # IMPLEMENT
-    return name.replace('\n', ' ')
+    if stem:
+        analyzed_name = " ".join([stemmer.stem(token.lower()) for token in tokenizer.tokenize(name)])
+        print(f"\ttransform: {name} --> {analyzed_name}")
+    else:
+        analyzed_name = " ".join([token.lower() for token in tokenizer.tokenize(name)])
+        
+    return analyzed_name
 
 # Directory for product data
 
