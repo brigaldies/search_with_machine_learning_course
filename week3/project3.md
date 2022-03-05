@@ -118,28 +118,8 @@ Progress: 100.0% words/sec/thread:    3535 lr:  0.000000 avg.loss:  2.629022 ETA
 
 #### Ad-Hoc Testing
 
-#### 5 product types (e.g., headphones)
+See test_titles_model.sh.log
 
-laptops
-keyboards
-monitors
-headphones
-disk drives
+## Level 3: Integrating Synonyms with Search (Optional but highly encouraged)
 
-#### 5 brands (e.g., sony)
-
-Apple
-Toshiba
-HP
-Sony
-Dell
-
-#### 5 models (e.g., thinkpad)
-
-iPhone
-ThinkPad
-
-
-#### 5 attributes (e.g., black)
-
-black
+## Level 4: ...

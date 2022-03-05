@@ -1,0 +1,2367 @@
+<products>
+  <product>      
+          <sku>4041128</sku>      
+          <productId>1218452838259</productId>      
+          <name>LG - Nitro HD 4G Mobile Phone - Black (AT&amp;T)</name>      
+          <source>bestbuy</source>      
+          <type>HardGood</type>      
+          <startDate>2011-12-04</startDate>      
+          <new>false</new>      
+          <active>true</active>      
+          <activeUpdateDate>2012-07-03T07:21:10</activeUpdateDate>      
+          <regularPrice>549.99</regularPrice>      
+          <salePrice>549.99</salePrice>      
+          <onSale>false</onSale>      
+          <planPrice>0.00</planPrice>      
+          <priceWithPlan>            
+                  <newTwoYearPlan>0.00</newTwoYearPlan>            
+                  <upgradeTwoYearPlan>0.00</upgradeTwoYearPlan>            
+          </priceWithPlan>      
+          <advertisedPriceRestriction>false</advertisedPriceRestriction>      
+          <minimumDisplayPrice/>      
+          <restrictedSalePrice>549.99</restrictedSalePrice>      
+          <icrType/>      
+          <icrStartDate/>      
+          <icrEndDate/>      
+          <priceUpdateDate>2012-07-25T00:18:57</priceUpdateDate>      
+          <digital>false</digital>      
+          <preowned>false</preowned>      
+          <carrierPlans>            
+                  <sku>9862376</sku>            
+                  <sku>9862349</sku>            
+                  <sku>9862409</sku>            
+                  <sku>9862418</sku>            
+                  <sku>9862427</sku>            
+                  <sku>9862445</sku>            
+                  <sku>9862463</sku>            
+                  <sku>9862472</sku>            
+                  <sku>9909613</sku>            
+          </carrierPlans>      
+          <technologyCode>LTE</technologyCode>      
+          <carrierModelNumber>65346</carrierModelNumber>      
+          <earlyTerminationFees>            
+                  <earlyTerminationFee>                  
+                          <etfText>The Early Termination Fee will be $325 minus $10 for each full month of service that you complete</etfText>                  
+                          <terminationFee>325.00</terminationFee>                  
+                          <decliningAmount>10.00</decliningAmount>                  
+                          <contractLengthInMonths/>                  
+                  </earlyTerminationFee>            
+          </earlyTerminationFees>      
+          <outletCenter/>      
+          <secondaryMarket/>      
+          <frequentlyPurchasedWith/>      
+          <accessories>            
+                  <sku>8948847</sku>            
+                  <sku>8913349</sku>            
+                  <sku>2908168</sku>            
+                  <sku>4868533</sku>            
+          </accessories>      
+          <relatedProducts>            
+                  <sku>8948847</sku>            
+                  <sku>8913349</sku>            
+                  <sku>2908168</sku>            
+                  <sku>4868533</sku>            
+          </relatedProducts>      
+          <crossSell/>      
+          <salesRankShortTerm>3187</salesRankShortTerm>      
+          <salesRankMediumTerm>4282</salesRankMediumTerm>      
+          <salesRankLongTerm>10651</salesRankLongTerm>      
+          <bestSellingRank>3199</bestSellingRank>      
+          <url>http://www.bestbuy.com/site/LG+-+Nitro+HD+4G+Mobile+Phone+-+Black+(AT%26T)/4041128.p?id=1218452838259&amp;skuId=4041128&amp;cmp=RMX</url>      
+          <spin360Url/>      
+          <mobileUrl>http://m.bestbuy.com/r/1218452838259/4041128/</mobileUrl>      
+          <affiliateUrl/>      
+          <addToCartUrl>http://www.bestbuy.com/site/olspage.jsp?id=pcmcat152200050035&amp;type=category&amp;cmp=RMX&amp;qvsids=4041128</addToCartUrl>      
+          <affiliateAddToCartUrl/>      
+          <cjAffiliateUrl/>      
+          <cjAffiliateAddToCartUrl/>      
+          <upc>652810117654</upc>      
+          <categoryPath>            
+                  <category>                  
+                          <id>cat00000</id>                  
+                          <name>Best Buy</name>                  
+                  </category>            
+                  <category>                  
+                          <id>abcat0800000</id>                  
+                          <name>Mobile Phones</name>                  
+                  </category>            
+                  <category>                  
+                          <id>pcmcat209400050001</id>                  
+                          <name>All Mobile Phones with Plans</name>                  
+                  </category>            
+          </categoryPath>      
+          <lists/>      
+          <customerReviewCount>15</customerReviewCount>      
+          <customerReviewAverage>4.1</customerReviewAverage>      
+          <format/>      
+          <freeShipping>true</freeShipping>      
+          <hardGoodType>mobilePhone</hardGoodType>      
+          <inStoreAvailability>true</inStoreAvailability>      
+          <inStoreAvailabilityText>Store Pickup: Available at most stores</inStoreAvailabilityText>      
+          <inStoreAvailabilityTextHtml>&lt;b&gt;Store Pickup:&lt;/b&gt; Available at most stores</inStoreAvailabilityTextHtml>      
+          <inStoreAvailabilityUpdateDate>2012-07-03T07:21:10</inStoreAvailabilityUpdateDate>      
+          <itemUpdateDate>2012-07-28T22:46:15</itemUpdateDate>      
+          <onlineAvailability>false</onlineAvailability>      
+          <onlineAvailabilityText>Shipping: Not available</onlineAvailabilityText>      
+          <onlineAvailabilityTextHtml>&lt;b&gt;Shipping:&lt;/b&gt; Not available</onlineAvailabilityTextHtml>      
+          <onlineAvailabilityUpdateDate>2012-07-28T21:45:51</onlineAvailabilityUpdateDate>      
+          <releaseDate>2011-11-13</releaseDate>      
+          <shippingCost>0.00</shippingCost>      
+          <shipping>            
+                  <ground>0.00</ground>            
+                  <secondDay>4.00</secondDay>            
+                  <nextDay>11.00</nextDay>            
+                  <vendorDelivery/>            
+          </shipping>      
+          <specialOrder>false</specialOrder>      
+          <shortDescription>Android 2.3.4 operating system4G speedWi-FiRequires a minimum data service starting at $20/month
+
+Early termination fees will be prorated, starting at $325 minus $10 for each full month of service commitment completed.</shortDescription>      
+          <shortDescriptionHtml>&lt;ul class=&quot;product-short-description&quot;&gt;&lt;li&gt;Android 2.3.4 operating system&lt;/li&gt;&lt;li&gt;4G speed&lt;/li&gt;&lt;li&gt;Wi-Fi&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Requires a minimum data service starting at $20/month&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Early termination fees will be prorated, starting at $325 minus $10 for each full month of service commitment completed.&lt;/b&gt;</shortDescriptionHtml>      
+          <class>AT&amp;T HARDWARE</class>      
+          <classId>313</classId>      
+          <subclass>AT&amp;T HANDSETS</subclass>      
+          <subclassId>700</subclassId>      
+          <department>DIGITAL COMMUNICATIO</department>      
+          <departmentId>3</departmentId>      
+          <bestBuyItemId>1678837</bestBuyItemId>      
+          <buybackPlans/>      
+          <protectionPlans>            
+                  <protectionPlan>                  
+                          <sku>9137196</sku>                  
+                          <name>2-Year Accidental Protection Plan - Geek Squad</name>                  
+                          <productId>1218035525603</productId>                  
+                          <type>PSP-PRP</type>                  
+                          <term>2YR</term>                  
+                          <regularPrice>169.98</regularPrice>                  
+                          <salePrice>169.98</salePrice>                  
+                  </protectionPlan>            
+          </protectionPlans>      
+          <description/>      
+          <manufacturer>LG</manufacturer>      
+          <modelNumber>P930</modelNumber>      
+          <image>http://images.bestbuy.com/BestBuy_US/images/products/4041/4041128_sc.jpg</image>      
+          <largeFrontImage>http://images.bestbuy.com/BestBuy_US/images/products/4041/4041128_sa.jpg</largeFrontImage>      
+          <mediumImage>http://images.bestbuy.com/BestBuy_US/images/products/4041/4041128fp.gif</mediumImage>      
+          <thumbnailImage>http://images.bestbuy.com/BestBuy_US/images/products/4041/4041128_s.gif</thumbnailImage>      
+          <largeImage>http://images.bestbuy.com/BestBuy_US/images/products/4041/4041128_sb.jpg</largeImage>      
+          <alternateViewsImage/>      
+          <angleImage>http://images.bestbuy.com/BestBuy_US/images/products/4041/4041128_ra.jpg</angleImage>      
+          <backViewImage>http://images.bestbuy.com/BestBuy_US/images/products/4041/4041128_ba.jpg</backViewImage>      
+          <energyGuideImage/>      
+          <leftViewImage/>      
+          <accessoriesImage/>      
+          <remoteControlImage/>      
+          <rightViewImage/>      
+          <topViewImage/>      
+          <condition>New</condition>      
+          <inStorePickup>true</inStorePickup>      
+          <friendsAndFamilyPickup>false</friendsAndFamilyPickup>      
+          <homeDelivery>false</homeDelivery>      
+          <quantityLimit>2</quantityLimit>      
+          <bundledIn/>      
+          <color>Black</color>      
+          <depth>1/2&quot;</depth>      
+          <dollarSavings>0.00</dollarSavings>      
+          <tradeInValue>160.00</tradeInValue>      
+          <height>5-3/8&quot;</height>      
+          <orderable>Available</orderable>      
+          <weight>4.5 oz.</weight>      
+          <shippingWeight>0.65</shippingWeight>      
+          <width>2-3/4&quot;</width>      
+          <warrantyLabor>1 year</warrantyLabor>      
+          <warrantyParts>1 year</warrantyParts>      
+          <longDescription>This LG Nitro HD P930 mobile phone features a brilliant 4.5&quot; display with 1280 x 720 pixels to showcase movies and streaming media in stunning clarity. The 4G speed ensures fast downloads.Requires a minimum data service starting at $20/month.Early termination fees will be prorated, starting at $325 minus $10 for each full month of service commitment completed.</longDescription>      
+          <longDescriptionHtml>This LG Nitro HD P930 mobile phone features a brilliant 4.5&quot; display with 1280 x 720 pixels to showcase movies and streaming media in stunning clarity. The 4G speed ensures fast downloads.&lt;br /&gt;&lt;br /&gt;
+
+&lt;b&gt;Requires a minimum data service starting at $20/month.&lt;/b&gt;
+
+&lt;b&gt;Early termination fees will be prorated, starting at $325 minus $10 for each full month of service commitment completed.&lt;/b&gt;&lt;!-- ICON CODE --&gt;
+&lt;p&gt;
+&lt;a href=&quot;/site/Mobile-Phones/Operating+Systems+Educational+Page/pcmcat263000050002.c?id=pcmcat263000050002&quot;&gt;&lt;img src=&quot;http://images.bestbuy.com/BestBuy_US/en_US/images/abn/2011/pof/pcon/pdp_icons/icon_OS.gif&quot; style=&quot;float:left;padding:0 10px 10px 0;&quot; border=&quot;0&quot; alt=&quot;Operating system&quot; /&gt;&lt;/a&gt;
+&lt;/p&gt;
+&lt;!-- /ICON CODE --&gt;
+&lt;a href=&quot;http://images.bestbuy.com/BestBuy_US/en_US/images/abn/2011/pof/pcon/4g_learning/main.swf&quot; onclick=&quot;return popNew(this,720,468,'toolbar=0,location=0,directories=0,status=0,menubar=1,scrollbars=0,resizable=1');&quot;  title=&quot;Learn about 4G&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;http://images.bestbuy.com/BestBuy_US/en_US/images/abn/2011/pof/pcon/pdp_icons/icon_4G.gif&quot; style=&quot;float:left;padding:0 10px 10px 0;&quot; border=&quot;0&quot; title=&quot;Learn about 4G&quot; alt=&quot;Learn about 4G&quot; /&gt;&lt;/a&gt;</longDescriptionHtml>      
+          <details>            
+                  <detail>                  
+                          <name>Phone Style</name>                  
+                          <value>Bar phone</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Band and Mode</name>                  
+                          <value>4G</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Technology Details</name>                  
+                          <value>GSM/GPRS/EDGE|GSM/GPRS/EDGE|LTE|UMTS/HSPA/HSPA+</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Bluetooth-Enabled</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Talk Time</name>                  
+                          <value>Up to 7 hours</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Standby Time</name>                  
+                          <value>Up to 10.8 days</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Battery Type</name>                  
+                          <value>Lithium</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Vibrate Mode</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Customizable Ring Tones</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Voice Activated</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Downloadable Games</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Speed Dialing</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Color Display</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Internet/Email Capable</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Built-in Digital Camera</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>MMS</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Text Messaging/Instant Messaging</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Mobile Operating System</name>                  
+                          <value>Android</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>QWERTY Keyboard</name>                  
+                          <value>No</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Touch Screen</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Camera Resolution</name>                  
+                          <value>8.0MP; 1.3MP front-facing</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>MP3 Playback Capability</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Vibration Alert</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Speakerphone</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Graphics</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Downloadable Ringtones</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Changeable Faceplate</name>                  
+                          <value>No</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>External Caller ID</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Phonebook</name>                  
+                          <value>Up to 1,000 entries</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Device Manufacturer</name>                  
+                          <value>LG</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Wireless Capability</name>                  
+                          <value>4G</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Product Line</name>                  
+                          <value>Nitro</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Dual Rear Front Cameras</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>LCD Screen</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>LTE</name>                  
+                          <value>LTE</value>                  
+                  </detail>            
+          </details>      
+          <includedItemList>            
+                  <includedItem>LG Nitro HD 4G Mobile Phone</includedItem>            
+                  <includedItem>Lithium battery</includedItem>            
+                  <includedItem>Charger</includedItem>            
+                  <includedItem>16GB microSD card</includedItem>            
+                  <includedItem>Owner's manual</includedItem>            
+          </includedItemList>      
+          <features>            
+                  <feature>Stereo Bluetooth 3.0 compatibility
+For wireless communication with a Bluetooth-enabled device. HDMI, Wi-Fi Direct and DLNA technologies let you share with other compatible screens (MHL adapter required; not included).</feature>            
+                  <feature>4.5&quot; high-definition touch screen with 1280 x 720 pixels
+For an impressive display and simple navigation.</feature>            
+                  <feature>4GB internal memory and 16GB microSD card
+Let you store phone numbers, photos and videos.</feature>            
+                  <feature>8.0MP digital camera
+Features 1080p recording and playback with autofocus and LED flash for taking still photos. A front-facing 1.3MP camera lets you easily video chat.</feature>            
+                  <feature>E-mail and messaging sync
+Includes POP3/IMAP/EAS compatibility for wide-ranging support.</feature>            
+                  <feature>Hands-free speakerphone
+Allows you to keep your hands on the wheel while driving.</feature>            
+                  <feature>MP3 ringtones
+Personalize the sound of your phone.</feature>            
+                  <feature>Up to 7 hours talk time and up to 10.8 days standby
+With included lithium battery.</feature>            
+                  <feature>Android 2.3.4 operating system
+Allows you to stay connected and productive on the go.</feature>            
+                  <feature>4G speed
+Offers quick and easy connection speeds.</feature>            
+                  <feature>Wi-Fi 802.11a/b/g/n network
+For Internet capability on the go and mobile hotspot connectivity for up to 5 devices (additional fees may apply).</feature>            
+          </features>      
+          <offers/>      
+          <marketplace>false</marketplace>      
+          <listingId/>      
+          <sellerId/>      
+  </product>
+  <product>      
+          <sku>4043126</sku>      
+          <productId>1218452443034</productId>      
+          <name>Pantech - Pocket 4G Mobile Phone - Black (AT&amp;T)</name>      
+          <source>bestbuy</source>      
+          <type>HardGood</type>      
+          <startDate>2011-11-06</startDate>      
+          <new>false</new>      
+          <active>true</active>      
+          <activeUpdateDate>2012-07-02T21:04:32</activeUpdateDate>      
+          <regularPrice>399.99</regularPrice>      
+          <salePrice>399.99</salePrice>      
+          <onSale>false</onSale>      
+          <planPrice>0.00</planPrice>      
+          <priceWithPlan>            
+                  <newTwoYearPlan>0.00</newTwoYearPlan>            
+                  <upgradeTwoYearPlan>0.00</upgradeTwoYearPlan>            
+          </priceWithPlan>      
+          <advertisedPriceRestriction>false</advertisedPriceRestriction>      
+          <minimumDisplayPrice/>      
+          <restrictedSalePrice>399.99</restrictedSalePrice>      
+          <icrType/>      
+          <icrStartDate/>      
+          <icrEndDate/>      
+          <priceUpdateDate>2012-07-02T21:04:32</priceUpdateDate>      
+          <digital>false</digital>      
+          <preowned>false</preowned>      
+          <carrierPlans>            
+                  <sku>9862376</sku>            
+                  <sku>9862349</sku>            
+                  <sku>9862409</sku>            
+                  <sku>9862418</sku>            
+                  <sku>9862427</sku>            
+                  <sku>9862445</sku>            
+                  <sku>9862463</sku>            
+                  <sku>9862472</sku>            
+                  <sku>9909613</sku>            
+          </carrierPlans>      
+          <technologyCode>UMTS</technologyCode>      
+          <carrierModelNumber>65334</carrierModelNumber>      
+          <earlyTerminationFees>            
+                  <earlyTerminationFee>                  
+                          <etfText>The Early Termination Fee will be $325 minus $10 for each full month of service that you complete.</etfText>                  
+                          <terminationFee>325.00</terminationFee>                  
+                          <decliningAmount/>                  
+                          <contractLengthInMonths>24</contractLengthInMonths>                  
+                  </earlyTerminationFee>            
+          </earlyTerminationFees>      
+          <outletCenter/>      
+          <secondaryMarket/>      
+          <frequentlyPurchasedWith/>      
+          <accessories>            
+                  <sku>8948847</sku>            
+                  <sku>8913349</sku>            
+                  <sku>2908168</sku>            
+                  <sku>3063036</sku>            
+          </accessories>      
+          <relatedProducts>            
+                  <sku>8948847</sku>            
+                  <sku>8913349</sku>            
+                  <sku>2908168</sku>            
+                  <sku>3063036</sku>            
+          </relatedProducts>      
+          <crossSell/>      
+          <salesRankShortTerm/>      
+          <salesRankMediumTerm/>      
+          <salesRankLongTerm>238997</salesRankLongTerm>      
+          <bestSellingRank/>      
+          <url>http://www.bestbuy.com/site/Pantech+-+Pocket+4G+Mobile+Phone+-+Black+(AT%26T)/4043126.p?id=1218452443034&amp;skuId=4043126&amp;cmp=RMX</url>      
+          <spin360Url/>      
+          <mobileUrl>http://m.bestbuy.com/r/1218452443034/4043126/</mobileUrl>      
+          <affiliateUrl/>      
+          <addToCartUrl>http://www.bestbuy.com/site/olspage.jsp?id=pcmcat152200050035&amp;type=category&amp;cmp=RMX&amp;qvsids=4043126</addToCartUrl>      
+          <affiliateAddToCartUrl/>      
+          <cjAffiliateUrl/>      
+          <cjAffiliateAddToCartUrl/>      
+          <upc>843124001948</upc>      
+          <categoryPath>            
+                  <category>                  
+                          <id>cat00000</id>                  
+                          <name>Best Buy</name>                  
+                  </category>            
+                  <category>                  
+                          <id>abcat0800000</id>                  
+                          <name>Mobile Phones</name>                  
+                  </category>            
+                  <category>                  
+                          <id>pcmcat209400050001</id>                  
+                          <name>All Mobile Phones with Plans</name>                  
+                  </category>            
+          </categoryPath>      
+          <lists/>      
+          <customerReviewCount/>      
+          <customerReviewAverage/>      
+          <format/>      
+          <freeShipping>true</freeShipping>      
+          <hardGoodType>mobilePhone</hardGoodType>      
+          <inStoreAvailability>true</inStoreAvailability>      
+          <inStoreAvailabilityText>Store Pickup:</inStoreAvailabilityText>      
+          <inStoreAvailabilityTextHtml>&lt;b&gt;Store Pickup:&lt;/b&gt;</inStoreAvailabilityTextHtml>      
+          <inStoreAvailabilityUpdateDate>2012-07-02T21:04:32</inStoreAvailabilityUpdateDate>      
+          <itemUpdateDate>2012-07-28T10:04:13</itemUpdateDate>      
+          <onlineAvailability>true</onlineAvailability>      
+          <onlineAvailabilityText>Shipping: Usually ships in 2-5 business days</onlineAvailabilityText>      
+          <onlineAvailabilityTextHtml>&lt;b&gt;Shipping:&lt;/b&gt; Usually ships in 2-5 business days</onlineAvailabilityTextHtml>      
+          <onlineAvailabilityUpdateDate>2012-07-02T21:04:32</onlineAvailabilityUpdateDate>      
+          <releaseDate/>      
+          <shippingCost>0.00</shippingCost>      
+          <shipping>            
+                  <ground>0.00</ground>            
+                  <secondDay>1.99</secondDay>            
+                  <nextDay>4.99</nextDay>            
+                  <vendorDelivery/>            
+          </shipping>      
+          <specialOrder>false</specialOrder>      
+          <shortDescription>From our expanded online assortmentAndroid 2.3 operating system4G speedBluetooth enabled4&quot; SVGA touch screen5.0MP digital cameraRequires a minimum data service starting at $20/month
+
+Early termination fees will be prorated, starting at $325 minus $10 for each full month of service commitment completed.</shortDescription>      
+          <shortDescriptionHtml>&lt;ul class=&quot;product-short-description&quot;&gt;&lt;li&gt;&lt;b&gt;From our expanded online assortment&lt;/b&gt;&lt;/li&gt;&lt;li&gt;Android 2.3 operating system&lt;/li&gt;&lt;li&gt;4G speed&lt;/li&gt;&lt;li&gt;Bluetooth enabled&lt;/li&gt;&lt;li&gt;4&quot; SVGA touch screen&lt;/li&gt;&lt;li&gt;5.0MP digital camera&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Requires a minimum data service starting at $20/month&lt;/b&gt;&lt;br&gt;&lt;Br&gt;&lt;b&gt;Early termination fees will be prorated, starting at $325 minus $10 for each full month of service commitment completed.&lt;/b&gt;</shortDescriptionHtml>      
+          <class>AT&amp;T HARDWARE</class>      
+          <classId>313</classId>      
+          <subclass>AT&amp;T HANDSETS</subclass>      
+          <subclassId>700</subclassId>      
+          <department>DIGITAL COMMUNICATIO</department>      
+          <departmentId>3</departmentId>      
+          <bestBuyItemId>1681066</bestBuyItemId>      
+          <buybackPlans/>      
+          <protectionPlans>            
+                  <protectionPlan>                  
+                          <sku>9137196</sku>                  
+                          <name>2-Year Accidental Protection Plan - Geek Squad</name>                  
+                          <productId>1218035525603</productId>                  
+                          <type>PSP-PRP</type>                  
+                          <term>2YR</term>                  
+                          <regularPrice>169.98</regularPrice>                  
+                          <salePrice>169.98</salePrice>                  
+                  </protectionPlan>            
+          </protectionPlans>      
+          <description/>      
+          <manufacturer>Pantech</manufacturer>      
+          <modelNumber>P9060</modelNumber>      
+          <image>http://images.bestbuy.com/BestBuy_US/images/products/4043/4043126_sc.jpg</image>      
+          <largeFrontImage>http://images.bestbuy.com/BestBuy_US/images/products/4043/4043126_sa.jpg</largeFrontImage>      
+          <mediumImage>http://images.bestbuy.com/BestBuy_US/images/products/4043/4043126fp.gif</mediumImage>      
+          <thumbnailImage>http://images.bestbuy.com/BestBuy_US/images/products/4043/4043126_s.gif</thumbnailImage>      
+          <largeImage>http://images.bestbuy.com/BestBuy_US/images/products/4043/4043126_sb.jpg</largeImage>      
+          <alternateViewsImage/>      
+          <angleImage/>      
+          <backViewImage>http://images.bestbuy.com/BestBuy_US/images/products/4043/4043126_ba.jpg</backViewImage>      
+          <energyGuideImage/>      
+          <leftViewImage>http://images.bestbuy.com/BestBuy_US/images/products/4043/4043126le.jpg</leftViewImage>      
+          <accessoriesImage/>      
+          <remoteControlImage/>      
+          <rightViewImage/>      
+          <topViewImage/>      
+          <condition>New</condition>      
+          <inStorePickup>false</inStorePickup>      
+          <friendsAndFamilyPickup>false</friendsAndFamilyPickup>      
+          <homeDelivery>false</homeDelivery>      
+          <quantityLimit>2</quantityLimit>      
+          <bundledIn/>      
+          <color>Black</color>      
+          <depth>3-1/8&quot;</depth>      
+          <dollarSavings>0.00</dollarSavings>      
+          <tradeInValue/>      
+          <height>1/2&quot;</height>      
+          <orderable>Available</orderable>      
+          <weight>4.5 oz.</weight>      
+          <shippingWeight>0.76</shippingWeight>      
+          <width>4-1/2&quot;</width>      
+          <warrantyLabor>1 year</warrantyLabor>      
+          <warrantyParts>1 year</warrantyParts>      
+          <longDescription>Stay productive with this Pantech Pocket 4G mobile phone that features an Android 2.3 operating system for enhanced efficiency and a 4&quot; touch-screen display for easy navigation of features. The 5.0MP digital camera allows you to capture special moments.Requires a minimum data service starting at $20/monthEarly termination fees will be prorated, starting at $325 minus $10 for each full month of service commitment completed.</longDescription>      
+          <longDescriptionHtml>Stay productive with this Pantech Pocket 4G mobile phone that features an Android 2.3 operating system for enhanced efficiency and a 4&quot; touch-screen display for easy navigation of features. The 5.0MP digital camera allows you to capture special moments.
+&lt;b&gt;Requires a minimum data service starting at $20/month&lt;/b&gt;
+
+&lt;b&gt;Early termination fees will be prorated, starting at $325 minus $10 for each full month of service commitment completed.&lt;/b&gt;&lt;!-- ICON CODE --&gt;
+&lt;p&gt;
+&lt;a href=&quot;/site/Mobile-Phones/Operating+Systems+Educational+Page/pcmcat263000050002.c?id=pcmcat263000050002&quot;&gt;&lt;img src=&quot;http://images.bestbuy.com/BestBuy_US/en_US/images/abn/2011/pof/pcon/pdp_icons/icon_OS.gif&quot; style=&quot;float:left;padding:0 10px 10px 0;&quot; border=&quot;0&quot; alt=&quot;Operating system&quot; /&gt;&lt;/a&gt;
+&lt;/p&gt;
+&lt;!-- /ICON CODE --&gt;
+&lt;a href=&quot;http://images.bestbuy.com/BestBuy_US/en_US/images/abn/2011/pof/pcon/4g_learning/main.swf&quot; onclick=&quot;return popNew(this,720,468,'toolbar=0,location=0,directories=0,status=0,menubar=1,scrollbars=0,resizable=1');&quot;  title=&quot;Learn about 4G&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;http://images.bestbuy.com/BestBuy_US/en_US/images/abn/2011/pof/pcon/pdp_icons/icon_4G.gif&quot; style=&quot;float:left;padding:0 10px 10px 0;&quot; border=&quot;0&quot; title=&quot;Learn about 4G&quot; alt=&quot;Learn about 4G&quot; /&gt;&lt;/a&gt;</longDescriptionHtml>      
+          <details>            
+                  <detail>                  
+                          <name>Phone Style</name>                  
+                          <value>Bar phone</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Band and Mode</name>                  
+                          <value>3G|4G|GSM/EDGE/HSDPA/UMTS</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Technology Details</name>                  
+                          <value>3G|4G</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Bluetooth-Enabled</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Talk Time</name>                  
+                          <value>Up to 6 hours</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Standby Time</name>                  
+                          <value>Up to 18 days</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Battery Type</name>                  
+                          <value>Lithium</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Vibrate Mode</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Customizable Ring Tones</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Voice Activated</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Downloadable Games</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Speed Dialing</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Color Display</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Internet/Email Capable</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Built-in Digital Camera</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>MMS</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Text Messaging/Instant Messaging</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Mobile Operating System</name>                  
+                          <value>Android</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Touch Screen</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Camera Resolution</name>                  
+                          <value>5.0MP</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>MP3 Playback Capability</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Vibration Alert</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Speakerphone</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Graphics</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Changeable Faceplate</name>                  
+                          <value>No</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>External Caller ID</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Phonebook</name>                  
+                          <value>Up to 1,000 entries</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Device Manufacturer</name>                  
+                          <value>Pantech</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Wireless Capability</name>                  
+                          <value>3G|4G</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Product Line</name>                  
+                          <value>Pocket</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>LCD Screen</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>UMTS</name>                  
+                          <value>UMTS</value>                  
+                  </detail>            
+          </details>      
+          <includedItemList>            
+                  <includedItem>Pantech 4G Pocket Mobile Phone</includedItem>            
+                  <includedItem>Lithium battery</includedItem>            
+                  <includedItem>Charger</includedItem>            
+                  <includedItem>Owner's manual</includedItem>            
+          </includedItemList>      
+          <features>            
+                  <feature>From our expanded online assortment; not available in all Best Buy stores</feature>            
+                  <feature>Android 2.3 operating system
+Allows you to stay connected and productive on the go.</feature>            
+                  <feature>4G speed
+Offers quick and easy connection speeds.</feature>            
+                  <feature>Wi-Fi capability
+For Internet capability on the go (additional fees may apply). Check e-mail via Gmail, Exchange and personal e-mail support. AT&amp;T Mobile Hotspot capability for additional connectivity options (requires appropriate data plan).</feature>            
+                  <feature>Bluetooth 2.1 compatibility
+For wireless communication with a Bluetooth-enabled device.</feature>            
+                  <feature>4&quot; SVGA color touch-screen display
+For clear viewing of your text messages, photos and videos.</feature>            
+                  <feature>microSD card slot
+Allows you to store phone numbers, photos and videos.</feature>            
+                  <feature>5.0MP digital camera
+For capturing special moments. Records 720p video.</feature>            
+                  <feature>MP3 player
+Lets you listen to your favorite tunes on the go. Watch TV shows via AT&amp;T Uverse Live TV.</feature>            
+                  <feature>AT&amp;T Navigator
+Provides driving instructions to get you to your destination.</feature>            
+                  <feature>Multimedia messaging and text messaging
+Let you communicate by typing.</feature>            
+                  <feature>Customizable MP3 ringtones
+Allow you to personalize the sound of your phone.</feature>            
+                  <feature>1,000-entry phone book
+Keeps your contact numbers easily accessible.</feature>            
+                  <feature>Hands-free speakerphone
+Allows you to keep your hands on the wheel while driving.</feature>            
+                  <feature>Speed dial
+Lets you call frequently used numbers with the touch of a button.</feature>            
+                  <feature>Up to 6 hours talk time and up to 18 days standby
+With included lithium battery.</feature>            
+          </features>      
+          <offers/>      
+          <marketplace>false</marketplace>      
+          <listingId/>      
+          <sellerId/>      
+  </product>
+  <product>      
+          <sku>4056388</sku>      
+          <productId>1218452834791</productId>      
+          <name>Rocketfish™ Mobile - Hard Shell Case for HTC Shift Mobile Phones - Black</name>      
+          <source>bestbuy</source>      
+          <type>HardGood</type>      
+          <startDate>2011-12-11</startDate>      
+          <new>false</new>      
+          <active>true</active>      
+          <activeUpdateDate>2012-07-03T02:42:55</activeUpdateDate>      
+          <regularPrice>24.99</regularPrice>      
+          <salePrice>24.99</salePrice>      
+          <onSale>false</onSale>      
+          <planPrice/>      
+          <priceWithPlan/>      
+          <advertisedPriceRestriction>false</advertisedPriceRestriction>      
+          <minimumDisplayPrice/>      
+          <restrictedSalePrice>24.99</restrictedSalePrice>      
+          <icrType/>      
+          <icrStartDate/>      
+          <icrEndDate/>      
+          <priceUpdateDate>2012-07-03T02:42:55</priceUpdateDate>      
+          <digital>false</digital>      
+          <preowned>false</preowned>      
+          <carrierPlans/>      
+          <technologyCode/>      
+          <carrierModelNumber/>      
+          <earlyTerminationFees/>      
+          <outletCenter/>      
+          <secondaryMarket/>      
+          <frequentlyPurchasedWith>            
+                  <sku>1807233</sku>            
+                  <sku>1768561</sku>            
+                  <sku>2802095</sku>            
+                  <sku>2842499</sku>            
+                  <sku>2678074</sku>            
+                  <sku>2661169</sku>            
+                  <sku>4180238</sku>            
+                  <sku>2809583</sku>            
+                  <sku>4005385</sku>            
+                  <sku>2843064</sku>            
+          </frequentlyPurchasedWith>      
+          <accessories>            
+                  <sku>8913349</sku>            
+                  <sku>8948847</sku>            
+                  <sku>2908168</sku>            
+                  <sku>2085055</sku>            
+          </accessories>      
+          <relatedProducts>            
+                  <sku>8948847</sku>            
+                  <sku>8913349</sku>            
+                  <sku>2908168</sku>            
+                  <sku>2085055</sku>            
+          </relatedProducts>      
+          <crossSell/>      
+          <salesRankShortTerm/>      
+          <salesRankMediumTerm>25476</salesRankMediumTerm>      
+          <salesRankLongTerm>44972</salesRankLongTerm>      
+          <bestSellingRank/>      
+          <url>http://www.bestbuy.com/site/Rocketfish%22+Mobile+-+Hard+Shell+Case+for+HTC+Shift+Mobile+Phones+-+Black/4056388.p?id=1218452834791&amp;skuId=4056388&amp;cmp=RMX</url>      
+          <spin360Url/>      
+          <mobileUrl>http://m.bestbuy.com/r/1218452834791/4056388/</mobileUrl>      
+          <affiliateUrl/>      
+          <addToCartUrl>http://www.bestbuy.com/site/olspage.jsp?id=pcmcat152200050035&amp;type=category&amp;cmp=RMX&amp;qvsids=4056388</addToCartUrl>      
+          <affiliateAddToCartUrl/>      
+          <cjAffiliateUrl/>      
+          <cjAffiliateAddToCartUrl/>      
+          <upc>600603146213</upc>      
+          <categoryPath>            
+                  <category>                  
+                          <id>cat00000</id>                  
+                          <name>Best Buy</name>                  
+                  </category>            
+                  <category>                  
+                          <id>abcat0800000</id>                  
+                          <name>Mobile Phones</name>                  
+                  </category>            
+                  <category>                  
+                          <id>abcat0811002</id>                  
+                          <name>Mobile Phone Accessories</name>                  
+                  </category>            
+                  <category>                  
+                          <id>abcat0811006</id>                  
+                          <name>Mobile Phone Cases &amp; Clips</name>                  
+                  </category>            
+                  <category>                  
+                          <id>pcmcat171900050029</id>                  
+                          <name>Fitted</name>                  
+                  </category>            
+          </categoryPath>      
+          <lists/>      
+          <customerReviewCount/>      
+          <customerReviewAverage/>      
+          <format/>      
+          <freeShipping>true</freeShipping>      
+          <hardGoodType>normalHardgood</hardGoodType>      
+          <inStoreAvailability>true</inStoreAvailability>      
+          <inStoreAvailabilityText>Store Pickup: Available at most stores</inStoreAvailabilityText>      
+          <inStoreAvailabilityTextHtml>&lt;b&gt;Store Pickup:&lt;/b&gt; Available at most stores</inStoreAvailabilityTextHtml>      
+          <inStoreAvailabilityUpdateDate>2012-07-03T02:42:55</inStoreAvailabilityUpdateDate>      
+          <itemUpdateDate>2012-07-28T10:18:12</itemUpdateDate>      
+          <onlineAvailability>true</onlineAvailability>      
+          <onlineAvailabilityText>Shipping: Usually leaves our warehouse in 1 business day</onlineAvailabilityText>      
+          <onlineAvailabilityTextHtml>&lt;b&gt;Shipping:&lt;/b&gt; Usually leaves our warehouse in 1 business day</onlineAvailabilityTextHtml>      
+          <onlineAvailabilityUpdateDate>2012-07-03T02:42:55</onlineAvailabilityUpdateDate>      
+          <releaseDate/>      
+          <shippingCost>0.00</shippingCost>      
+          <shipping>            
+                  <ground>0.00</ground>            
+                  <secondDay>6.00</secondDay>            
+                  <nextDay>12.00</nextDay>            
+                  <vendorDelivery/>            
+          </shipping>      
+          <specialOrder>false</specialOrder>      
+          <shortDescription>Compatible with HTC Shift mobile phones; play-through design; polycarbonate material</shortDescription>      
+          <shortDescriptionHtml>Compatible with HTC Shift mobile phones; play-through design; polycarbonate material</shortDescriptionHtml>      
+          <class>MOBILE PHONE ACCY</class>      
+          <classId>123</classId>      
+          <subclass>CASES</subclass>      
+          <subclassId>753</subclassId>      
+          <department>DIGITAL COMMUNICATIO</department>      
+          <departmentId>3</departmentId>      
+          <bestBuyItemId>1681227</bestBuyItemId>      
+          <buybackPlans/>      
+          <protectionPlans/>      
+          <description/>      
+          <manufacturer>Rocketfish Mobile</manufacturer>      
+          <modelNumber>RF-HSSH2B</modelNumber>      
+          <image>http://images.bestbuy.com/BestBuy_US/images/products/4056/4056388_sc.jpg</image>      
+          <largeFrontImage>http://images.bestbuy.com/BestBuy_US/images/products/4056/4056388_sa.jpg</largeFrontImage>      
+          <mediumImage>http://images.bestbuy.com/BestBuy_US/images/products/4056/4056388fp.gif</mediumImage>      
+          <thumbnailImage>http://images.bestbuy.com/BestBuy_US/images/products/4056/4056388_s.gif</thumbnailImage>      
+          <largeImage>http://images.bestbuy.com/BestBuy_US/images/products/4056/4056388_sb.jpg</largeImage>      
+          <alternateViewsImage>http://images.bestbuy.com/BestBuy_US/images/products/4056/4056388cv1a.jpg</alternateViewsImage>      
+          <angleImage/>      
+          <backViewImage>http://images.bestbuy.com/BestBuy_US/images/products/4056/4056388_ba.jpg</backViewImage>      
+          <energyGuideImage/>      
+          <leftViewImage/>      
+          <accessoriesImage/>      
+          <remoteControlImage/>      
+          <rightViewImage/>      
+          <topViewImage/>      
+          <condition>New</condition>      
+          <inStorePickup>true</inStorePickup>      
+          <friendsAndFamilyPickup>false</friendsAndFamilyPickup>      
+          <homeDelivery>false</homeDelivery>      
+          <quantityLimit>3</quantityLimit>      
+          <bundledIn/>      
+          <color>Black</color>      
+          <depth>2-1/2&quot;</depth>      
+          <dollarSavings>0.00</dollarSavings>      
+          <tradeInValue/>      
+          <height>4-5/8&quot;</height>      
+          <orderable>Available</orderable>      
+          <weight>9.6 oz.</weight>      
+          <shippingWeight>0.1213</shippingWeight>      
+          <width>1/2&quot;</width>      
+          <warrantyLabor>1 year</warrantyLabor>      
+          <warrantyParts>1 year</warrantyParts>      
+          <longDescription>Protect your HTC Shift mobile phone with this Rocketfish Mobile RF-HSSH2B hard shell case that features polycarbonate material to guard against scratches. The play-through design allows access to your phone's ports without removing the case.</longDescription>      
+          <longDescriptionHtml>Protect your HTC Shift mobile phone with this Rocketfish Mobile RF-HSSH2B hard shell case that features polycarbonate material to guard against scratches. The play-through design allows access to your phone's ports without removing the case.</longDescriptionHtml>      
+          <details>            
+                  <detail>                  
+                          <name>What model phone does this fit</name>                  
+                          <value>HTC Shift|HTC Shift</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>iPhone Accessory</name>                  
+                          <value>No</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Brand Compatibility</name>                  
+                          <value>HTC</value>                  
+                  </detail>            
+          </details>      
+          <includedItemList>            
+                  <includedItem>Rocketfish™ Mobile Hard Shell Case for HTC Shift Mobile Phones</includedItem>            
+          </includedItemList>      
+          <features>            
+                  <feature>Compatible with HTC Shift mobile phones
+To protect and complement your phone.</feature>            
+                  <feature>Shock-absorbent polycarbonate material
+Guards against bumps and scratches.</feature>            
+                  <feature>Play-through design
+Allows access to your phone's ports without removing the case.</feature>            
+          </features>      
+          <offers/>      
+          <marketplace>false</marketplace>      
+          <listingId/>      
+          <sellerId/>      
+  </product>
+  <product>      
+          <sku>4062088</sku>      
+          <productId>1218453601021</productId>      
+          <name>Bringrr - Phone Alert and Car Charger</name>      
+          <source>bestbuy</source>      
+          <type>HardGood</type>      
+          <startDate>2011-11-29</startDate>      
+          <new>false</new>      
+          <active>true</active>      
+          <activeUpdateDate>2012-07-03T03:38:57</activeUpdateDate>      
+          <regularPrice>39.99</regularPrice>      
+          <salePrice>39.99</salePrice>      
+          <onSale>false</onSale>      
+          <planPrice/>      
+          <priceWithPlan/>      
+          <advertisedPriceRestriction>false</advertisedPriceRestriction>      
+          <minimumDisplayPrice/>      
+          <restrictedSalePrice>39.99</restrictedSalePrice>      
+          <icrType/>      
+          <icrStartDate/>      
+          <icrEndDate/>      
+          <priceUpdateDate>2012-07-03T03:38:57</priceUpdateDate>      
+          <digital>false</digital>      
+          <preowned>false</preowned>      
+          <carrierPlans/>      
+          <technologyCode/>      
+          <carrierModelNumber/>      
+          <earlyTerminationFees/>      
+          <outletCenter/>      
+          <secondaryMarket/>      
+          <frequentlyPurchasedWith/>      
+          <accessories>            
+                  <sku>8948847</sku>            
+                  <sku>8913349</sku>            
+                  <sku>2908168</sku>            
+                  <sku>3063036</sku>            
+          </accessories>      
+          <relatedProducts>            
+                  <sku>8948847</sku>            
+                  <sku>8913349</sku>            
+                  <sku>2908168</sku>            
+                  <sku>3063036</sku>            
+          </relatedProducts>      
+          <crossSell/>      
+          <salesRankShortTerm/>      
+          <salesRankMediumTerm/>      
+          <salesRankLongTerm>107891</salesRankLongTerm>      
+          <bestSellingRank/>      
+          <url>http://www.bestbuy.com/site/Bringrr+-+Phone+Alert+and+Car+Charger/4062088.p?id=1218453601021&amp;skuId=4062088&amp;cmp=RMX</url>      
+          <spin360Url/>      
+          <mobileUrl>http://m.bestbuy.com/r/1218453601021/4062088/</mobileUrl>      
+          <affiliateUrl/>      
+          <addToCartUrl>http://www.bestbuy.com/site/olspage.jsp?id=pcmcat152200050035&amp;type=category&amp;cmp=RMX&amp;qvsids=4062088</addToCartUrl>      
+          <affiliateAddToCartUrl/>      
+          <cjAffiliateUrl/>      
+          <cjAffiliateAddToCartUrl/>      
+          <upc>022099127789</upc>      
+          <categoryPath>            
+                  <category>                  
+                          <id>cat00000</id>                  
+                          <name>Best Buy</name>                  
+                  </category>            
+                  <category>                  
+                          <id>abcat0800000</id>                  
+                          <name>Mobile Phones</name>                  
+                  </category>            
+                  <category>                  
+                          <id>abcat0811002</id>                  
+                          <name>Mobile Phone Accessories</name>                  
+                  </category>            
+                  <category>                  
+                          <id>abcat0811007</id>                  
+                          <name>Mobile Phone Chargers &amp; Adapters</name>                  
+                  </category>            
+                  <category>                  
+                          <id>pcmcat171900050024</id>                  
+                          <name>Mobile Phone Car Chargers</name>                  
+                  </category>            
+          </categoryPath>      
+          <lists/>      
+          <customerReviewCount/>      
+          <customerReviewAverage/>      
+          <format/>      
+          <freeShipping>true</freeShipping>      
+          <hardGoodType>normalHardgood</hardGoodType>      
+          <inStoreAvailability>true</inStoreAvailability>      
+          <inStoreAvailabilityText>Store Pickup:</inStoreAvailabilityText>      
+          <inStoreAvailabilityTextHtml>&lt;b&gt;Store Pickup:&lt;/b&gt;</inStoreAvailabilityTextHtml>      
+          <inStoreAvailabilityUpdateDate>2012-07-03T03:38:57</inStoreAvailabilityUpdateDate>      
+          <itemUpdateDate>2012-07-28T10:24:42</itemUpdateDate>      
+          <onlineAvailability>true</onlineAvailability>      
+          <onlineAvailabilityText>Shipping: Usually ships in 2-5 business days</onlineAvailabilityText>      
+          <onlineAvailabilityTextHtml>&lt;b&gt;Shipping:&lt;/b&gt; Usually ships in 2-5 business days</onlineAvailabilityTextHtml>      
+          <onlineAvailabilityUpdateDate>2012-07-03T03:38:57</onlineAvailabilityUpdateDate>      
+          <releaseDate/>      
+          <shippingCost>0.00</shippingCost>      
+          <shipping>            
+                  <ground>0.00</ground>            
+                  <secondDay>6.00</secondDay>            
+                  <nextDay>12.00</nextDay>            
+                  <vendorDelivery/>            
+          </shipping>      
+          <specialOrder>false</specialOrder>      
+          <shortDescription>From our expanded online assortment; compatible with most Bluetooth-enabled mobile phones; alerts you if your phone is not present; charges most devices with micro or mini USB connectivity</shortDescription>      
+          <shortDescriptionHtml>&lt;b&gt;From our expanded online assortment&lt;/b&gt;; compatible with most Bluetooth-enabled mobile phones; alerts you if your phone is not present; charges most devices with micro or mini USB connectivity</shortDescriptionHtml>      
+          <class>MOBILE PHONE ACCY</class>      
+          <classId>123</classId>      
+          <subclass>SO CHARGERS</subclass>      
+          <subclassId>613</subclassId>      
+          <department>DIGITAL COMMUNICATIO</department>      
+          <departmentId>3</departmentId>      
+          <bestBuyItemId>1681594</bestBuyItemId>      
+          <buybackPlans/>      
+          <protectionPlans/>      
+          <description/>      
+          <manufacturer>Bringrr</manufacturer>      
+          <modelNumber>BC-110-U</modelNumber>      
+          <image>http://images.bestbuy.com/BestBuy_US/images/products/4062/4062088_rc.jpg</image>      
+          <largeFrontImage/>      
+          <mediumImage>http://images.bestbuy.com/BestBuy_US/images/products/4062/4062088fp.gif</mediumImage>      
+          <thumbnailImage>http://images.bestbuy.com/BestBuy_US/images/products/4062/4062088_r.gif</thumbnailImage>      
+          <largeImage>http://images.bestbuy.com/BestBuy_US/images/products/4062/4062088_rb.jpg</largeImage>      
+          <alternateViewsImage>http://images.bestbuy.com/BestBuy_US/images/products/4062/4062088cv1a.jpg</alternateViewsImage>      
+          <angleImage>http://images.bestbuy.com/BestBuy_US/images/products/4062/4062088_ra.jpg</angleImage>      
+          <backViewImage/>      
+          <energyGuideImage/>      
+          <leftViewImage/>      
+          <accessoriesImage/>      
+          <remoteControlImage/>      
+          <rightViewImage/>      
+          <topViewImage/>      
+          <condition>New</condition>      
+          <inStorePickup>false</inStorePickup>      
+          <friendsAndFamilyPickup>false</friendsAndFamilyPickup>      
+          <homeDelivery>false</homeDelivery>      
+          <quantityLimit>5</quantityLimit>      
+          <bundledIn/>      
+          <color/>      
+          <depth>1-1/4&quot;</depth>      
+          <dollarSavings>0.00</dollarSavings>      
+          <tradeInValue/>      
+          <height>4&quot;</height>      
+          <orderable>Available</orderable>      
+          <weight>1.1 oz.</weight>      
+          <shippingWeight>0.3094</shippingWeight>      
+          <width>1-1/4&quot;</width>      
+          <warrantyLabor>1 year limited</warrantyLabor>      
+          <warrantyParts>1 year limited</warrantyParts>      
+          <longDescription>Ensure you remember your mobile phone with this Bluetooth-enabled Bringrr device that alerts you when your phone is not in your car. Micro and mini USB charging cables let you charge your phone on the go.</longDescription>      
+          <longDescriptionHtml>Ensure you remember your mobile phone with this Bluetooth-enabled Bringrr device that alerts you when your phone is not in your car. Micro and mini USB charging cables let you charge your phone on the go.</longDescriptionHtml>      
+          <details>            
+                  <detail>                  
+                          <name>What model phone does this fit</name>                  
+                          <value>Most Bluetooth-enabled mobile phones|Most mobile devices with mini USB and micro USB connectivity</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>iPhone Accessory</name>                  
+                          <value>No</value>                  
+                  </detail>            
+          </details>      
+          <includedItemList>            
+                  <includedItem>Bringrr Phone Alert and Car Charger</includedItem>            
+                  <includedItem>Micro USB and mini USB cables</includedItem>            
+                  <includedItem>Owner's manual</includedItem>            
+          </includedItemList>      
+          <features>            
+                  <feature>From our expanded online assortment; not available in all Best Buy stores</feature>            
+                  <feature>Compatible with most Bluetooth-enabled mobile phones
+For wide-ranging use. Charges most devices with micro and mini USB connectivity. Compatible with most vehicles with a power port.</feature>            
+                  <feature>Audible and visual alerts
+Let you know when you've left your mobile phone behind. Glows blue when your phone is in the car and blinks red when your phone isn't present.</feature>            
+                  <feature>Easy installation
+No need to charge or adjust after the initial setup for ease of use.</feature>            
+          </features>      
+          <offers/>      
+          <marketplace>false</marketplace>      
+          <listingId/>      
+          <sellerId/>      
+  </product>
+  <product>      
+          <sku>4072033</sku>      
+          <productId>1218454591011</productId>      
+          <name>Case-Mate - Barely There Glam Case for Apple® iPhone® 4 and iPhone 4S - Hot Pink</name>      
+          <source>bestbuy</source>      
+          <type>HardGood</type>      
+          <startDate>2011-12-11</startDate>      
+          <new>false</new>      
+          <active>true</active>      
+          <activeUpdateDate>2012-07-03T02:50:00</activeUpdateDate>      
+          <regularPrice>29.99</regularPrice>      
+          <salePrice>29.99</salePrice>      
+          <onSale>false</onSale>      
+          <planPrice/>      
+          <priceWithPlan/>      
+          <advertisedPriceRestriction>false</advertisedPriceRestriction>      
+          <minimumDisplayPrice/>      
+          <restrictedSalePrice>29.99</restrictedSalePrice>      
+          <icrType/>      
+          <icrStartDate/>      
+          <icrEndDate/>      
+          <priceUpdateDate>2012-02-05T00:26:18</priceUpdateDate>      
+          <digital>false</digital>      
+          <preowned>false</preowned>      
+          <carrierPlans/>      
+          <technologyCode/>      
+          <carrierModelNumber/>      
+          <earlyTerminationFees/>      
+          <outletCenter/>      
+          <secondaryMarket/>      
+          <frequentlyPurchasedWith>            
+                  <sku>3566948</sku>            
+                  <sku>1049087</sku>            
+                  <sku>3531325</sku>            
+                  <sku>1415148</sku>            
+                  <sku>1049236</sku>            
+                  <sku>3566453</sku>            
+                  <sku>2975214</sku>            
+                  <sku>1251044</sku>            
+                  <sku>2578039</sku>            
+                  <sku>4072079</sku>            
+          </frequentlyPurchasedWith>      
+          <accessories>            
+                  <sku>8948847</sku>            
+                  <sku>8913349</sku>            
+                  <sku>2908168</sku>            
+                  <sku>3063036</sku>            
+          </accessories>      
+          <relatedProducts>            
+                  <sku>8948847</sku>            
+                  <sku>8913349</sku>            
+                  <sku>2908168</sku>            
+                  <sku>3063036</sku>            
+          </relatedProducts>      
+          <crossSell/>      
+          <salesRankShortTerm>6476</salesRankShortTerm>      
+          <salesRankMediumTerm>5737</salesRankMediumTerm>      
+          <salesRankLongTerm>9094</salesRankLongTerm>      
+          <bestSellingRank>6489</bestSellingRank>      
+          <url>http://www.bestbuy.com/site/Case-Mate+-+Barely+There+Glam+Case+for+Apple%AE+iPhone%AE+4+and+iPhone+4S+-+Hot+Pink/4072033.p?id=1218454591011&amp;skuId=4072033&amp;cmp=RMX</url>      
+          <spin360Url/>      
+          <mobileUrl>http://m.bestbuy.com/r/1218454591011/4072033/</mobileUrl>      
+          <affiliateUrl/>      
+          <addToCartUrl>http://www.bestbuy.com/site/olspage.jsp?id=pcmcat152200050035&amp;type=category&amp;cmp=RMX&amp;qvsids=4072033</addToCartUrl>      
+          <affiliateAddToCartUrl/>      
+          <cjAffiliateUrl/>      
+          <cjAffiliateAddToCartUrl/>      
+          <upc>846127064132</upc>      
+          <categoryPath>            
+                  <category>                  
+                          <id>cat00000</id>                  
+                          <name>Best Buy</name>                  
+                  </category>            
+                  <category>                  
+                          <id>abcat0800000</id>                  
+                          <name>Mobile Phones</name>                  
+                  </category>            
+                  <category>                  
+                          <id>abcat0811002</id>                  
+                          <name>Mobile Phone Accessories</name>                  
+                  </category>            
+                  <category>                  
+                          <id>abcat0811006</id>                  
+                          <name>Mobile Phone Cases &amp; Clips</name>                  
+                  </category>            
+                  <category>                  
+                          <id>pcmcat171900050029</id>                  
+                          <name>Fitted</name>                  
+                  </category>            
+          </categoryPath>      
+          <lists/>      
+          <customerReviewCount>1</customerReviewCount>      
+          <customerReviewAverage>4.0</customerReviewAverage>      
+          <format/>      
+          <freeShipping>true</freeShipping>      
+          <hardGoodType>normalHardgood</hardGoodType>      
+          <inStoreAvailability>true</inStoreAvailability>      
+          <inStoreAvailabilityText>Store Pickup: Available at most stores</inStoreAvailabilityText>      
+          <inStoreAvailabilityTextHtml>&lt;b&gt;Store Pickup:&lt;/b&gt; Available at most stores</inStoreAvailabilityTextHtml>      
+          <inStoreAvailabilityUpdateDate>2012-07-03T02:50:00</inStoreAvailabilityUpdateDate>      
+          <itemUpdateDate>2012-07-28T09:59:59</itemUpdateDate>      
+          <onlineAvailability>true</onlineAvailability>      
+          <onlineAvailabilityText>Shipping: Usually leaves our warehouse in 1 business day</onlineAvailabilityText>      
+          <onlineAvailabilityTextHtml>&lt;b&gt;Shipping:&lt;/b&gt; Usually leaves our warehouse in 1 business day</onlineAvailabilityTextHtml>      
+          <onlineAvailabilityUpdateDate>2012-07-03T02:50:00</onlineAvailabilityUpdateDate>      
+          <releaseDate/>      
+          <shippingCost>0.00</shippingCost>      
+          <shipping>            
+                  <ground>0.00</ground>            
+                  <secondDay>6.00</secondDay>            
+                  <nextDay>12.00</nextDay>            
+                  <vendorDelivery/>            
+          </shipping>      
+          <specialOrder>false</specialOrder>      
+          <shortDescription>Compatible with Apple iPhone 4 and iPhone 4S; play-through design; plastic material</shortDescription>      
+          <shortDescriptionHtml>Compatible with Apple iPhone 4 and iPhone 4S; play-through design; plastic material</shortDescriptionHtml>      
+          <class>MOBILE PHONE ACCY</class>      
+          <classId>123</classId>      
+          <subclass>CASES</subclass>      
+          <subclassId>753</subclassId>      
+          <department>DIGITAL COMMUNICATIO</department>      
+          <departmentId>3</departmentId>      
+          <bestBuyItemId>1683224</bestBuyItemId>      
+          <buybackPlans/>      
+          <protectionPlans/>      
+          <description/>      
+          <manufacturer>Case-Mate</manufacturer>      
+          <modelNumber>63-1356-05-BB</modelNumber>      
+          <image>http://images.bestbuy.com/BestBuy_US/images/products/4072/4072033_rc.jpg</image>      
+          <largeFrontImage/>      
+          <mediumImage>http://images.bestbuy.com/BestBuy_US/images/products/4072/4072033fp.gif</mediumImage>      
+          <thumbnailImage>http://images.bestbuy.com/BestBuy_US/images/products/4072/4072033_r.gif</thumbnailImage>      
+          <largeImage>http://images.bestbuy.com/BestBuy_US/images/products/4072/4072033_rb.jpg</largeImage>      
+          <alternateViewsImage/>      
+          <angleImage>http://images.bestbuy.com/BestBuy_US/images/products/4072/4072033_ra.jpg</angleImage>      
+          <backViewImage/>      
+          <energyGuideImage/>      
+          <leftViewImage/>      
+          <accessoriesImage/>      
+          <remoteControlImage/>      
+          <rightViewImage/>      
+          <topViewImage/>      
+          <condition>New</condition>      
+          <inStorePickup>true</inStorePickup>      
+          <friendsAndFamilyPickup>false</friendsAndFamilyPickup>      
+          <homeDelivery>false</homeDelivery>      
+          <quantityLimit>3</quantityLimit>      
+          <bundledIn/>      
+          <color>Hot Pink</color>      
+          <depth>3/4&quot;</depth>      
+          <dollarSavings>0.00</dollarSavings>      
+          <tradeInValue/>      
+          <height>5&quot;</height>      
+          <orderable>Available</orderable>      
+          <weight/>      
+          <shippingWeight>0.13</shippingWeight>      
+          <width>2-7/8&quot;</width>      
+          <warrantyLabor/>      
+          <warrantyParts>1 year limited</warrantyParts>      
+          <longDescription>Outfit your mobile phone in style with this form-fitting, impact-resistant Case-Mate case for Apple iPhone 4 and iPhone 4S. The play-through design allows easy access to your phone's features.</longDescription>      
+          <longDescriptionHtml>Outfit your mobile phone in style with this form-fitting, impact-resistant Case-Mate case for Apple iPhone 4 and iPhone 4S. The play-through design allows easy access to your phone's features.</longDescriptionHtml>      
+          <details>            
+                  <detail>                  
+                          <name>What model phone does this fit</name>                  
+                          <value>Apple iPhone 4|Apple iPhone 4S</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>iPhone Accessory</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+          </details>      
+          <includedItemList>            
+                  <includedItem>Case-Mate Barely There Glam Case for Apple® iPhone® 4 and iPhone 4S</includedItem>            
+          </includedItemList>      
+          <features>            
+                  <feature>Compatible with Apple iPhone 4 (all carriers) and iPhone 4S
+To protect and complement your iPhone.</feature>            
+                  <feature>Form-fitting, impact-resistant plastic shell
+Protects your iPhone against nicks and scratches.</feature>            
+                  <feature>Slim profile
+Provides reliable protection without adding bulk.</feature>            
+                  <feature>Play-through design
+Allows easy access to your phone's keys and ports without removing the case.</feature>            
+                  <feature>Apple, the Apple logo and iTunes are trademarks of Apple Computer, Inc., registered in the U.S. and other countries. iPod is a trademark of Apple Computer, Inc.</feature>            
+          </features>      
+          <offers/>      
+          <marketplace>false</marketplace>      
+          <listingId/>      
+          <sellerId/>      
+  </product>
+  <product>      
+          <sku>4072079</sku>      
+          <productId>1218454591316</productId>      
+          <name>Case-Mate - Barely There Glam Case for Apple® iPhone® 4 and iPhone 4S - Gold</name>      
+          <source>bestbuy</source>      
+          <type>HardGood</type>      
+          <startDate>2011-12-11</startDate>      
+          <new>false</new>      
+          <active>true</active>      
+          <activeUpdateDate>2012-07-02T21:23:47</activeUpdateDate>      
+          <regularPrice>29.99</regularPrice>      
+          <salePrice>29.99</salePrice>      
+          <onSale>false</onSale>      
+          <planPrice/>      
+          <priceWithPlan/>      
+          <advertisedPriceRestriction>false</advertisedPriceRestriction>      
+          <minimumDisplayPrice/>      
+          <restrictedSalePrice>29.99</restrictedSalePrice>      
+          <icrType/>      
+          <icrStartDate/>      
+          <icrEndDate/>      
+          <priceUpdateDate>2012-02-05T00:26:18</priceUpdateDate>      
+          <digital>false</digital>      
+          <preowned>false</preowned>      
+          <carrierPlans/>      
+          <technologyCode/>      
+          <carrierModelNumber/>      
+          <earlyTerminationFees/>      
+          <outletCenter/>      
+          <secondaryMarket/>      
+          <frequentlyPurchasedWith>            
+                  <sku>3566948</sku>            
+                  <sku>2872193</sku>            
+                  <sku>1114982</sku>            
+                  <sku>4095076</sku>            
+                  <sku>4072033</sku>            
+                  <sku>4295223</sku>            
+                  <sku>1791204</sku>            
+                  <sku>2247454</sku>            
+          </frequentlyPurchasedWith>      
+          <accessories>            
+                  <sku>8948847</sku>            
+                  <sku>8913349</sku>            
+                  <sku>2908168</sku>            
+                  <sku>3063036</sku>            
+          </accessories>      
+          <relatedProducts>            
+                  <sku>8948847</sku>            
+                  <sku>8913349</sku>            
+                  <sku>2908168</sku>            
+                  <sku>3063036</sku>            
+          </relatedProducts>      
+          <crossSell/>      
+          <salesRankShortTerm>5280</salesRankShortTerm>      
+          <salesRankMediumTerm>4521</salesRankMediumTerm>      
+          <salesRankLongTerm>7940</salesRankLongTerm>      
+          <bestSellingRank>5293</bestSellingRank>      
+          <url>http://www.bestbuy.com/site/Case-Mate+-+Barely+There+Glam+Case+for+Apple%AE+iPhone%AE+4+and+iPhone+4S+-+Gold/4072079.p?id=1218454591316&amp;skuId=4072079&amp;cmp=RMX</url>      
+          <spin360Url/>      
+          <mobileUrl>http://m.bestbuy.com/r/1218454591316/4072079/</mobileUrl>      
+          <affiliateUrl/>      
+          <addToCartUrl>http://www.bestbuy.com/site/olspage.jsp?id=pcmcat152200050035&amp;type=category&amp;cmp=RMX&amp;qvsids=4072079</addToCartUrl>      
+          <affiliateAddToCartUrl/>      
+          <cjAffiliateUrl/>      
+          <cjAffiliateAddToCartUrl/>      
+          <upc>846127064118</upc>      
+          <categoryPath>            
+                  <category>                  
+                          <id>cat00000</id>                  
+                          <name>Best Buy</name>                  
+                  </category>            
+                  <category>                  
+                          <id>abcat0800000</id>                  
+                          <name>Mobile Phones</name>                  
+                  </category>            
+                  <category>                  
+                          <id>abcat0811002</id>                  
+                          <name>Mobile Phone Accessories</name>                  
+                  </category>            
+                  <category>                  
+                          <id>abcat0811006</id>                  
+                          <name>Mobile Phone Cases &amp; Clips</name>                  
+                  </category>            
+                  <category>                  
+                          <id>pcmcat171900050029</id>                  
+                          <name>Fitted</name>                  
+                  </category>            
+          </categoryPath>      
+          <lists/>      
+          <customerReviewCount>1</customerReviewCount>      
+          <customerReviewAverage>4.0</customerReviewAverage>      
+          <format/>      
+          <freeShipping>true</freeShipping>      
+          <hardGoodType>normalHardgood</hardGoodType>      
+          <inStoreAvailability>true</inStoreAvailability>      
+          <inStoreAvailabilityText>Store Pickup: Available at most stores</inStoreAvailabilityText>      
+          <inStoreAvailabilityTextHtml>&lt;b&gt;Store Pickup:&lt;/b&gt; Available at most stores</inStoreAvailabilityTextHtml>      
+          <inStoreAvailabilityUpdateDate>2012-07-02T21:23:47</inStoreAvailabilityUpdateDate>      
+          <itemUpdateDate>2012-07-28T10:00:00</itemUpdateDate>      
+          <onlineAvailability>true</onlineAvailability>      
+          <onlineAvailabilityText>Shipping: Usually leaves our warehouse in 1 business day</onlineAvailabilityText>      
+          <onlineAvailabilityTextHtml>&lt;b&gt;Shipping:&lt;/b&gt; Usually leaves our warehouse in 1 business day</onlineAvailabilityTextHtml>      
+          <onlineAvailabilityUpdateDate>2012-07-27T14:28:26</onlineAvailabilityUpdateDate>      
+          <releaseDate/>      
+          <shippingCost>0.00</shippingCost>      
+          <shipping>            
+                  <ground>0.00</ground>            
+                  <secondDay>6.00</secondDay>            
+                  <nextDay>12.00</nextDay>            
+                  <vendorDelivery/>            
+          </shipping>      
+          <specialOrder>false</specialOrder>      
+          <shortDescription>Compatible with Apple iPhone 4 and iPhone 4S; play-through design; plastic material</shortDescription>      
+          <shortDescriptionHtml>Compatible with Apple iPhone 4 and iPhone 4S; play-through design; plastic material</shortDescriptionHtml>      
+          <class>MOBILE PHONE ACCY</class>      
+          <classId>123</classId>      
+          <subclass>CASES</subclass>      
+          <subclassId>753</subclassId>      
+          <department>DIGITAL COMMUNICATIO</department>      
+          <departmentId>3</departmentId>      
+          <bestBuyItemId>1683225</bestBuyItemId>      
+          <buybackPlans/>      
+          <protectionPlans/>      
+          <description/>      
+          <manufacturer>Case-Mate</manufacturer>      
+          <modelNumber>63-1357-05-BB</modelNumber>      
+          <image>http://images.bestbuy.com/BestBuy_US/images/products/4072/4072079_rc.jpg</image>      
+          <largeFrontImage/>      
+          <mediumImage>http://images.bestbuy.com/BestBuy_US/images/products/4072/4072079fp.gif</mediumImage>      
+          <thumbnailImage>http://images.bestbuy.com/BestBuy_US/images/products/4072/4072079_r.gif</thumbnailImage>      
+          <largeImage>http://images.bestbuy.com/BestBuy_US/images/products/4072/4072079_rb.jpg</largeImage>      
+          <alternateViewsImage/>      
+          <angleImage>http://images.bestbuy.com/BestBuy_US/images/products/4072/4072079_ra.jpg</angleImage>      
+          <backViewImage/>      
+          <energyGuideImage/>      
+          <leftViewImage/>      
+          <accessoriesImage/>      
+          <remoteControlImage/>      
+          <rightViewImage/>      
+          <topViewImage/>      
+          <condition>New</condition>      
+          <inStorePickup>true</inStorePickup>      
+          <friendsAndFamilyPickup>false</friendsAndFamilyPickup>      
+          <homeDelivery>false</homeDelivery>      
+          <quantityLimit>3</quantityLimit>      
+          <bundledIn/>      
+          <color>Gold</color>      
+          <depth>3/4&quot;</depth>      
+          <dollarSavings>0.00</dollarSavings>      
+          <tradeInValue/>      
+          <height>5&quot;</height>      
+          <orderable>Available</orderable>      
+          <weight/>      
+          <shippingWeight>0.13</shippingWeight>      
+          <width>2-7/8&quot;</width>      
+          <warrantyLabor/>      
+          <warrantyParts>1 year limited</warrantyParts>      
+          <longDescription>Outfit your mobile phone in style with this form-fitting, impact-resistant Case-Mate case for Apple iPhone 4 and iPhone 4S. The play-through design allows easy access to your phone's features.</longDescription>      
+          <longDescriptionHtml>Outfit your mobile phone in style with this form-fitting, impact-resistant Case-Mate case for Apple iPhone 4 and iPhone 4S. The play-through design allows easy access to your phone's features.</longDescriptionHtml>      
+          <details>            
+                  <detail>                  
+                          <name>What model phone does this fit</name>                  
+                          <value>Apple iPhone 4|Apple iPhone 4S</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>iPhone Accessory</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+          </details>      
+          <includedItemList>            
+                  <includedItem>Case-Mate Barely There Glam Case for Apple® iPhone® 4 and iPhone 4S</includedItem>            
+          </includedItemList>      
+          <features>            
+                  <feature>Compatible with iPhone 4 (all carriers) and iPhone 4S
+To protect and complement your phone.</feature>            
+                  <feature>Form-fitting, impact-resistant plastic shell
+Protects your phone against nicks and scratches.</feature>            
+                  <feature>Slim profile
+Provides reliable protection without adding bulk.</feature>            
+                  <feature>Play-through design
+Allows easy access to your phone's keys and ports without removing the case.</feature>            
+                  <feature>Apple, the Apple logo and iTunes are trademarks of Apple Computer, Inc., registered in the U.S. and other countries. iPod is a trademark of Apple Computer, Inc.</feature>            
+          </features>      
+          <offers/>      
+          <marketplace>false</marketplace>      
+          <listingId/>      
+          <sellerId/>      
+  </product>
+  <product>      
+          <sku>4090044</sku>      
+          <productId>1218454590617</productId>      
+          <name>BlackBerry - Curve 9370 Mobile Phone - Black (Verizon Wireless)</name>      
+          <source>bestbuy</source>      
+          <type>HardGood</type>      
+          <startDate>2012-01-19</startDate>      
+          <new>false</new>      
+          <active>true</active>      
+          <activeUpdateDate>2012-07-03T05:38:55</activeUpdateDate>      
+          <regularPrice>499.99</regularPrice>      
+          <salePrice>499.99</salePrice>      
+          <onSale>false</onSale>      
+          <planPrice>0.00</planPrice>      
+          <priceWithPlan>            
+                  <newTwoYearPlan>0.00</newTwoYearPlan>            
+                  <upgradeTwoYearPlan>0.00</upgradeTwoYearPlan>            
+          </priceWithPlan>      
+          <advertisedPriceRestriction>false</advertisedPriceRestriction>      
+          <minimumDisplayPrice/>      
+          <restrictedSalePrice>499.99</restrictedSalePrice>      
+          <icrType/>      
+          <icrStartDate/>      
+          <icrEndDate/>      
+          <priceUpdateDate>2012-07-03T05:38:55</priceUpdateDate>      
+          <digital>false</digital>      
+          <preowned>false</preowned>      
+          <carrierPlans>            
+                  <sku>3457465</sku>            
+                  <sku>9867662</sku>            
+                  <sku>9867671</sku>            
+                  <sku>9868467</sku>            
+                  <sku>9868564</sku>            
+                  <sku>9867486</sku>            
+                  <sku>9867574</sku>            
+                  <sku>9867608</sku>            
+                  <sku>9867644</sku>            
+                  <sku>9867592</sku>            
+                  <sku>9867653</sku>            
+                  <sku>9867726</sku>            
+                  <sku>9867708</sku>            
+                  <sku>9868582</sku>            
+                  <sku>9909795</sku>            
+                  <sku>3426175</sku>            
+                  <sku>3427068</sku>            
+                  <sku>3427101</sku>            
+                  <sku>3427129</sku>            
+                  <sku>3427095</sku>            
+                  <sku>3427138</sku>            
+          </carrierPlans>      
+          <technologyCode>CDMA</technologyCode>      
+          <carrierModelNumber>BB9370</carrierModelNumber>      
+          <earlyTerminationFees>            
+                  <earlyTerminationFee>                  
+                          <etfText>Early termination fee is $350.</etfText>                  
+                          <terminationFee>350.00</terminationFee>                  
+                          <decliningAmount>0.00</decliningAmount>                  
+                          <contractLengthInMonths/>                  
+                  </earlyTerminationFee>            
+          </earlyTerminationFees>      
+          <outletCenter/>      
+          <secondaryMarket/>      
+          <frequentlyPurchasedWith/>      
+          <accessories>            
+                  <sku>8948847</sku>            
+                  <sku>8913349</sku>            
+                  <sku>2908168</sku>            
+                  <sku>3675269</sku>            
+          </accessories>      
+          <relatedProducts>            
+                  <sku>8948847</sku>            
+                  <sku>8913349</sku>            
+                  <sku>2908168</sku>            
+                  <sku>3675269</sku>            
+          </relatedProducts>      
+          <crossSell/>      
+          <salesRankShortTerm>14867</salesRankShortTerm>      
+          <salesRankMediumTerm>24312</salesRankMediumTerm>      
+          <salesRankLongTerm>36194</salesRankLongTerm>      
+          <bestSellingRank>14885</bestSellingRank>      
+          <url>http://www.bestbuy.com/site/BlackBerry+-+Curve+9370+Mobile+Phone+-+Black+(Verizon+Wireless)/4090044.p?id=1218454590617&amp;skuId=4090044&amp;cmp=RMX</url>      
+          <spin360Url/>      
+          <mobileUrl>http://m.bestbuy.com/r/1218454590617/4090044/</mobileUrl>      
+          <affiliateUrl/>      
+          <addToCartUrl>http://www.bestbuy.com/site/olspage.jsp?id=pcmcat152200050035&amp;type=category&amp;cmp=RMX&amp;qvsids=4090044</addToCartUrl>      
+          <affiliateAddToCartUrl/>      
+          <cjAffiliateUrl/>      
+          <cjAffiliateAddToCartUrl/>      
+          <upc>802975650385</upc>      
+          <categoryPath>            
+                  <category>                  
+                          <id>cat00000</id>                  
+                          <name>Best Buy</name>                  
+                  </category>            
+                  <category>                  
+                          <id>abcat0800000</id>                  
+                          <name>Mobile Phones</name>                  
+                  </category>            
+                  <category>                  
+                          <id>pcmcat209400050001</id>                  
+                          <name>All Mobile Phones with Plans</name>                  
+                  </category>            
+          </categoryPath>      
+          <lists/>      
+          <customerReviewCount/>      
+          <customerReviewAverage/>      
+          <format/>      
+          <freeShipping>true</freeShipping>      
+          <hardGoodType>mobilePhone</hardGoodType>      
+          <inStoreAvailability>true</inStoreAvailability>      
+          <inStoreAvailabilityText>Store Pickup: Available at most stores</inStoreAvailabilityText>      
+          <inStoreAvailabilityTextHtml>&lt;b&gt;Store Pickup:&lt;/b&gt; Available at most stores</inStoreAvailabilityTextHtml>      
+          <inStoreAvailabilityUpdateDate>2012-07-03T05:38:55</inStoreAvailabilityUpdateDate>      
+          <itemUpdateDate>2012-07-28T10:19:08</itemUpdateDate>      
+          <onlineAvailability>true</onlineAvailability>      
+          <onlineAvailabilityText>Shipping: Usually ships in 2-5 business days</onlineAvailabilityText>      
+          <onlineAvailabilityTextHtml>&lt;b&gt;Shipping:&lt;/b&gt; Usually ships in 2-5 business days</onlineAvailabilityTextHtml>      
+          <onlineAvailabilityUpdateDate>2012-07-03T05:38:55</onlineAvailabilityUpdateDate>      
+          <releaseDate/>      
+          <shippingCost>0.00</shippingCost>      
+          <shipping>            
+                  <ground>0.00</ground>            
+                  <secondDay>1.99</secondDay>            
+                  <nextDay>4.99</nextDay>            
+                  <vendorDelivery/>            
+          </shipping>      
+          <specialOrder>false</specialOrder>      
+          <shortDescription>BlackBerry 7 OS3G speed5.0MP cameraQWERTY keyboardRequires a voice plan and a data package
+
+Early termination fee of $350.</shortDescription>      
+          <shortDescriptionHtml>&lt;ul class=&quot;product-short-description&quot;&gt;&lt;li&gt;BlackBerry 7 OS&lt;/li&gt;&lt;li&gt;3G speed&lt;/li&gt;&lt;li&gt;5.0MP camera&lt;/li&gt;&lt;li&gt;QWERTY keyboard&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Requires a voice plan and a data package&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Early termination fee of $350.&lt;/b&gt;</shortDescriptionHtml>      
+          <class>VERIZON HARDWARE</class>      
+          <classId>327</classId>      
+          <subclass>VZN HANDSETS</subclass>      
+          <subclassId>575</subclassId>      
+          <department>DIGITAL COMMUNICATIO</department>      
+          <departmentId>3</departmentId>      
+          <bestBuyItemId>1683244</bestBuyItemId>      
+          <buybackPlans/>      
+          <protectionPlans>            
+                  <protectionPlan>                  
+                          <sku>9137196</sku>                  
+                          <name>2-Year Accidental Protection Plan - Geek Squad</name>                  
+                          <productId>1218035525603</productId>                  
+                          <type>PSP-PRP</type>                  
+                          <term>2YR</term>                  
+                          <regularPrice>169.98</regularPrice>                  
+                          <salePrice>169.98</salePrice>                  
+                  </protectionPlan>            
+          </protectionPlans>      
+          <description/>      
+          <manufacturer>BlackBerry</manufacturer>      
+          <modelNumber>BB9370</modelNumber>      
+          <image>http://images.bestbuy.com/BestBuy_US/images/products/4090/4090044_sc.jpg</image>      
+          <largeFrontImage>http://images.bestbuy.com/BestBuy_US/images/products/4090/4090044_sa.jpg</largeFrontImage>      
+          <mediumImage>http://images.bestbuy.com/BestBuy_US/images/products/4090/4090044fp.gif</mediumImage>      
+          <thumbnailImage>http://images.bestbuy.com/BestBuy_US/images/products/4090/4090044_s.gif</thumbnailImage>      
+          <largeImage>http://images.bestbuy.com/BestBuy_US/images/products/4090/4090044_sb.jpg</largeImage>      
+          <alternateViewsImage>http://images.bestbuy.com/BestBuy_US/images/products/4090/4090044cv1a.jpg</alternateViewsImage>      
+          <angleImage>http://images.bestbuy.com/BestBuy_US/images/products/4090/4090044_ra.jpg</angleImage>      
+          <backViewImage/>      
+          <energyGuideImage/>      
+          <leftViewImage>http://images.bestbuy.com/BestBuy_US/images/products/4090/4090044le.jpg</leftViewImage>      
+          <accessoriesImage/>      
+          <remoteControlImage/>      
+          <rightViewImage/>      
+          <topViewImage/>      
+          <condition>New</condition>      
+          <inStorePickup>true</inStorePickup>      
+          <friendsAndFamilyPickup>false</friendsAndFamilyPickup>      
+          <homeDelivery>false</homeDelivery>      
+          <quantityLimit>2</quantityLimit>      
+          <bundledIn/>      
+          <color>Black</color>      
+          <depth>1/2&quot;</depth>      
+          <dollarSavings>0.00</dollarSavings>      
+          <tradeInValue/>      
+          <height>4-3/8&quot;</height>      
+          <orderable>Available</orderable>      
+          <weight>3.5 oz.</weight>      
+          <shippingWeight>0.7275</shippingWeight>      
+          <width>2-1/2&quot;</width>      
+          <warrantyLabor>1 year</warrantyLabor>      
+          <warrantyParts>1 year</warrantyParts>      
+          <longDescription>Stay productive on the go with this BlackBerry Curve 9370 BB9370 mobile phone that features Wi-Fi and 3G connectivity for fast downloads. The QWERTY keyboard ensures easy typing.Requires a voice plan and a data package.Early termination fee of $350.</longDescription>      
+          <longDescriptionHtml>Stay productive on the go with this BlackBerry Curve 9370 BB9370 mobile phone that features Wi-Fi and 3G connectivity for fast downloads. The QWERTY keyboard ensures easy typing.
+
+&lt;b&gt;Requires a voice plan and a data package.&lt;/b&gt;
+
+&lt;b&gt;Early termination fee of $350.&lt;/b&gt;&lt;!-- ICON CODE --&gt;
+&lt;p&gt;
+&lt;a href=&quot;/site/Mobile-Phones/Operating+Systems+Educational+Page/pcmcat263000050002.c?id=pcmcat263000050002&quot;&gt;&lt;img src=&quot;http://images.bestbuy.com/BestBuy_US/en_US/images/abn/2011/pof/pcon/pdp_icons/icon_OS.gif&quot; style=&quot;float:left;padding:0 10px 10px 0;&quot; border=&quot;0&quot; alt=&quot;Operating system&quot; /&gt;&lt;/a&gt;
+&lt;/p&gt;
+&lt;!-- /ICON CODE --&gt;</longDescriptionHtml>      
+          <details>            
+                  <detail>                  
+                          <name>Phone Style</name>                  
+                          <value>Bar phone</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Band and Mode</name>                  
+                          <value>3G|Dual-band|Quad-band</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Technology Details</name>                  
+                          <value>3G</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Bluetooth-Enabled</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Talk Time</name>                  
+                          <value>Up to 330 minutes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Standby Time</name>                  
+                          <value>Up to 14.5 days</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Battery Type</name>                  
+                          <value>Lithium</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Vibrate Mode</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Downloadable Games</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Speed Dialing</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Color Display</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Internet/Email Capable</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Built-in Digital Camera</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>MMS</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Text Messaging/Instant Messaging</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Mobile Operating System</name>                  
+                          <value>BlackBerry</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>QWERTY Keyboard</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Touch Screen</name>                  
+                          <value>No</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Camera Resolution</name>                  
+                          <value>5.0MP</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>MP3 Playback Capability</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Vibration Alert</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Speakerphone</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Graphics</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Downloadable Ringtones</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Changeable Faceplate</name>                  
+                          <value>No</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>External Caller ID</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Device Manufacturer</name>                  
+                          <value>BlackBerry</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Wireless Capability</name>                  
+                          <value>3G</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Product Line</name>                  
+                          <value>Curve</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Product Model</name>                  
+                          <value>9370</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>LCD Screen</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>CDMA</name>                  
+                          <value>CDMA</value>                  
+                  </detail>            
+          </details>      
+          <includedItemList>            
+                  <includedItem>BlackBerry Curve 9370 Mobile Phone</includedItem>            
+                  <includedItem>Lithium battery</includedItem>            
+                  <includedItem>Charger</includedItem>            
+                  <includedItem>Owner's manual</includedItem>            
+          </includedItemList>      
+          <features>            
+                  <feature>BlackBerry 7 OS
+Allows you to stay connected and productive on the go.</feature>            
+                  <feature>3G speed
+Offers quick and easy connection speeds. Wi-Fi enables Internet capability on the go (additional fees may apply).</feature>            
+                  <feature>Bluetooth stereo compatibility
+For wireless communication with a Bluetooth-enabled device.</feature>            
+                  <feature>5.0MP digital camera
+With flash for enhanced photography.</feature>            
+                  <feature>Removable memory card slot
+Lets you store phone numbers, photos and videos (media not included).</feature>            
+                  <feature>Preloaded social apps
+Include Facebook and Twitter for staying in touch with family and friends.</feature>            
+                  <feature>MP3 player
+Lets you enjoy music on the go.</feature>            
+                  <feature>QWERTY keyboard
+For easy text messaging and writing.</feature>            
+                  <feature>Hands-free speakerphone
+Lets you talk while driving without using a separate hands-free device.</feature>            
+                  <feature>Up to 330 minutes talk time and up to 14.5 days standby
+With included lithium battery.</feature>            
+          </features>      
+          <offers>            
+                  <offer>                  
+                          <id>promo222600050002</id>                  
+                          <heading/>                  
+                          <text>Share Everything Data Usage Calculator</text>                  
+                          <url>http://www.bestbuy.com/site/null/Special Offer/pcmcat277500050010.c?id=pcmcat277500050010</url>                  
+                          <imageUrl/>                  
+                          <type>special_offer</type>                  
+                          <startDate/>                  
+                          <endDate/>                  
+                  </offer>            
+          </offers>      
+          <marketplace>false</marketplace>      
+          <listingId/>      
+          <sellerId/>      
+  </product>
+  <product>      
+          <sku>4093041</sku>      
+          <productId>1218456806325</productId>      
+          <name>ZAGG - InvisibleSHIELD for LG Marquee Mobile Phones</name>      
+          <source>bestbuy</source>      
+          <type>HardGood</type>      
+          <startDate>2011-12-11</startDate>      
+          <new>false</new>      
+          <active>false</active>      
+          <activeUpdateDate>2012-07-03T03:43:11</activeUpdateDate>      
+          <regularPrice>99.99</regularPrice>      
+          <salePrice>99.99</salePrice>      
+          <onSale>false</onSale>      
+          <planPrice/>      
+          <priceWithPlan/>      
+          <advertisedPriceRestriction>false</advertisedPriceRestriction>      
+          <minimumDisplayPrice/>      
+          <restrictedSalePrice>99.99</restrictedSalePrice>      
+          <icrType/>      
+          <icrStartDate/>      
+          <icrEndDate/>      
+          <priceUpdateDate>2012-07-03T03:43:11</priceUpdateDate>      
+          <digital>false</digital>      
+          <preowned>false</preowned>      
+          <carrierPlans/>      
+          <technologyCode/>      
+          <carrierModelNumber/>      
+          <earlyTerminationFees/>      
+          <outletCenter/>      
+          <secondaryMarket/>      
+          <frequentlyPurchasedWith/>      
+          <accessories/>      
+          <relatedProducts/>      
+          <crossSell/>      
+          <salesRankShortTerm/>      
+          <salesRankMediumTerm/>      
+          <salesRankLongTerm/>      
+          <bestSellingRank/>      
+          <url/>      
+          <spin360Url/>      
+          <mobileUrl/>      
+          <affiliateUrl/>      
+          <addToCartUrl/>      
+          <affiliateAddToCartUrl/>      
+          <cjAffiliateUrl/>      
+          <cjAffiliateAddToCartUrl/>      
+          <upc>843404080298</upc>      
+          <categoryPath>            
+                  <category>                  
+                          <id>cat00000</id>                  
+                          <name>Best Buy</name>                  
+                  </category>            
+                  <category>                  
+                          <id>abcat0800000</id>                  
+                          <name>Mobile Phones</name>                  
+                  </category>            
+                  <category>                  
+                          <id>abcat0811002</id>                  
+                          <name>Mobile Phone Accessories</name>                  
+                  </category>            
+                  <category>                  
+                          <id>pcmcat171900050031</id>                  
+                          <name>Surface &amp; Screen Protection</name>                  
+                  </category>            
+                  <category>                  
+                          <id>pcmcat201900050009</id>                  
+                          <name>Screen Protectors</name>                  
+                  </category>            
+          </categoryPath>      
+          <lists/>      
+          <customerReviewCount/>      
+          <customerReviewAverage/>      
+          <format/>      
+          <freeShipping>false</freeShipping>      
+          <hardGoodType>normalHardgood</hardGoodType>      
+          <inStoreAvailability>false</inStoreAvailability>      
+          <inStoreAvailabilityText>Store Pickup: Not Available</inStoreAvailabilityText>      
+          <inStoreAvailabilityTextHtml>&lt;b&gt;Store Pickup:&lt;/b&gt; Not Available</inStoreAvailabilityTextHtml>      
+          <inStoreAvailabilityUpdateDate>2012-07-03T03:43:11</inStoreAvailabilityUpdateDate>      
+          <itemUpdateDate>2012-07-03T08:08:46</itemUpdateDate>      
+          <onlineAvailability>false</onlineAvailability>      
+          <onlineAvailabilityText>Shipping: Not available</onlineAvailabilityText>      
+          <onlineAvailabilityTextHtml>&lt;b&gt;Shipping:&lt;/b&gt; Not available</onlineAvailabilityTextHtml>      
+          <onlineAvailabilityUpdateDate>2012-07-03T03:43:11</onlineAvailabilityUpdateDate>      
+          <releaseDate/>      
+          <shippingCost/>      
+          <shipping/>      
+          <specialOrder>false</specialOrder>      
+          <shortDescription>Compatible with LG Marquee mobile phones; scratch-resistant, military-grade material; improves grip</shortDescription>      
+          <shortDescriptionHtml>Compatible with LG Marquee mobile phones; scratch-resistant, military-grade material; improves grip</shortDescriptionHtml>      
+          <class>MOBILE PHONE ACCY</class>      
+          <classId>123</classId>      
+          <subclass>SURFACE PROTECTION</subclass>      
+          <subclassId>752</subclassId>      
+          <department>DIGITAL COMMUNICATIO</department>      
+          <departmentId>3</departmentId>      
+          <bestBuyItemId>1685143</bestBuyItemId>      
+          <buybackPlans/>      
+          <protectionPlans/>      
+          <description/>      
+          <manufacturer>ZAGG</manufacturer>      
+          <modelNumber>FFLGMARQS</modelNumber>      
+          <image>http://images.bestbuy.com/BestBuy_US/images/products/4093/4093041_sc.jpg</image>      
+          <largeFrontImage>http://images.bestbuy.com/BestBuy_US/images/products/4093/4093041_sa.jpg</largeFrontImage>      
+          <mediumImage>http://images.bestbuy.com/BestBuy_US/images/products/4093/4093041fp.gif</mediumImage>      
+          <thumbnailImage>http://images.bestbuy.com/BestBuy_US/images/products/4093/4093041_s.gif</thumbnailImage>      
+          <largeImage>http://images.bestbuy.com/BestBuy_US/images/products/4093/4093041_sb.jpg</largeImage>      
+          <alternateViewsImage/>      
+          <angleImage/>      
+          <backViewImage/>      
+          <energyGuideImage/>      
+          <leftViewImage/>      
+          <accessoriesImage/>      
+          <remoteControlImage/>      
+          <rightViewImage/>      
+          <topViewImage/>      
+          <condition>New</condition>      
+          <inStorePickup>false</inStorePickup>      
+          <friendsAndFamilyPickup>false</friendsAndFamilyPickup>      
+          <homeDelivery>false</homeDelivery>      
+          <quantityLimit>3</quantityLimit>      
+          <bundledIn/>      
+          <color/>      
+          <depth/>      
+          <dollarSavings>0.00</dollarSavings>      
+          <tradeInValue/>      
+          <height/>      
+          <orderable>NotOrderable</orderable>      
+          <weight/>      
+          <shippingWeight>0.21</shippingWeight>      
+          <width/>      
+          <warrantyLabor>Lifetime</warrantyLabor>      
+          <warrantyParts>Lifetime</warrantyParts>      
+          <longDescription>This ZAGG InvisibleSHIELD FFLGMARQS screen shield is compatible with LG Marquee mobile phones and features scratch-resistant, military-grade material to help protect your phone's display while on the go.</longDescription>      
+          <longDescriptionHtml>This ZAGG InvisibleSHIELD FFLGMARQS screen shield is compatible with LG Marquee mobile phones and features scratch-resistant, military-grade material to help protect your phone's display while on the go.</longDescriptionHtml>      
+          <details>            
+                  <detail>                  
+                          <name>What model phone does this fit</name>                  
+                          <value>LG Marquee</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>iPhone Accessory</name>                  
+                          <value>No</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Brand Compatibility</name>                  
+                          <value>LG</value>                  
+                  </detail>            
+          </details>      
+          <includedItemList>            
+                  <includedItem>ZAGG InvisibleSHIELD for LG Marquee Mobile Phones</includedItem>            
+                  <includedItem>Application solution</includedItem>            
+          </includedItemList>      
+          <features>            
+                  <feature>Compatible with LG Marquee mobile phones
+To protect your phone's screen.</feature>            
+                  <feature>Military-grade material
+Provides durability and scratch resistance.</feature>            
+                  <feature>Improves grip
+Without adding bulk.</feature>            
+          </features>      
+          <offers/>      
+          <marketplace>false</marketplace>      
+          <listingId/>      
+          <sellerId/>      
+  </product>
+  <product>      
+          <sku>4094059</sku>      
+          <productId>1218456842525</productId>      
+          <name>OtterBox - Defender Series Case for Motorola DROID RAZR Mobile Phones - Black</name>      
+          <source>bestbuy</source>      
+          <type>HardGood</type>      
+          <startDate>2011-12-11</startDate>      
+          <new>false</new>      
+          <active>false</active>      
+          <activeUpdateDate>2012-07-03T05:10:23</activeUpdateDate>      
+          <regularPrice>49.99</regularPrice>      
+          <salePrice>49.99</salePrice>      
+          <onSale>false</onSale>      
+          <planPrice/>      
+          <priceWithPlan/>      
+          <advertisedPriceRestriction>false</advertisedPriceRestriction>      
+          <minimumDisplayPrice/>      
+          <restrictedSalePrice>49.99</restrictedSalePrice>      
+          <icrType/>      
+          <icrStartDate/>      
+          <icrEndDate/>      
+          <priceUpdateDate>2011-11-07T13:07:36</priceUpdateDate>      
+          <digital>false</digital>      
+          <preowned>false</preowned>      
+          <carrierPlans/>      
+          <technologyCode/>      
+          <carrierModelNumber/>      
+          <earlyTerminationFees/>      
+          <outletCenter/>      
+          <secondaryMarket/>      
+          <frequentlyPurchasedWith>            
+                  <sku>3991224</sku>            
+                  <sku>4799002</sku>            
+                  <sku>3991251</sku>            
+                  <sku>3376049</sku>            
+                  <sku>4538554</sku>            
+                  <sku>4029172</sku>            
+                  <sku>4004049</sku>            
+                  <sku>2708197</sku>            
+                  <sku>4039691</sku>            
+                  <sku>4807145</sku>            
+          </frequentlyPurchasedWith>      
+          <accessories/>      
+          <relatedProducts/>      
+          <crossSell/>      
+          <salesRankShortTerm/>      
+          <salesRankMediumTerm/>      
+          <salesRankLongTerm>107923</salesRankLongTerm>      
+          <bestSellingRank/>      
+          <url/>      
+          <spin360Url/>      
+          <mobileUrl/>      
+          <affiliateUrl/>      
+          <addToCartUrl/>      
+          <affiliateAddToCartUrl/>      
+          <cjAffiliateUrl/>      
+          <cjAffiliateAddToCartUrl/>      
+          <upc>660543011019</upc>      
+          <categoryPath>            
+                  <category>                  
+                          <id>cat00000</id>                  
+                          <name>Best Buy</name>                  
+                  </category>            
+                  <category>                  
+                          <id>abcat0800000</id>                  
+                          <name>Mobile Phones</name>                  
+                  </category>            
+                  <category>                  
+                          <id>abcat0811002</id>                  
+                          <name>Mobile Phone Accessories</name>                  
+                  </category>            
+                  <category>                  
+                          <id>abcat0811006</id>                  
+                          <name>Mobile Phone Cases &amp; Clips</name>                  
+                  </category>            
+                  <category>                  
+                          <id>pcmcat171900050029</id>                  
+                          <name>Fitted</name>                  
+                  </category>            
+          </categoryPath>      
+          <lists/>      
+          <customerReviewCount>2</customerReviewCount>      
+          <customerReviewAverage>4.0</customerReviewAverage>      
+          <format/>      
+          <freeShipping>true</freeShipping>      
+          <hardGoodType>normalHardgood</hardGoodType>      
+          <inStoreAvailability>false</inStoreAvailability>      
+          <inStoreAvailabilityText>Store Pickup: Not Available</inStoreAvailabilityText>      
+          <inStoreAvailabilityTextHtml>&lt;b&gt;Store Pickup:&lt;/b&gt; Not Available</inStoreAvailabilityTextHtml>      
+          <inStoreAvailabilityUpdateDate>2012-07-03T05:10:23</inStoreAvailabilityUpdateDate>      
+          <itemUpdateDate>2012-07-28T10:23:45</itemUpdateDate>      
+          <onlineAvailability>false</onlineAvailability>      
+          <onlineAvailabilityText>Shipping: Not available</onlineAvailabilityText>      
+          <onlineAvailabilityTextHtml>&lt;b&gt;Shipping:&lt;/b&gt; Not available</onlineAvailabilityTextHtml>      
+          <onlineAvailabilityUpdateDate>2012-07-03T05:10:23</onlineAvailabilityUpdateDate>      
+          <releaseDate/>      
+          <shippingCost>0.00</shippingCost>      
+          <shipping>            
+                  <ground>0.00</ground>            
+                  <secondDay>6.00</secondDay>            
+                  <nextDay>12.00</nextDay>            
+                  <vendorDelivery/>            
+          </shipping>      
+          <specialOrder>false</specialOrder>      
+          <shortDescription>Compatible with Motorola DROID RAZR mobile phones; play-through design; ratcheting belt clip holster; polycarbonate shell with silicone midlayer</shortDescription>      
+          <shortDescriptionHtml>Compatible with Motorola DROID RAZR mobile phones; play-through design; ratcheting belt clip holster; polycarbonate shell with silicone midlayer</shortDescriptionHtml>      
+          <class>MOBILE PHONE ACCY</class>      
+          <classId>123</classId>      
+          <subclass>CASES</subclass>      
+          <subclassId>753</subclassId>      
+          <department>DIGITAL COMMUNICATIO</department>      
+          <departmentId>3</departmentId>      
+          <bestBuyItemId>1685144</bestBuyItemId>      
+          <buybackPlans/>      
+          <protectionPlans/>      
+          <description/>      
+          <manufacturer>OtterBox</manufacturer>      
+          <modelNumber>63-1343-05-BB</modelNumber>      
+          <image>http://images.bestbuy.com/BestBuy_US/images/products/4094/4094059_sc.jpg</image>      
+          <largeFrontImage>http://images.bestbuy.com/BestBuy_US/images/products/4094/4094059_sa.jpg</largeFrontImage>      
+          <mediumImage>http://images.bestbuy.com/BestBuy_US/images/products/4094/4094059fp.gif</mediumImage>      
+          <thumbnailImage>http://images.bestbuy.com/BestBuy_US/images/products/4094/4094059_s.gif</thumbnailImage>      
+          <largeImage>http://images.bestbuy.com/BestBuy_US/images/products/4094/4094059_sb.jpg</largeImage>      
+          <alternateViewsImage/>      
+          <angleImage/>      
+          <backViewImage/>      
+          <energyGuideImage/>      
+          <leftViewImage/>      
+          <accessoriesImage/>      
+          <remoteControlImage/>      
+          <rightViewImage/>      
+          <topViewImage/>      
+          <condition>New</condition>      
+          <inStorePickup>false</inStorePickup>      
+          <friendsAndFamilyPickup>false</friendsAndFamilyPickup>      
+          <homeDelivery>false</homeDelivery>      
+          <quantityLimit>3</quantityLimit>      
+          <bundledIn/>      
+          <color>Black</color>      
+          <depth>1-1/4&quot;</depth>      
+          <dollarSavings>0.00</dollarSavings>      
+          <tradeInValue/>      
+          <height>7&quot;</height>      
+          <orderable>NotOrderable</orderable>      
+          <weight>1.1 oz.</weight>      
+          <shippingWeight>0.35</shippingWeight>      
+          <width>4-1/2&quot;</width>      
+          <warrantyLabor/>      
+          <warrantyParts>1 year limited</warrantyParts>      
+          <longDescription>Arm your Motorola DROID RAZR against bumps, scratches and dust while you're on the move with this OtterBox Defender Series case that features polycarbonate and silicone materials. The ratcheting belt clip holster keeps your phone within easy reach.</longDescription>      
+          <longDescriptionHtml>Arm your Motorola DROID RAZR against bumps, scratches and dust while you're on the move with this OtterBox Defender Series case that features polycarbonate and silicone materials. The ratcheting belt clip holster keeps your phone within easy reach.</longDescriptionHtml>      
+          <details>            
+                  <detail>                  
+                          <name>What model phone does this fit</name>                  
+                          <value>Motorola DROID RAZR</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>iPhone Accessory</name>                  
+                          <value>No</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Brand Compatibility</name>                  
+                          <value>Motorola</value>                  
+                  </detail>            
+          </details>      
+          <includedItemList>            
+                  <includedItem>OtterBox Defender Series Case for Motorola DROID RAZR Mobile Phones</includedItem>            
+          </includedItemList>      
+          <features>            
+                  <feature>Compatible with Motorola DROID RAZR
+To protect and complement your mobile phone.</feature>            
+                  <feature>Polycarbonate shell
+With a silicone midlayer guards against bumps and scratches.</feature>            
+                  <feature>Play-through design
+Provides easy access to the device's features without removing it from the case.</feature>            
+                  <feature>Ratcheting belt clip holster
+Allows you to keep your Motorola DROID RAZR within easy reach.</feature>            
+          </features>      
+          <offers/>      
+          <marketplace>false</marketplace>      
+          <listingId/>      
+          <sellerId/>      
+  </product>
+  <product>      
+          <sku>4095049</sku>      
+          <productId>1218456776165</productId>      
+          <name>iFrogz - Mix Case for Apple® iPhone® 4 and iPhone 4S - Stripes</name>      
+          <source>bestbuy</source>      
+          <type>HardGood</type>      
+          <startDate>2011-12-11</startDate>      
+          <new>false</new>      
+          <active>true</active>      
+          <activeUpdateDate>2012-07-03T05:17:23</activeUpdateDate>      
+          <regularPrice>24.99</regularPrice>      
+          <salePrice>24.99</salePrice>      
+          <onSale>false</onSale>      
+          <planPrice/>      
+          <priceWithPlan/>      
+          <advertisedPriceRestriction>false</advertisedPriceRestriction>      
+          <minimumDisplayPrice/>      
+          <restrictedSalePrice>24.99</restrictedSalePrice>      
+          <icrType/>      
+          <icrStartDate/>      
+          <icrEndDate/>      
+          <priceUpdateDate>2012-07-22T00:16:33</priceUpdateDate>      
+          <digital>false</digital>      
+          <preowned>false</preowned>      
+          <carrierPlans/>      
+          <technologyCode/>      
+          <carrierModelNumber/>      
+          <earlyTerminationFees/>      
+          <outletCenter/>      
+          <secondaryMarket/>      
+          <frequentlyPurchasedWith>            
+                  <sku>3440571</sku>            
+          </frequentlyPurchasedWith>      
+          <accessories>            
+                  <sku>8948847</sku>            
+                  <sku>8913349</sku>            
+                  <sku>2908168</sku>            
+                  <sku>3063036</sku>            
+          </accessories>      
+          <relatedProducts>            
+                  <sku>8948847</sku>            
+                  <sku>8913349</sku>            
+                  <sku>2908168</sku>            
+                  <sku>3063036</sku>            
+          </relatedProducts>      
+          <crossSell/>      
+          <salesRankShortTerm>19281</salesRankShortTerm>      
+          <salesRankMediumTerm>22474</salesRankMediumTerm>      
+          <salesRankLongTerm>26649</salesRankLongTerm>      
+          <bestSellingRank>19302</bestSellingRank>      
+          <url>http://www.bestbuy.com/site/iFrogz+-+Mix+Case+for+Apple%AE+iPhone%AE+4+and+iPhone+4S+-+Stripes/4095049.p?id=1218456776165&amp;skuId=4095049&amp;cmp=RMX</url>      
+          <spin360Url/>      
+          <mobileUrl>http://m.bestbuy.com/r/1218456776165/4095049/</mobileUrl>      
+          <affiliateUrl/>      
+          <addToCartUrl>http://www.bestbuy.com/site/olspage.jsp?id=pcmcat152200050035&amp;type=category&amp;cmp=RMX&amp;qvsids=4095049</addToCartUrl>      
+          <affiliateAddToCartUrl/>      
+          <cjAffiliateUrl/>      
+          <cjAffiliateAddToCartUrl/>      
+          <upc>811275019723</upc>      
+          <categoryPath>            
+                  <category>                  
+                          <id>cat00000</id>                  
+                          <name>Best Buy</name>                  
+                  </category>            
+                  <category>                  
+                          <id>abcat0800000</id>                  
+                          <name>Mobile Phones</name>                  
+                  </category>            
+                  <category>                  
+                          <id>abcat0811002</id>                  
+                          <name>Mobile Phone Accessories</name>                  
+                  </category>            
+                  <category>                  
+                          <id>abcat0811006</id>                  
+                          <name>Mobile Phone Cases &amp; Clips</name>                  
+                  </category>            
+                  <category>                  
+                          <id>pcmcat171900050029</id>                  
+                          <name>Fitted</name>                  
+                  </category>            
+          </categoryPath>      
+          <lists/>      
+          <customerReviewCount/>      
+          <customerReviewAverage/>      
+          <format/>      
+          <freeShipping>true</freeShipping>      
+          <hardGoodType>normalHardgood</hardGoodType>      
+          <inStoreAvailability>true</inStoreAvailability>      
+          <inStoreAvailabilityText>Store Pickup: Available at most stores</inStoreAvailabilityText>      
+          <inStoreAvailabilityTextHtml>&lt;b&gt;Store Pickup:&lt;/b&gt; Available at most stores</inStoreAvailabilityTextHtml>      
+          <inStoreAvailabilityUpdateDate>2012-07-03T05:17:23</inStoreAvailabilityUpdateDate>      
+          <itemUpdateDate>2012-07-28T10:24:50</itemUpdateDate>      
+          <onlineAvailability>false</onlineAvailability>      
+          <onlineAvailabilityText>Shipping: Not available</onlineAvailabilityText>      
+          <onlineAvailabilityTextHtml>&lt;b&gt;Shipping:&lt;/b&gt; Not available</onlineAvailabilityTextHtml>      
+          <onlineAvailabilityUpdateDate>2012-07-15T16:30:58</onlineAvailabilityUpdateDate>      
+          <releaseDate/>      
+          <shippingCost>0.00</shippingCost>      
+          <shipping>            
+                  <ground>0.00</ground>            
+                  <secondDay>6.00</secondDay>            
+                  <nextDay>12.00</nextDay>            
+                  <vendorDelivery/>            
+          </shipping>      
+          <specialOrder>false</specialOrder>      
+          <shortDescription>Compatible with iPhone 4 and iPhone 4S; TPU and polycarbonate construction; raised edge; play-through design</shortDescription>      
+          <shortDescriptionHtml>Compatible with iPhone 4 and iPhone 4S; TPU and polycarbonate construction; raised edge; play-through design</shortDescriptionHtml>      
+          <class>MOBILE PHONE ACCY</class>      
+          <classId>123</classId>      
+          <subclass>CASES</subclass>      
+          <subclassId>753</subclassId>      
+          <department>DIGITAL COMMUNICATIO</department>      
+          <departmentId>3</departmentId>      
+          <bestBuyItemId>1685145</bestBuyItemId>      
+          <buybackPlans/>      
+          <protectionPlans/>      
+          <description/>      
+          <manufacturer>iFrogz</manufacturer>      
+          <modelNumber>IP4MIX-STRIPES</modelNumber>      
+          <image>http://images.bestbuy.com/BestBuy_US/images/products/4095/4095049_sc.jpg</image>      
+          <largeFrontImage>http://images.bestbuy.com/BestBuy_US/images/products/4095/4095049_sa.jpg</largeFrontImage>      
+          <mediumImage>http://images.bestbuy.com/BestBuy_US/images/products/4095/4095049fp.gif</mediumImage>      
+          <thumbnailImage>http://images.bestbuy.com/BestBuy_US/images/products/4095/4095049_s.gif</thumbnailImage>      
+          <largeImage>http://images.bestbuy.com/BestBuy_US/images/products/4095/4095049_sb.jpg</largeImage>      
+          <alternateViewsImage/>      
+          <angleImage/>      
+          <backViewImage/>      
+          <energyGuideImage/>      
+          <leftViewImage/>      
+          <accessoriesImage/>      
+          <remoteControlImage/>      
+          <rightViewImage/>      
+          <topViewImage/>      
+          <condition>New</condition>      
+          <inStorePickup>true</inStorePickup>      
+          <friendsAndFamilyPickup>false</friendsAndFamilyPickup>      
+          <homeDelivery>false</homeDelivery>      
+          <quantityLimit>3</quantityLimit>      
+          <bundledIn/>      
+          <color>Stripes</color>      
+          <depth>1/2&quot;</depth>      
+          <dollarSavings>0.00</dollarSavings>      
+          <tradeInValue/>      
+          <height>4-5/8&quot;</height>      
+          <orderable>Available</orderable>      
+          <weight/>      
+          <shippingWeight>0.1</shippingWeight>      
+          <width>2-3/8&quot;</width>      
+          <warrantyLabor>90 days</warrantyLabor>      
+          <warrantyParts>90 days</warrantyParts>      
+          <longDescription>This iFrogz mix case features molded graphics for a stylish look that won't rub off. The TPU raised edge and polycarbonate shell ensure protection for your iPhone 4 or iPhone 4S.</longDescription>      
+          <longDescriptionHtml>This iFrogz mix case features molded graphics for a stylish look that won't rub off. The TPU raised edge and polycarbonate shell ensure protection for your iPhone 4 or iPhone 4S.</longDescriptionHtml>      
+          <details>            
+                  <detail>                  
+                          <name>What model phone does this fit</name>                  
+                          <value>Apple iPhone 4|Apple iPhone 4S</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>iPhone Accessory</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+          </details>      
+          <includedItemList>            
+                  <includedItem>iFrogz Mix Case for Apple® iPhone® 4 and iPhone 4S</includedItem>            
+          </includedItemList>      
+          <features>            
+                  <feature>Designed for use with Apple iPhone 4 (all carriers) and iPhone 4S
+To protect your phone against impact damage, dust and scratches.</feature>            
+                  <feature>Double-injected design
+Combines the benefits of impact-resistant TPU and polycarbonate to ensure durability.</feature>            
+                  <feature>Raised edge
+Helps protect your phone, even when face down.</feature>            
+                  <feature>Molded graphics
+For a stylish look that won't rub off.</feature>            
+                  <feature>Play-through design
+Allows access to all ports, inputs and sensors.</feature>            
+                  <feature>Apple, the Apple logo and iTunes are trademarks of Apple Computer, Inc., registered in the U.S. and other countries. iPod is a trademark of Apple Computer, Inc.</feature>            
+          </features>      
+          <offers/>      
+          <marketplace>false</marketplace>      
+          <listingId/>      
+          <sellerId/>      
+  </product>
+</products>

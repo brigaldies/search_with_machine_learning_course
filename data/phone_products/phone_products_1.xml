@@ -1,0 +1,363 @@
+<products>
+  <product>      
+          <sku>4041128</sku>      
+          <productId>1218452838259</productId>      
+          <name>LG - Nitro HD 4G Mobile Phone - Black (AT&amp;T)</name>      
+          <source>bestbuy</source>      
+          <type>HardGood</type>      
+          <startDate>2011-12-04</startDate>      
+          <new>false</new>      
+          <active>true</active>      
+          <activeUpdateDate>2012-07-03T07:21:10</activeUpdateDate>      
+          <regularPrice>549.99</regularPrice>      
+          <salePrice>549.99</salePrice>      
+          <onSale>false</onSale>      
+          <planPrice>0.00</planPrice>      
+          <priceWithPlan>            
+                  <newTwoYearPlan>0.00</newTwoYearPlan>            
+                  <upgradeTwoYearPlan>0.00</upgradeTwoYearPlan>            
+          </priceWithPlan>      
+          <advertisedPriceRestriction>false</advertisedPriceRestriction>      
+          <minimumDisplayPrice/>      
+          <restrictedSalePrice>549.99</restrictedSalePrice>      
+          <icrType/>      
+          <icrStartDate/>      
+          <icrEndDate/>      
+          <priceUpdateDate>2012-07-25T00:18:57</priceUpdateDate>      
+          <digital>false</digital>      
+          <preowned>false</preowned>      
+          <carrierPlans>            
+                  <sku>9862376</sku>            
+                  <sku>9862349</sku>            
+                  <sku>9862409</sku>            
+                  <sku>9862418</sku>            
+                  <sku>9862427</sku>            
+                  <sku>9862445</sku>            
+                  <sku>9862463</sku>            
+                  <sku>9862472</sku>            
+                  <sku>9909613</sku>            
+          </carrierPlans>      
+          <technologyCode>LTE</technologyCode>      
+          <carrierModelNumber>65346</carrierModelNumber>      
+          <earlyTerminationFees>            
+                  <earlyTerminationFee>                  
+                          <etfText>The Early Termination Fee will be $325 minus $10 for each full month of service that you complete</etfText>                  
+                          <terminationFee>325.00</terminationFee>                  
+                          <decliningAmount>10.00</decliningAmount>                  
+                          <contractLengthInMonths/>                  
+                  </earlyTerminationFee>            
+          </earlyTerminationFees>      
+          <outletCenter/>      
+          <secondaryMarket/>      
+          <frequentlyPurchasedWith/>      
+          <accessories>            
+                  <sku>8948847</sku>            
+                  <sku>8913349</sku>            
+                  <sku>2908168</sku>            
+                  <sku>4868533</sku>            
+          </accessories>      
+          <relatedProducts>            
+                  <sku>8948847</sku>            
+                  <sku>8913349</sku>            
+                  <sku>2908168</sku>            
+                  <sku>4868533</sku>            
+          </relatedProducts>      
+          <crossSell/>      
+          <salesRankShortTerm>3187</salesRankShortTerm>      
+          <salesRankMediumTerm>4282</salesRankMediumTerm>      
+          <salesRankLongTerm>10651</salesRankLongTerm>      
+          <bestSellingRank>3199</bestSellingRank>      
+          <url>http://www.bestbuy.com/site/LG+-+Nitro+HD+4G+Mobile+Phone+-+Black+(AT%26T)/4041128.p?id=1218452838259&amp;skuId=4041128&amp;cmp=RMX</url>      
+          <spin360Url/>      
+          <mobileUrl>http://m.bestbuy.com/r/1218452838259/4041128/</mobileUrl>      
+          <affiliateUrl/>      
+          <addToCartUrl>http://www.bestbuy.com/site/olspage.jsp?id=pcmcat152200050035&amp;type=category&amp;cmp=RMX&amp;qvsids=4041128</addToCartUrl>      
+          <affiliateAddToCartUrl/>      
+          <cjAffiliateUrl/>      
+          <cjAffiliateAddToCartUrl/>      
+          <upc>652810117654</upc>      
+          <categoryPath>            
+                  <category>                  
+                          <id>cat00000</id>                  
+                          <name>Best Buy</name>                  
+                  </category>            
+                  <category>                  
+                          <id>abcat0800000</id>                  
+                          <name>Mobile Phones</name>                  
+                  </category>            
+                  <category>                  
+                          <id>pcmcat209400050001</id>                  
+                          <name>All Mobile Phones with Plans</name>                  
+                  </category>            
+          </categoryPath>      
+          <lists/>      
+          <customerReviewCount>15</customerReviewCount>      
+          <customerReviewAverage>4.1</customerReviewAverage>      
+          <format/>      
+          <freeShipping>true</freeShipping>      
+          <hardGoodType>mobilePhone</hardGoodType>      
+          <inStoreAvailability>true</inStoreAvailability>      
+          <inStoreAvailabilityText>Store Pickup: Available at most stores</inStoreAvailabilityText>      
+          <inStoreAvailabilityTextHtml>&lt;b&gt;Store Pickup:&lt;/b&gt; Available at most stores</inStoreAvailabilityTextHtml>      
+          <inStoreAvailabilityUpdateDate>2012-07-03T07:21:10</inStoreAvailabilityUpdateDate>      
+          <itemUpdateDate>2012-07-28T22:46:15</itemUpdateDate>      
+          <onlineAvailability>false</onlineAvailability>      
+          <onlineAvailabilityText>Shipping: Not available</onlineAvailabilityText>      
+          <onlineAvailabilityTextHtml>&lt;b&gt;Shipping:&lt;/b&gt; Not available</onlineAvailabilityTextHtml>      
+          <onlineAvailabilityUpdateDate>2012-07-28T21:45:51</onlineAvailabilityUpdateDate>      
+          <releaseDate>2011-11-13</releaseDate>      
+          <shippingCost>0.00</shippingCost>      
+          <shipping>            
+                  <ground>0.00</ground>            
+                  <secondDay>4.00</secondDay>            
+                  <nextDay>11.00</nextDay>            
+                  <vendorDelivery/>            
+          </shipping>      
+          <specialOrder>false</specialOrder>      
+          <shortDescription>Android 2.3.4 operating system4G speedWi-FiRequires a minimum data service starting at $20/month
+
+Early termination fees will be prorated, starting at $325 minus $10 for each full month of service commitment completed.</shortDescription>      
+          <shortDescriptionHtml>&lt;ul class=&quot;product-short-description&quot;&gt;&lt;li&gt;Android 2.3.4 operating system&lt;/li&gt;&lt;li&gt;4G speed&lt;/li&gt;&lt;li&gt;Wi-Fi&lt;/li&gt;&lt;/ul&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Requires a minimum data service starting at $20/month&lt;/b&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Early termination fees will be prorated, starting at $325 minus $10 for each full month of service commitment completed.&lt;/b&gt;</shortDescriptionHtml>      
+          <class>AT&amp;T HARDWARE</class>      
+          <classId>313</classId>      
+          <subclass>AT&amp;T HANDSETS</subclass>      
+          <subclassId>700</subclassId>      
+          <department>DIGITAL COMMUNICATIO</department>      
+          <departmentId>3</departmentId>      
+          <bestBuyItemId>1678837</bestBuyItemId>      
+          <buybackPlans/>      
+          <protectionPlans>            
+                  <protectionPlan>                  
+                          <sku>9137196</sku>                  
+                          <name>2-Year Accidental Protection Plan - Geek Squad</name>                  
+                          <productId>1218035525603</productId>                  
+                          <type>PSP-PRP</type>                  
+                          <term>2YR</term>                  
+                          <regularPrice>169.98</regularPrice>                  
+                          <salePrice>169.98</salePrice>                  
+                  </protectionPlan>            
+          </protectionPlans>      
+          <description/>      
+          <manufacturer>LG</manufacturer>      
+          <modelNumber>P930</modelNumber>      
+          <image>http://images.bestbuy.com/BestBuy_US/images/products/4041/4041128_sc.jpg</image>      
+          <largeFrontImage>http://images.bestbuy.com/BestBuy_US/images/products/4041/4041128_sa.jpg</largeFrontImage>      
+          <mediumImage>http://images.bestbuy.com/BestBuy_US/images/products/4041/4041128fp.gif</mediumImage>      
+          <thumbnailImage>http://images.bestbuy.com/BestBuy_US/images/products/4041/4041128_s.gif</thumbnailImage>      
+          <largeImage>http://images.bestbuy.com/BestBuy_US/images/products/4041/4041128_sb.jpg</largeImage>      
+          <alternateViewsImage/>      
+          <angleImage>http://images.bestbuy.com/BestBuy_US/images/products/4041/4041128_ra.jpg</angleImage>      
+          <backViewImage>http://images.bestbuy.com/BestBuy_US/images/products/4041/4041128_ba.jpg</backViewImage>      
+          <energyGuideImage/>      
+          <leftViewImage/>      
+          <accessoriesImage/>      
+          <remoteControlImage/>      
+          <rightViewImage/>      
+          <topViewImage/>      
+          <condition>New</condition>      
+          <inStorePickup>true</inStorePickup>      
+          <friendsAndFamilyPickup>false</friendsAndFamilyPickup>      
+          <homeDelivery>false</homeDelivery>      
+          <quantityLimit>2</quantityLimit>      
+          <bundledIn/>      
+          <color>Black</color>      
+          <depth>1/2&quot;</depth>      
+          <dollarSavings>0.00</dollarSavings>      
+          <tradeInValue>160.00</tradeInValue>      
+          <height>5-3/8&quot;</height>      
+          <orderable>Available</orderable>      
+          <weight>4.5 oz.</weight>      
+          <shippingWeight>0.65</shippingWeight>      
+          <width>2-3/4&quot;</width>      
+          <warrantyLabor>1 year</warrantyLabor>      
+          <warrantyParts>1 year</warrantyParts>      
+          <longDescription>This LG Nitro HD P930 mobile phone features a brilliant 4.5&quot; display with 1280 x 720 pixels to showcase movies and streaming media in stunning clarity. The 4G speed ensures fast downloads.Requires a minimum data service starting at $20/month.Early termination fees will be prorated, starting at $325 minus $10 for each full month of service commitment completed.</longDescription>      
+          <longDescriptionHtml>This LG Nitro HD P930 mobile phone features a brilliant 4.5&quot; display with 1280 x 720 pixels to showcase movies and streaming media in stunning clarity. The 4G speed ensures fast downloads.&lt;br /&gt;&lt;br /&gt;
+
+&lt;b&gt;Requires a minimum data service starting at $20/month.&lt;/b&gt;
+
+&lt;b&gt;Early termination fees will be prorated, starting at $325 minus $10 for each full month of service commitment completed.&lt;/b&gt;&lt;!-- ICON CODE --&gt;
+&lt;p&gt;
+&lt;a href=&quot;/site/Mobile-Phones/Operating+Systems+Educational+Page/pcmcat263000050002.c?id=pcmcat263000050002&quot;&gt;&lt;img src=&quot;http://images.bestbuy.com/BestBuy_US/en_US/images/abn/2011/pof/pcon/pdp_icons/icon_OS.gif&quot; style=&quot;float:left;padding:0 10px 10px 0;&quot; border=&quot;0&quot; alt=&quot;Operating system&quot; /&gt;&lt;/a&gt;
+&lt;/p&gt;
+&lt;!-- /ICON CODE --&gt;
+&lt;a href=&quot;http://images.bestbuy.com/BestBuy_US/en_US/images/abn/2011/pof/pcon/4g_learning/main.swf&quot; onclick=&quot;return popNew(this,720,468,'toolbar=0,location=0,directories=0,status=0,menubar=1,scrollbars=0,resizable=1');&quot;  title=&quot;Learn about 4G&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;http://images.bestbuy.com/BestBuy_US/en_US/images/abn/2011/pof/pcon/pdp_icons/icon_4G.gif&quot; style=&quot;float:left;padding:0 10px 10px 0;&quot; border=&quot;0&quot; title=&quot;Learn about 4G&quot; alt=&quot;Learn about 4G&quot; /&gt;&lt;/a&gt;</longDescriptionHtml>      
+          <details>            
+                  <detail>                  
+                          <name>Phone Style</name>                  
+                          <value>Bar phone</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Band and Mode</name>                  
+                          <value>4G</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Technology Details</name>                  
+                          <value>GSM/GPRS/EDGE|GSM/GPRS/EDGE|LTE|UMTS/HSPA/HSPA+</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Bluetooth-Enabled</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Talk Time</name>                  
+                          <value>Up to 7 hours</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Standby Time</name>                  
+                          <value>Up to 10.8 days</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Battery Type</name>                  
+                          <value>Lithium</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Vibrate Mode</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Customizable Ring Tones</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Voice Activated</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Downloadable Games</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Speed Dialing</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Color Display</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Internet/Email Capable</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Built-in Digital Camera</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>MMS</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Text Messaging/Instant Messaging</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Mobile Operating System</name>                  
+                          <value>Android</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>QWERTY Keyboard</name>                  
+                          <value>No</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Touch Screen</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Camera Resolution</name>                  
+                          <value>8.0MP; 1.3MP front-facing</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>MP3 Playback Capability</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Vibration Alert</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Speakerphone</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Graphics</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Downloadable Ringtones</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Changeable Faceplate</name>                  
+                          <value>No</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>External Caller ID</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Phonebook</name>                  
+                          <value>Up to 1,000 entries</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Device Manufacturer</name>                  
+                          <value>LG</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Wireless Capability</name>                  
+                          <value>4G</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Product Line</name>                  
+                          <value>Nitro</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>Dual Rear Front Cameras</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>LCD Screen</name>                  
+                          <value>Yes</value>                  
+                  </detail>            
+                  <detail>                  
+                          <name>LTE</name>                  
+                          <value>LTE</value>                  
+                  </detail>            
+          </details>      
+          <includedItemList>            
+                  <includedItem>LG Nitro HD 4G Mobile Phone</includedItem>            
+                  <includedItem>Lithium battery</includedItem>            
+                  <includedItem>Charger</includedItem>            
+                  <includedItem>16GB microSD card</includedItem>            
+                  <includedItem>Owner's manual</includedItem>            
+          </includedItemList>      
+          <features>            
+                  <feature>Stereo Bluetooth 3.0 compatibility
+For wireless communication with a Bluetooth-enabled device. HDMI, Wi-Fi Direct and DLNA technologies let you share with other compatible screens (MHL adapter required; not included).</feature>            
+                  <feature>4.5&quot; high-definition touch screen with 1280 x 720 pixels
+For an impressive display and simple navigation.</feature>            
+                  <feature>4GB internal memory and 16GB microSD card
+Let you store phone numbers, photos and videos.</feature>            
+                  <feature>8.0MP digital camera
+Features 1080p recording and playback with autofocus and LED flash for taking still photos. A front-facing 1.3MP camera lets you easily video chat.</feature>            
+                  <feature>E-mail and messaging sync
+Includes POP3/IMAP/EAS compatibility for wide-ranging support.</feature>            
+                  <feature>Hands-free speakerphone
+Allows you to keep your hands on the wheel while driving.</feature>            
+                  <feature>MP3 ringtones
+Personalize the sound of your phone.</feature>            
+                  <feature>Up to 7 hours talk time and up to 10.8 days standby
+With included lithium battery.</feature>            
+                  <feature>Android 2.3.4 operating system
+Allows you to stay connected and productive on the go.</feature>            
+                  <feature>4G speed
+Offers quick and easy connection speeds.</feature>            
+                  <feature>Wi-Fi 802.11a/b/g/n network
+For Internet capability on the go and mobile hotspot connectivity for up to 5 devices (additional fees may apply).</feature>            
+          </features>      
+          <offers/>      
+          <marketplace>false</marketplace>      
+          <listingId/>      
+          <sellerId/>      
+  </product>
+</products>

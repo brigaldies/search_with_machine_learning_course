@@ -24,9 +24,17 @@ def create_app(test_config=None):
             print("No prior clicks to load.  This may effect quality. Run ltr-end-to-end.sh per week 2 if you want")
         #print(app.config)
         SYNS_MODEL_LOC = os.environ.get("SYNONYMS_MODEL_LOC", "/workspace/datasets/fasttext/syns_model.bin")
-        print("SYNS_MODEL_LOC: %s" % SYNS_MODEL_LOC)
+        print("SYNONYMS_MODEL_LOC: %s" % SYNS_MODEL_LOC)
         if SYNS_MODEL_LOC and os.path.isfile(SYNS_MODEL_LOC):
             app.config["syns_model"] = fasttext.load_model(SYNS_MODEL_LOC)
+
+            # TODO: Get the settings from an env. variable
+            app.config["syns_model_stemmed"] = False
+            app.config["syns_model_nn_k"] = 10
+
+            SYNS_MODEL_KNN_THRESHOLD = os.environ.get("SYNS_MODEL_KNN_THRESHOLD", "0.90")
+            app.config["syns_model_nn_threshold"] = float(SYNS_MODEL_KNN_THRESHOLD)
+            print("SYNS_MODEL_KNN_THRESHOLD: %s" % SYNS_MODEL_KNN_THRESHOLD)
         else:
             print("No synonym model found.  Have you run fasttext?")
         app.config["index_name"] = os.environ.get("INDEX_NAME", "bbuy_annotations")

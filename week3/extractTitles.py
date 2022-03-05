@@ -18,6 +18,8 @@ general.add_argument("--output", default="/workspace/datasets/fasttext/titles.tx
 # Consuming all of the product data takes a while. But we still want to be able to obtain a representative sample.
 general.add_argument("--sample_rate", default=0.1, type=float, help="The rate at which to sample input (default is 0.1)")
 
+general.add_argument("--stem", action="store_true", help='Stem input')
+
 args = parser.parse_args()
 output_file = args.output
 path = Path(output_file)
@@ -30,8 +32,7 @@ if args.input:
 
 sample_rate = args.sample_rate
 
-# TODO: Add argument
-stem = False
+stem = args.stem
 
 def transform_training_data(name):
     if stem:
@@ -43,7 +44,9 @@ def transform_training_data(name):
     return analyzed_name
 
 # Directory for product data
-
+titles_count = 0
+print(f"Reading products from {directory}")
+print(f"Sample rate={sample_rate}, stem={stem}")
 print("Writing results to %s" % output_file)
 with open(output_file, 'w') as output:
     for filename in os.listdir(directory):
@@ -57,3 +60,6 @@ with open(output_file, 'w') as output:
                 if (child.find('name') is not None and child.find('name').text is not None):
                     name = transform_training_data(child.find('name').text)
                     output.write(name + "\n")
+                    titles_count += 1
+
+print(f"{titles_count} titles extracted.")

@@ -265,6 +265,20 @@
 
         }
       },
+      "name_synonyms": {
+        "type": "text",
+        "analyzer": "english",
+        "fields": {
+          "hyphens": {
+            "type": "text",
+            "analyzer": "smarter_hyphens"
+          },
+          "suggest": {
+            "type": "completion"
+          }
+
+        }
+      },
       "onSale": {
         "type": "boolean"
       },

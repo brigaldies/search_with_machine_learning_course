@@ -1,7 +1,13 @@
 input {
   file {
     path => ["/workspace/search_with_machine_learning_course/data/phone_products/phone_products.xml"]  #Put in the path to the ungzipped/untarred product data.  To start smaller, simply select a smaller number of files or copy a few files to a different directory.
-    start_position => "beginning"
+    #start_position => "beginning"
+    file_chunk_size => 52428800
+    mode => "read"
+    exit_after_read => true
+    sincedb_path => "/dev/null"
+    file_completed_action => "log"
+    file_completed_log_path => "/dev/null"
     codec => multiline {
             pattern => "<product>"
             negate => "true"
@@ -76,6 +82,7 @@ input {
         ]
       }
 
+      # curl -X POST http://localhost:5000/documents/annotate -H 'cache-control: no-cache' -H 'content-type: application/json'   -H 'postman-token: 40444e6d-f1e7-ab54-5edd-9d21c3ecc76c'   -d '{"name": "rocketfish mobile hard shell case for htc shift mobile phones black"}'
       http{
         url => "http://localhost:5000/documents/annotate"
         body => {
@@ -122,6 +129,7 @@ input {
 
     }
 output {
+  # stdout {}
   opensearch {
     hosts => ["https://localhost:9200"]
     index => "bbuy_annotations"

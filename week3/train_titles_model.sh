@@ -1,1 +1,1 @@
-~/fastText-0.9.2/fasttext skipgram -minCount 10 -input /workspace/datasets/fasttext/titles.txt -output /workspace/datasets/fasttext/title_model
+~/fastText-0.9.2/fasttext skipgram -minCount 1 -input /workspace/datasets/fasttext/titles-stemmed.txt -output /workspace/datasets/fasttext/title_stemmed_model
