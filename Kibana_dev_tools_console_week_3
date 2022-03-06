@@ -1,0 +1,199 @@
+GET _search
+{
+  "query": {
+    "match_all": {}
+  }
+}
+
+GET /_cat/indices
+
+GET /bbuy_annotations/_mapping
+GET /bbuy_annotations/_settings
+POST /bbuy_annotations/_forcemerge
+GET /bbuy_annotations/_count
+GET /bbuy_annotations/_search?q=*
+GET /bbuy_annotations/_search?q=name:oakley
+GET /bbuy_annotations/_search
+{
+  "query": {
+    "bool": {
+      "should": [
+        {
+          "match_all": {}
+        }
+      ],
+      "filter": {
+        "bool": {
+          "must": [
+            {
+              "exists": {
+                "field": "name_synonyms"
+              }
+            },
+            {
+              
+                "wildcard": {
+                  "name_synonyms": {
+                    "value": "*"
+                  }
+                }
+              }
+            
+          ]
+        }
+      }
+    }
+  },
+  "_source": [
+    "name",
+    "name_synonyms"
+  ]
+}
+
+GET /bbuy_annotations/_search
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "match": {
+            "name": "fabshell"
+          }
+        }
+      ]
+    }
+  },
+  "_source": [
+    "name",
+    "name_synonyms",
+    "manufacturer.keyword"
+  ]
+}
+
+GET /bbuy_annotations/_search
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "match": {
+            "name": "charger"
+          }
+        },
+        {
+          "match": {
+            "name_synonyms": "energi"
+          }
+        }
+      ]
+    }
+  },
+  "_source": [
+    "name",
+    "name_synonyms"
+  ]
+}
+
+GET /bbuy_annotations/_search?explain=true
+{
+  "query": {
+    "bool": {
+      "should": [
+        {
+          "match": {
+            "name": {
+              "query": "energi",
+              "fuzziness": "1",
+              "prefix_length": 2,
+              "boost": 0.01
+            }
+          }
+        },
+        {
+          "match_phrase": {
+            "name.hyphens": {
+              "query": "energi",
+              "slop": 1,
+              "boost": 50
+            }
+          }
+        },
+        {
+          "multi_match": {
+            "query": "energi",
+            "type": "phrase",
+            "slop": "6",
+            "minimum_should_match": "2<75%",
+            "fields": [
+              "name^10",
+              "name_synonyms^10",
+              "name.hyphens^10",
+              "shortDescription^5",
+              "longDescription^5",
+              "department^0.5",
+              "sku",
+              "manufacturer",
+              "features",
+              "categoryPath"
+            ]
+          }
+        }
+      ],
+      "filter": [
+        {
+          "match": {
+            "name_synonyms": "energi"
+          }
+        }
+      ]
+    }
+  },
+  "_source": [
+    "name",
+    "name_synonyms"
+  ]
+}
+
+GET /bbuy_annotations/_search
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "match": {
+            "name": "energi"
+          }
+        },
+        {
+          "match": {
+            "name_synonyms": "energi"
+          }
+        }
+      ],
+      "filter": {
+        "bool": {
+          "must": [
+            {
+              "exists": {
+                "field": "name_synonyms"
+              }
+            },
+            {
+              
+                "wildcard": {
+                  "name_synonyms": {
+                    "value": "*"
+                  }
+                }
+              }
+            
+          ]
+        }
+      }
+    }
+  },
+  "_source": [
+    "name",
+    "name_synonyms"
+  ]
+}
