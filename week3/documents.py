@@ -18,19 +18,20 @@ bp = Blueprint('documents', __name__, url_prefix='/documents')
 # Take in a JSON document and return a JSON document
 @bp.route('/annotate', methods=['POST'])
 def annotate():
+    debug = False
     if request.mimetype == 'application/json':
         the_doc = request.get_json()
         response = {}
         cat_model = current_app.config.get("cat_model", None) # see if we have a category model
         syns_model = current_app.config.get("syns_model", None) # see if we have a synonyms/analogies model
         # We have a map of fields to annotate.  Do POS, NER on each of them
-        sku = the_doc["sku"]
+        sku = the_doc["sku"] if "sku" in the_doc.keys() else "n/a"
         for item in the_doc:
             the_text = the_doc[item]
             if the_text is not None and the_text.find("%{") == -1:
                 if item == "name":
                     if syns_model is not None:
-                        print("IMPLEMENTING: call nearest_neighbors on your syn model and return it as `name_synonyms`")
+                        if debug: print(f"[sku={sku}] IMPLEMENTED: call nearest_neighbors on your syn model and return it as `name_synonyms`")
                         # Get the nearest neighbors
                         titles_model = current_app.config["syns_model"]
                         stem = current_app.config["syns_model_stemmed"]
@@ -38,12 +39,12 @@ def annotate():
                         nn_threshold = current_app.config["syns_model_nn_threshold"]
                         if stem:
                             analyzed_text = " ".join([stemmer.stem(token.lower()) for token in tokenizer.tokenize(the_text)])
-                            print(f"\ttransform: {the_text} --> {analyzed_text}")
+                            print(f"\t[sku={sku}] transform: {the_text} --> {analyzed_text}")
                         else:
                             analyzed_text = " ".join([token.lower() for token in tokenizer.tokenize(the_text)])
 
                         neighbors = titles_model.get_nearest_neighbors(analyzed_text, k=nn_k)
-                        print(f"\n{analyzed_text} (raw={the_text}, neighbors (k={nn_k}):")
+                        print(f"\n[sku={sku}] {analyzed_text} (raw={the_text}, neighbors (k={nn_k}):")
                         nn_list = []
                         for neighbor in neighbors:
                             neighbor_score = neighbor[0]
