@@ -76,7 +76,7 @@ for filename in os.listdir(directory):
                 # Replace newline chars with spaces so fastText doesn't complain
                 product_name = child.find('name').text.replace('\n', ' ')
 
-                # Choose last element in categoryPath as the leaf categoryId
+                # Determine the hierarchy path extraction depth based on command-line arg "----categories_depth"
                 category_path_depth = len(child.find('categoryPath'))
                 extract_category_depth = category_path_depth # Max depth by default
                 if categories_depth > 0:
