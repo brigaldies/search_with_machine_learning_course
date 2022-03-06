@@ -144,6 +144,61 @@ def create_simple_baseline(user_query, click_prior_query, filters, sort="_score"
         add_aggs(query_obj)
     return query_obj
 
+
+def create_name_query(user_query, click_prior_query, filters, sort="_score", sortDir="desc", size=10, include_aggs=True, highlight=True, source=None):
+
+    query_obj = {
+        'size': size,
+        "sort":[
+            {sort: {"order": sortDir}}
+        ],
+        "query": {
+
+            "bool": {
+                "must": [
+
+                ],
+                "should":[ 
+                    {
+                      "multi_match": {
+                            "query": user_query,
+                            "type": "phrase",
+                            "slop": "6",
+                            "minimum_should_match": "2<75%",
+                            "fields": [
+                                "name^10", 
+                                "name_synonyms^10",
+                            ]
+                       }
+                    }
+                ],
+                "filter": filters  #
+            }
+
+        }
+    }
+    if user_query == "*" or user_query == "#":
+        #replace the bool
+        try:
+            query_obj["query"] = {"match_all": {}}
+        except:
+            print("Couldn't replace query for *")
+    if highlight:
+        query_obj["highlight"] = {
+            "fields": {
+                "name": {},
+                "shortDescription": {},
+                "longDescription": {}
+            }
+        }
+    if source is not None: # otherwise use the default and retrieve all source
+        query_obj["_source"] = source
+
+    if include_aggs:
+        add_aggs(query_obj)
+    return query_obj    
+
+
 # Hardcoded query here.  Better to use search templates or other query config.
 def create_query(user_query, click_prior_query, filters, sort="_score", sortDir="desc", size=10, include_aggs=True, highlight=True, source=None):
     query_obj = {
@@ -293,6 +348,12 @@ def add_aggs(query_obj):
         "department": {
             "terms": {
                 "field": "department.keyword",
+                "min_doc_count": 1
+            }
+        },
+        "manufacturer": {
+            "terms": {
+                "field": "manufacturer.keyword",
                 "min_doc_count": 1
             }
         },

@@ -104,7 +104,7 @@ def query():
             query_obj = qu.create_query(user_query, click_prior, [], sort, sortDir, size=100)  # We moved create_query to a utility class so we could use it elsewhere.
             print("Hand tuned q: %s" % query_obj)
         else:
-            query_obj = qu.create_simple_baseline(user_query, click_prior, [], sort, sortDir, size=100)  # We moved create_query to a utility class so we could use it elsewhere.
+            query_obj = qu.create_name_query(user_query, click_prior, [], sort, sortDir, size=100)  # We moved create_query to a utility class so we could use it elsewhere.
             print("Plain ol q: %s" % query_obj)
     elif request.method == 'GET':  # Handle the case where there is no query or just loading the page
         user_query = request.args.get("query", "*")

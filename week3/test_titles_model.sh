@@ -8,7 +8,7 @@ MODEL_FILE="/workspace/datasets/fasttext/title_model.bin"
 THRESHOLD="0.90"
 STEM=""
 
-while getopts ':m:s:t:' c
+while getopts ':m:t:s' c
 do
   case $c in
     m) MODEL_FILE=$OPTARG ;;
