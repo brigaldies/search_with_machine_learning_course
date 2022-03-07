@@ -1388,7 +1388,109 @@ energi (raw=energi) neighbors (k=10):
 
 ### Ingestion of Synonyms
 
-TO DOCUMENT
+The following changes were made to support ingestion of synonyms:
+
+- Added the field "name_synpnyms" in OpenSearch to support text searching:
+```json
+      "name_synonyms": {
+        "type": "text",
+        "analyzer": "english",
+        "fields": {
+          "hyphens": {
+            "type": "text",
+            "analyzer": "smarter_hyphens"
+          },
+          "suggest": {
+            "type": "completion"
+          }
+
+        }
+      }
+```
+
+- The annotation request in documents.py was implemented:
+```python
+def annotate():
+    debug = False
+    if request.mimetype == 'application/json':
+        the_doc = request.get_json()
+        response = {}
+        cat_model = current_app.config.get("cat_model", None) # see if we have a category model
+        syns_model = current_app.config.get("syns_model", None) # see if we have a synonyms/analogies model
+        # We have a map of fields to annotate.  Do POS, NER on each of them
+        sku = the_doc["sku"] if "sku" in the_doc.keys() else "n/a"
+        for item in the_doc:
+            the_text = the_doc[item]
+            if the_text is not None and the_text.find("%{") == -1:
+                if item == "name":
+                    if syns_model is not None:
+                        if debug: print(f"[sku={sku}] IMPLEMENTED: call nearest_neighbors on your syn model and return it as `name_synonyms`")
+                        # Get the nearest neighbors
+                        titles_model = current_app.config["syns_model"]
+                        stem = current_app.config["syns_model_stemmed"]
+                        nn_k = current_app.config["syns_model_nn_k"]
+                        nn_threshold = current_app.config["syns_model_nn_threshold"]
+                        if stem:
+                            analyzed_text = " ".join([stemmer.stem(token.lower()) for token in tokenizer.tokenize(the_text)])
+                            print(f"\t[sku={sku}] transform: {the_text} --> {analyzed_text}")
+                        else:
+                            analyzed_text = " ".join([token.lower() for token in tokenizer.tokenize(the_text)])
+
+                        neighbors = titles_model.get_nearest_neighbors(analyzed_text, k=nn_k)
+                        print(f"\n[sku={sku}] {analyzed_text} (raw={the_text}, neighbors (k={nn_k}):")
+                        nn_list = []
+                        for neighbor in neighbors:
+                            neighbor_score = neighbor[0]
+                            neighbor_text = neighbor[1]
+                            if neighbor_score >= nn_threshold:
+                                print(f"\t{neighbor_text} ({neighbor_score}) [>= threshold {nn_threshold}]")
+                                nn_list.append(neighbor_text)
+                            else:
+                                print(f"\t{neighbor_text} ({neighbor_score})")
+                        
+                        syns_text = ' '.join(nn_list)
+                        print(f"\tsyns_text={syns_text}")
+                        response[f'{item}_synonyms'] = syns_text
+        return jsonify(response)
+```
+- The annotation service was run on port 5000:
+```shell
+gitpod /workspace/search_with_machine_learning_course $ pyenv activate search_with_ml_week3
+pyenv-virtualenv: prompt changing will be removed from future release. configure `export PYENV_VIRTUALENV_DISABLE_PROMPT=1' to simulate the behavior.
+(search_with_ml_week3) gitpod /workspace/search_with_machine_learning_course $ export FLASK_ENV=development
+(search_with_ml_week3) gitpod /workspace/search_with_machine_learning_course $ export FLASK_APP=week3
+(search_with_ml_week3) gitpod /workspace/search_with_machine_learning_course $ export SYNONYMS_MODEL_LOC=/workspace/datasets/fasttext/phone_model.bin
+(search_with_ml_week3) gitpod /workspace/search_with_machine_learning_course $ flask run --port 5000
+ * Serving Flask app 'week3' (lazy loading)
+ * Environment: development
+ * Debug mode: on
+PRIOR CLICKS: /workspace/ltr_output/train.csv
+No prior clicks to load.  This may effect quality. Run ltr-end-to-end.sh per week 2 if you want
+SYNONYMS_MODEL_LOC: /workspace/datasets/fasttext/phone_model.bin
+Warning : `load_model` does not return WordVectorModel or SupervisedModel any more, but a `FastText` object which is very similar.
+SYNS_MODEL_KNN_THRESHOLD: 0.90
+[nltk_data] Downloading package punkt to /home/gitpod/nltk_data...
+[nltk_data]   Unzipping tokenizers/punkt.zip.
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 239-177-670
+PRIOR CLICKS: /workspace/ltr_output/train.csv
+No prior clicks to load.  This may effect quality. Run ltr-end-to-end.sh per week 2 if you want
+SYNONYMS_MODEL_LOC: /workspace/datasets/fasttext/phone_model.bin
+Warning : `load_model` does not return WordVectorModel or SupervisedModel any more, but a `FastText` object which is very similar.
+SYNS_MODEL_KNN_THRESHOLD: 0.90
+[nltk_data] Downloading package punkt to /home/gitpod/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+```
+The annotation service was tested with a curl command:
+
+```shell
+gitpod /workspace/search_with_machine_learning_course $ curl -XPOST http://localhost:5000/documents/annotate -H "Content-Type:application/json" -d '{"name":"iphone"}'
+{
+  "name_synonyms": "apple"
+}
+```
 
 ### How did you transform the product names (if different than previously)?
 
@@ -1508,6 +1610,20 @@ However, the results with synonyms-matching do NOT contain the Oakley brand beca
 
 **Test #3: q=bluetrek**
 
+**Without Synonyms:**
+
+Recall=6
+
+![q=bluetrek](./images/q=bluetrek_6_hits_without_synonyms.png)
+
+**With Synonyms:**
+
+Recall=260
+
+![q=bluetrek](./images/q=bluetrek_260_hits_with_synonyms.png)
+
+We can also see that the neighbors for "BlueAnt bluetooth headsets" doe contain the "bluetrek" term:
+
 ```shell
 (search_with_ml_week3) gitpod /workspace/search_with_machine_learning_course $ curl -XPOST http://localhost:5000/documents/annotate -H "Content-Type:application/json" -d '{"name": "BlueAnt bluetooth headsets" }'
 {
@@ -1517,8 +1633,26 @@ However, the results with synonyms-matching do NOT contain the Oakley brand beca
 
 **Test #4: q=energi**
 
+**Without Synonyms:**
 
+Recall=7
 
+![q=energi](./images/q=energi_7_hits_without_synonyms.png)
+
+**With Synonyms:**
+
+Recall=10
+
+![q=energi](./images/q=energi_10_hits_with_synonyms.png)
+
+We can also see that the neighbors for "Energizer - EnergiStick Mini USB Key Ring Charger" doe contain the "energi" term:
+
+```shell
+gitpod /workspace/search_with_machine_learning_course $ curl -XPOST http://localhost:5000/documents/annotate -H "Content-Type:application/json" -d '{"name":"Energizer - EnergiStick Mini USB Key Ring Charger"}'
+{
+  "name_synonyms": "energi energizer"
+}
+```
 
 ## For classifying Reviews
 
