@@ -1597,7 +1597,7 @@ Recall=6
 
 Recall=14
 
-![q=hurley](./images/q=hurley_14_hits_with_synonyms.png)
+![q=hurley](./images/q=hurkey_14_hits_with_synonyms.png)
 
 However, the results with synonyms-matching do NOT contain the Oakley brand because the "Oakley case for iPhone" 10-NN neigbors do NOT include the term "hurley", as shown by the annotation request shown below:
 
