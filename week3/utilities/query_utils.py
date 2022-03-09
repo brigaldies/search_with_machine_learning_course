@@ -81,15 +81,15 @@ def create_simple_baseline(user_query, click_prior_query, filters, sort="_score"
                             "slop": "6",
                             "minimum_should_match": "2<75%",
                             "fields": [
-                                "name^10", 
+                                "name^10",
                                 "name_synonyms^10",
-                                "name.hyphens^10", 
+                                "name.hyphens^10",
                                 "shortDescription^5",
-                                "longDescription^5", 
-                                "department^0.5", 
-                                "sku", 
-                                "manufacturer", 
-                                "features", 
+                                "longDescription^5",
+                                "department^0.5",
+                                "sku",
+                                "manufacturer",
+                                "features",
                                 "categoryPath"
                             ]
                        }
@@ -110,6 +110,7 @@ def create_simple_baseline(user_query, click_prior_query, filters, sort="_score"
                        }
                     }
                 ],
+                "minimum_should_match": 1,
                 "filter": filters  #
             }
 
@@ -126,9 +127,10 @@ def create_simple_baseline(user_query, click_prior_query, filters, sort="_score"
     if user_query == "*" or user_query == "#":
         #replace the bool
         try:
+            query_obj["query"].pop("bool")
             query_obj["query"] = {"match_all": {}}
         except:
-            print("Couldn't replace query for *")
+            pass
     if highlight:
         query_obj["highlight"] = {
             "fields": {
@@ -158,7 +160,7 @@ def create_name_query(user_query, click_prior_query, filters, sort="_score", sor
                 "must": [
 
                 ],
-                "should":[ 
+                "should":[
                     {
                       "multi_match": {
                             "query": user_query,
@@ -166,7 +168,7 @@ def create_name_query(user_query, click_prior_query, filters, sort="_score", sor
                             "slop": "6",
                             "minimum_should_match": "2<75%",
                             "fields": [
-                                "name^10", 
+                                "name^10",
                                 "name_synonyms^10",
                             ]
                        }
@@ -196,7 +198,7 @@ def create_name_query(user_query, click_prior_query, filters, sort="_score", sor
 
     if include_aggs:
         add_aggs(query_obj)
-    return query_obj    
+    return query_obj
 
 
 # Hardcoded query here.  Better to use search templates or other query config.
@@ -240,7 +242,7 @@ def create_query(user_query, click_prior_query, filters, sort="_score", sortDir=
                                     "slop": "6",
                                     "minimum_should_match": "2<75%",
                                     "fields": ["name^10", "name.hyphens^10", "shortDescription^5",
-                                       "longDescription^5", "department^0.5", "sku", "manufacturer", "features", "categoryPath", "name_synonyms"]
+                                       "longDescription^5", "department^0.5", "sku", "manufacturer", "features", "categoryPath", "name_analogies"]
                                }
                             },
                             {
@@ -259,6 +261,7 @@ def create_query(user_query, click_prior_query, filters, sort="_score", sortDir=
                                }
                             }
                         ],
+                        "minimum_should_match": 1,
                         "filter": filters  #
                     }
                 },
