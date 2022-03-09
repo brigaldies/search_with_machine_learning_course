@@ -1,3 +1,5 @@
+import warnings
+warnings.filterwarnings("ignore", category=FutureWarning)
 import os
 import argparse
 import xml.etree.ElementTree as ET
@@ -7,7 +9,11 @@ import csv
 
 # Useful if you want to perform stemming.
 import nltk
+nltk.download("punkt")
+tokenizer = nltk.RegexpTokenizer(r"\w+")
 stemmer = nltk.stem.PorterStemmer()
+
+DEBUG = True
 
 categories_file_name = r'/workspace/datasets/product_data/categories/categories_0001_abcat0010000_to_pcmcat99300050000.xml'
 
@@ -48,9 +54,20 @@ parents_df = pd.DataFrame(list(zip(categories, parents)), columns =['category', 
 df = pd.read_csv(queries_file_name)[['category', 'query']]
 df = df[df['category'].isin(categories)]
 
-# IMPLEMENT ME: Convert queries to lowercase, and optionally implement other normalization, like stemming.
+# IMPLEMENTED: Convert queries to lowercase, and optionally implement other normalization, like stemming.
+def normalize_query(query_text):
+    normalized_query = " ".join([stemmer.stem(token.lower()) for token in tokenizer.tokenize(query_text)])
+    if DEBUG: print(f"Query normalization: {query_text} --> {normalized_query}")
+    return normalized_query
 
-# IMPLEMENT ME: Roll up categories to ancestors to satisfy the minimum number of queries per category.
+df['normalized_query'] = df.apply(lambda row: normalize_query(row['query']), axis = 1)
+
+df['parent_category'] = df.apply(lambda row: parents[categories.index(row['category'])], axis = 1)
+
+# IMPLEMENTING: Roll up categories to ancestors to satisfy the minimum number of queries per category.
+grouped_by_cat_df = df[['category', 'query']].groupby(['category'], as_index = False).count()
+grouped_by_cat_df.columns = ['category', 'query_count']
+with_query_count_df = df.merge(grouped_by_cat_df, 'left', 'category', indicator = True)
 
 # Create labels in fastText format.
 df['label'] = '__label__' + df['category']
