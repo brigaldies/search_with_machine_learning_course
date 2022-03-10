@@ -23,7 +23,7 @@ for child in root:
     for cat in catPath:
         if catPathStr != '':
             catPathStr = catPathStr + ' > '
-        catPathStr = catPathStr + cat.find('name').text
+        catPathStr = catPathStr + f"{cat.find('name').text} [{cat.find('id').text}]"
         depth = depth + 1
         catPathStrs.add(catPathStr)
         if maxDepth > 0 and depth == maxDepth:

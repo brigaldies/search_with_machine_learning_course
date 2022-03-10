@@ -13,7 +13,7 @@ nltk.download("punkt")
 tokenizer = nltk.RegexpTokenizer(r"\w+")
 stemmer = nltk.stem.PorterStemmer()
 
-DEBUG = True
+DEBUG = False
 
 categories_file_name = r'/workspace/datasets/product_data/categories/categories_0001_abcat0010000_to_pcmcat99300050000.xml'
 
@@ -52,7 +52,27 @@ parents_df = pd.DataFrame(list(zip(categories, parents)), columns =['category', 
 
 # Read the training data into pandas, only keeping queries with non-root categories in our category tree.
 df = pd.read_csv(queries_file_name)[['category', 'query']]
+
+# Keep queries with leaf categories only
 df = df[df['category'].isin(categories)]
+
+# Grab the categories' parents via a merge
+# df = df.merge(parents_df, 'left', 'category', indicator = True)
+
+# Data QC: Assert that every category has a parent
+#assert df[df['_merge'] != 'both'].shape[0] == 0
+#df.drop(columns=['_merge'], inplace = True)
+
+# Initialize the LABEL to the category as read from train.csv
+df['label'] = df['category']
+
+# Rollup audit column
+df['rollups'] = df['label']
+
+# Get label's parent
+df = df.merge(parents_df, 'left', left_on = 'label', right_on = 'category', suffixes = (None, "_merged_right"), indicator = True)
+assert df[(df['_merge'] != 'both') & (df['label'] != root_category_id)].shape[0] == 0
+df.drop(columns=['_merge', 'category_merged_right'], inplace = True) 
 
 # IMPLEMENTED: Convert queries to lowercase, and optionally implement other normalization, like stemming.
 def normalize_query(query_text):
@@ -62,12 +82,99 @@ def normalize_query(query_text):
 
 df['normalized_query'] = df.apply(lambda row: normalize_query(row['query']), axis = 1)
 
-df['parent_category'] = df.apply(lambda row: parents[categories.index(row['category'])], axis = 1)
+# [BEGIN] IMPLEMENTING: Roll up categories to ancestors to satisfy the minimum number of queries per category.
+MAX_LOOP_COUNT = 10
+QUERY_COUNT_THRESHOLD = 100
 
-# IMPLEMENTING: Roll up categories to ancestors to satisfy the minimum number of queries per category.
-grouped_by_cat_df = df[['category', 'query']].groupby(['category'], as_index = False).count()
-grouped_by_cat_df.columns = ['category', 'query_count']
-with_query_count_df = df.merge(grouped_by_cat_df, 'left', 'category', indicator = True)
+# First, "walk" the loop to see what needs to be done
+
+# --------------------------
+# 1st pass
+# Group by label
+grouped_by_label_df = df[['label', 'query']].groupby(['label'], as_index = False).count()
+grouped_by_label_df.columns = ['label', 'query_count']
+df = df.merge(grouped_by_label_df, 'left', 'label', indicator = True)
+
+# Data QC: Assert that every category has a query count
+assert df[df['_merge'] != 'both'].shape[0] == 0
+df.drop(columns=['_merge'], inplace = True)
+
+# First pass
+labels_under_threshold_df = grouped_by_label_df[grouped_by_label_df['query_count'] < QUERY_COUNT_THRESHOLD]
+df = df.merge(labels_under_threshold_df, 'left', 'label', suffixes = (None, "_under_threshold"), indicator = True)
+
+# Roll up!
+# Set the label to the parent when the category's query count < THRESHOLD
+df['label'] = df.apply(lambda row: row['parent'] if (row['_merge'] == 'both' and not pd.isnull(row['parent'])) else row['label'], axis = 1)
+df['rollups'] = df.apply(lambda row: row['parent'] + " > " + row['rollups'] if (row['_merge'] == 'both' and not pd.isnull(row['parent'])) else row['rollups'], axis = 1)
+
+# --------------------------
+# 2nd pass
+# Reset
+df.drop(columns=['parent', '_merge', 'query_count', 'query_count_under_threshold'], inplace = True)
+
+# Update label's parent
+df = df.merge(parents_df, 'left', left_on = 'label', right_on = 'category', suffixes = (None, "_merged_right"), indicator = True)
+assert df[(df['_merge'] != 'both') & (df['label'] != root_category_id)].shape[0] == 0
+df.drop(columns=['_merge', 'category_merged_right'], inplace = True) 
+
+# Group by label
+grouped_by_label_pass_2_df = df[['label', 'query']].groupby(['label'], as_index = False).count()
+grouped_by_label_pass_2_df.columns = ['label', 'query_count']
+df = df.merge(grouped_by_label_pass_2_df, 'left', 'label', indicator = True)
+assert df[df['_merge'] != 'both'].shape[0] == 0
+df.drop(columns=['_merge'], inplace = True)
+
+# Find the under-threshold labels
+labels_under_threshold_pass_2_df = grouped_by_label_pass_2_df[grouped_by_label_pass_2_df['query_count'] < QUERY_COUNT_THRESHOLD]
+df = df.merge(labels_under_threshold_pass_2_df, 'left', 'label', suffixes = (None, "_under_threshold"), indicator = True)
+
+# Roll up
+df['label'] = df.apply(lambda row: row['parent'] if (row['_merge'] == 'both' and not pd.isnull(row['parent'])) else row['label'], axis = 1)
+df['rollups'] = df.apply(lambda row: row['parent'] + " > " + row['rollups'] if (row['_merge'] == 'both' and not pd.isnull(row['parent'])) else row['rollups'], axis = 1)
+
+# End walking the loop
+
+loop_count = 0
+while loop_count < MAX_LOOP_COUNT:
+    loop_count += 1
+    print(f"Loop {loop_count}:")
+
+    # Get (first time in the loop)/update (subsequent loops) label's parent
+    df = df.merge(parents_df, 'left', left_on = 'label', right_on = 'category', suffixes = (None, "_merged_right"), indicator = True)
+    assert df[(df['_merge'] != 'both') & (df['label'] != root_category_id)].shape[0] == 0
+    df.drop(columns=['_merge', 'category_merged_right'], inplace = True) 
+
+    # Group by label to count the number of queries per label so far
+    grouped_by_label_df = df[['label', 'query']].groupby(['label'], as_index = False).count()
+    grouped_by_label_df.columns = ['label', 'query_count']
+    df = df.merge(grouped_by_label_df, 'left', 'label', indicator = True)
+    assert df[df['_merge'] != 'both'].shape[0] == 0
+    df.drop(columns=['_merge'], inplace = True)
+
+    # Identify the labels whose query count < threshold
+    labels_under_threshold_df = grouped_by_label_df[grouped_by_label_df['query_count'] < QUERY_COUNT_THRESHOLD]
+
+    # Break is all labels' query counts are > threshold
+    if labels_under_threshold_df.shape[0] == 0:
+        print(f"\tNo label left < {QUERY_COUNT_THRESHOLD}")
+        break
+    else:
+        print(f"\t{labels_under_threshold_df.shape[0]} labels' query counts are < {QUERY_COUNT_THRESHOLD}")
+
+    df = df.merge(labels_under_threshold_df, 'left', 'label', suffixes = (None, "_under_threshold"), indicator = True)
+
+    # Roll up: Set the label to the parent when the category's query count < threshold
+    print(f"\tRolling up...")
+    df['label'] = df.apply(lambda row: row['parent'] if (row['_merge'] == 'both' and not pd.isnull(row['parent'])) else row['label'], axis = 1)
+    # 'rollups' is an audit column to show the successive rollup(s)
+    print(f"\tAuditing...")
+    df['rollups'] = df.apply(lambda row: row['parent'] + " > " + row['rollups'] if (row['_merge'] == 'both' and not pd.isnull(row['parent'])) else row['rollups'], axis = 1)
+
+    # Reset
+    df.drop(columns=['parent', '_merge', 'query_count', 'query_count_under_threshold'], inplace = True)
+
+# [END] IMPLEMENTING: Roll up categories to ancestors to satisfy the minimum number of queries per category.
 
 # Create labels in fastText format.
 df['label'] = '__label__' + df['category']
