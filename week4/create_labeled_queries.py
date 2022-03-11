@@ -80,7 +80,7 @@ def prune_categories(queries_file_name, parents_df, max_loop_count = -1, query_c
     df['label'] = df['category']
 
     # Rollup audit column
-    df['rollups'] = df['label']
+    df['audit'] = df['label']
 
     loop_count = 0
     early_exit = True
@@ -121,9 +121,9 @@ def prune_categories(queries_file_name, parents_df, max_loop_count = -1, query_c
         # Roll up: Set the label to the parent when the category's query count < threshold
         print(f"\t\tRolling up...")
         df['label'] = df.apply(lambda row: row['parent'] if (row['_merge'] == 'both' and not pd.isnull(row['parent'])) else row['label'], axis = 1)
-        # 'rollups' is an audit column to show the successive rollup(s)
+        # 'audit' is an audit column to show the successive rollup(s)
         print(f"\t\tAuditing...")
-        df['rollups'] = df.apply(lambda row: row['parent'] + " > " + row['rollups'] if (row['_merge'] == 'both' and not pd.isnull(row['parent'])) else row['rollups'], axis = 1)
+        df['audit'] = df.apply(lambda row: row['parent'] + " > " + row['audit'] if (row['_merge'] == 'both' and not pd.isnull(row['parent'])) else row['audit'], axis = 1)
 
         # Reset
         df.drop(columns=['parent', '_merge', 'query_count', 'query_count_under_threshold'], inplace = True)
