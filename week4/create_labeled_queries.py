@@ -31,7 +31,7 @@ args = parser.parse_args()
 output_file_name = args.output
 min_queries = int(args.min_queries)
 
-print(f"min_queries:{min_queries}, output_file_name={output_file_name}")
+print(f"min_queries={min_queries}, output_file_name={output_file_name}")
 
 # The root category, named Best Buy with id cat00000, doesn't have a parent.
 root_category_id = 'cat00000'
@@ -52,7 +52,7 @@ for child in root:
         categories.append(leaf_id)
         parents.append(cat_path_ids[-2])
 
-print(f"Processed {len(categories)} categories in {datetime.timedelta(seconds=time.time() - time_start)}")
+print(f"Processed {len(categories)} categories from {categories_file_name} in {datetime.timedelta(seconds=time.time() - time_start)}")
 
 parents_df = pd.DataFrame(list(zip(categories, parents)), columns =['category', 'parent'])
 
@@ -102,6 +102,7 @@ def prune_categories(queries_file_name, parents_df, max_loop_count = -1, query_c
         df = df.merge(grouped_by_label_df, 'left', 'label', indicator = True)
         assert df[df['_merge'] != 'both'].shape[0] == 0
         df.drop(columns=['_merge'], inplace = True)
+        print(f"\t{grouped_by_label_df.shape[0]} unique categories")
 
         # Identify the labels whose query count < threshold
         labels_under_threshold_df = grouped_by_label_df[grouped_by_label_df['query_count'] < query_count_threshold]
@@ -139,7 +140,7 @@ pruned_df = prune_categories(queries_file_name, parents_df, query_count_threshol
 pruned_df['fasttext_label'] = '__label__' + pruned_df['label']
 
 # Normalize the queries
-print(f"Normalizing {df.shape[0]} queries...")
+print(f"Normalizing {pruned_df.shape[0]} queries...")
 time_start = time.time()
 pruned_df['normalized_query'] = pruned_df.apply(lambda row: normalize_query(row['query']), axis = 1)
 print(f"... in {datetime.timedelta(seconds=time.time() - time_start)}")
