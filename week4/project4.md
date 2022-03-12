@@ -6,14 +6,15 @@
 
 #### Pruning Algorithm
 
-See the implementation in the ```prune_categories``` function in ```week4/create_labeled_queries.py```.
+See the implementation in the ```prune_categories()``` function in ```week4/create_labeled_queries.py```.
 
 Data Structures initializations:
 - The list of categories and their direct parents are loaded in ```categories``` and ```parents``` respectively from ```/workspace/datasets/product_data/categories/categories_0001_abcat0010000_to_pcmcat99300050000.xml```.
 - For convenient parent-lookup, the ```parents_df``` dataframe contains one row per category in ```categories``` and its direct parent from ```parents```. Once the ```parents_df``` dataframe is constructed, the lists ```categories``` and ```parents``` are no longer needed.
 - The train data in ```/workspace/datasets/train.csv``` is loaded in the data frame ```df```.
-- A new column ```label``` is added, and initialized to the value of the column ```category```. The algorithm hinges on the ```label``` column as it is updated iteratively to its parent's category in the loop below as categories are rolled up (see the ```rollup``` section in the ```prune_categories``` function). The algorith does _not_ change the value of the original ```category``` column, which can be useful for auditing. At the end, the ```label``` column is used for the labels in the fastTest training data file that ``week4/create_labeled_queries.py``` produces.
-- A new column ```audit``` is added, and initialized to the value of the column ```category```. The ```audit``` is used to record the rollup process for any given entry in the train data.
+- A new column ```label``` is added, and initialized to the value of the column ```category```. The algorithm hinges on the ```label``` column as it is updated iteratively to its parent's category in the loop below as categories are rolled up (see the ```rollup``` section in the ```prune_categories``` function).
+  - Note: The algorithm does _not_ change the value of the original ```category``` column, which can be useful for auditing post-mortem. At the end, the ```label``` column is used for the classification labels in the fastTest training data file that ```week4/create_labeled_queries.py``` produces.
+- A new column ```audit``` is also added, and initialized to the value of the column ```category```. The ```audit``` is used to record the rollup process for any given entry in the train data, and can also be used for post-mortem auditing.
 
 The pruning occurs by iteratively doing the following pandas-based operations of grouping, filtering, and merging:
 - Update the label's parent by left-merging ```parents_df``` into ```df``` left_on=```df.label```, right_on=```parents_df.category```
@@ -22,10 +23,10 @@ The pruning occurs by iteratively doing the following pandas-based operations of
 - Exit the loop if there is no remaining labels that are under the threshold.
 - left-merge on ```label``` the grouped and under-threshold labels into ```pd```.
 - For the under-threshold labels (```row['_merge'] == 'both'```):
-    - update the label to its parent's category.
+    - Update the label to its parent's category. **<-- This is the rollup!**
     - Update the ```audit``` column to indicate the rollup to the parent: ```new rollup > previous rollup > ... > initial category```
 
-Illustration: Say, we start with the following records in a grouped-by-category ```df``` (Ci are categories, Pi are the parents, the numbers are query counts; the last column is the label), and the threshold is 100:
+Illustration: Say, we start with the following records in a grouped-by-category ```df``` (Ci are categories, Pi are the parents, and the numbers are query counts; The last column is the label), and the threshold is 100:
 ```
 P1 C1 10 Label:C1
 P1 C2 20 Label:C2
@@ -35,6 +36,8 @@ P2 P1 40 Label:P1
 First pass:
 - 10+20+30 < 100: C1, C2, and C3 are rolled up to their parent P1.
 - 30 < 100: P1 is rolled up to its parent P2.
+
+The label column is updated as shown below:
 ```
 P1 C1 10 Label:P1
 P1 C2 20 Label:P1
@@ -44,6 +47,8 @@ P2 P1 40 Label:P2
 
 Second pass:
 - 10+20+30 < 100: The P1s are rolled up to their parents P2
+
+The label column is updated as shown below:
 ```
 P1 C1 10 Label:P2
 P1 C2 20 Label:P2
@@ -54,9 +59,11 @@ P2 P1 40 Label:P2
 Third pass: Done.
 - 10+20+30+40 == 100 for rolled up P2
 
+The pruning is done.
+
 #### Pruning Execution
 
-Below is the console output for the execution of ```create_labeled_queries.py``` with a ```--min_queries``` argument of 100:
+Below is the console output for the execution of ```create_labeled_queries.py``` with a ```--min_queries``` argument of 100. 7 loop iterations were necessary, leading to 880 unique categories, all with queries counts >= 100.
 
 ```shell
 gitpod /workspace/search_with_machine_learning_course $ python ./week4/create_labeled_queries.py --min_queries 100 --output /workspace/datasets/labeled_query_data_min_count_100.txt
@@ -106,6 +113,32 @@ Normalizing 1854998 queries...
 ... in 0:01:35.963361
 Writing train data to /workspace/datasets/labeled_query_data_min_count_100.txt...
 ... in 0:01:39.425174
+```
+
+Below are the first 20 entries of the produced fastText train file above:
+```shell
+gitpod /workspace/search_with_machine_learning_course $ head -20 /workspace/datasets/fasttext/labeled_query_data_min_count_100.txt
+__label__abcat0101001 television panason 50 pulgada
+__label__abcat0101001 sharp
+__label__pcmcat193100050014 nook
+__label__abcat0101001 rca
+__label__abcat0101005 rca
+__label__pcmcat143200050016 flat screen tv
+__label__pcmcat247400050001 macbook
+__label__pcmcat171900050028 blue tooth headphon
+__label__abcat0107004 tv antenna
+__label__pcmcat186100050006 memori card
+__label__pcmcat138100050040 ac power cord
+__label__pcmcat201900050009 zagg iphon
+__label__cat02713 watch the throne
+__label__pcmcat224000050003 remot control extend
+__label__pcmcat233600050006 camcord
+__label__abcat0707001 3d
+__label__abcat0410020 hoya
+__label__pcmcat144700050004 wireless headphon
+__label__pcmcat144700050004 wireless headphon
+__label__abcat0101001 samsung 40
+...
 ```
 
 I produced fastTest train files for min queries of 100, 500, and 1000.
@@ -382,7 +415,9 @@ Result:
 
 #### Load your fastText model
 
-I set the QUERY_CLASS_MODEL_LOC environment variable to the best model I produced in the previous level, and verified that the Flask application loaded it successfully:
+Note: All fastText models produced in Level 1 were moved to the /workspace/datasets/fasttext directory in order to not clutter /workspace/datasets.
+
+The QUERY_CLASS_MODEL_LOC environment variable was set to the best model I produced in the previous level, and verified that the Flask application loaded it successfully:
 
 ```shell
 export QUERY_CLASS_MODEL_LOC=/workspace/datasets/fasttext/labeled_query_data_min_count_1000_epoch_25_bigrams.model.bin
@@ -399,6 +434,7 @@ QUERY_CLASS_MODEL_LOC: /workspace/datasets/fasttext/labeled_query_data_min_count
 #### Classify the query into a category using your model
 
 ```python
+
 ```
 
 ### Task 2: Use the query classifier output to filter results
