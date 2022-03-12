@@ -10,8 +10,11 @@ from week4.opensearch import get_opensearch
 import week4.utilities.query_utils as qu
 import week4.utilities.ltr_utils as lu
 
+import json
+
 bp = Blueprint('search', __name__, url_prefix='/search')
 
+DEBUG = True
 
 # Process the filters requested by the user and return a tuple that is appropriate for use in: the query, URLs displaying the filter and the display of the applied filters
 # filters -- convert the URL GET structure into an OpenSearch filter query
@@ -56,10 +59,41 @@ def process_filters(filters_input):
 
     return filters, display_filters, applied_filters
 
-def get_query_category(user_query, query_class_model):
-    print("IMPLEMENT ME: get_query_category")
-    return None
+def get_query_category(user_query, query_class_model, debug = False):
+    if debug: print("IMPLEMENTED: get_query_category")
+    assert query_class_model is not None
+    predictions = query_class_model.predict(user_query, k = 10)
 
+    # Check we got a prediction
+    assert predictions is not None
+    assert len(predictions) == 2
+
+    # Accumulate the predicted categories
+    classifications = []
+
+    # Accumulate the top-confidence predicated categories up to a configurable minimum (See env. var QUERY_CLASS_ACC_CONFIDENCE_MIN in __init__.py)
+    classifications_confidence_accumulated = 0.0
+    classifications_confidence_accumulated_min = current_app.config["classifications_confidence_accumulated_min"]
+
+    # Do not pick predicted categories with too low (configurable) a confidence (See env. var QUERY_CLASS_CONFIDENCE_MIN in __init__.py)
+    classification_confidence_min = current_app.config["classification_confidence_min"]
+
+    # Accumulate!
+    for i, classification in enumerate(predictions[0]):
+        print(f"[{i}] classification={predictions[0][i]}, with probability {predictions[1][i]}")
+        if classifications_confidence_accumulated < classifications_confidence_accumulated_min:
+            if predictions[1][i] >= classification_confidence_min:
+                classifications_confidence_accumulated += predictions[1][i]
+                classifications.append((predictions[0][i][9:], predictions[1][i])) # [9:] removes the "__label__" prefix
+                print(f"\tAcc. confidence: {classifications_confidence_accumulated}")
+            else:
+                print(f"\tConfidence: {predictions[1][i]} is too low (threshold={classification_confidence_min})")
+                # Note: We can break here too b/c the predicted categories are in descending confidence order.
+        else:
+            print(f"Reached targeted min accumulated confidence {classifications_confidence_accumulated_min}")
+            break
+    if debug: print(f"Returning: {classifications}")
+    return classifications
 
 @bp.route('/query', methods=['GET', 'POST'])
 def query():
@@ -98,18 +132,18 @@ def query():
             query_obj = qu.create_simple_baseline(user_query, click_prior, [], sort, sortDir, size=500)  # We moved create_query to a utility class so we could use it elsewhere.
             query_obj = lu.create_rescore_ltr_query(user_query, query_obj, click_prior, ltr_model_name, ltr_store_name,
                                                     rescore_size=500, main_query_weight=0)
-            print("Simple LTR q: %s" % query_obj)
+            print("[POST] Simple LTR q: %s" % query_obj)
         elif model == "ht_LTR":
             query_obj = qu.create_query(user_query, click_prior, [], sort, sortDir, size=500)  # We moved create_query to a utility class so we could use it elsewhere.
             query_obj = lu.create_rescore_ltr_query(user_query, query_obj, click_prior, ltr_model_name, ltr_store_name,
                                                     rescore_size=500, main_query_weight=0)
-            print("LTR q: %s" % query_obj)
+            print("[POST] LTR q: %s" % query_obj)
         elif model == "hand_tuned":
             query_obj = qu.create_query(user_query, click_prior, [], sort, sortDir, size=100)  # We moved create_query to a utility class so we could use it elsewhere.
-            print("Hand tuned q: %s" % query_obj)
+            print("[POST] Hand tuned q: %s" % query_obj)
         else:
             query_obj = qu.create_simple_baseline(user_query, click_prior, [], sort, sortDir, size=100)  # We moved create_query to a utility class so we could use it elsewhere.
-            print("Plain ol q: %s" % query_obj)
+            print("[POST] Plain ol q: %s" % query_obj)
     elif request.method == 'GET':  # Handle the case where there is no query or just loading the page
         user_query = request.args.get("query", "*")
         filters_input = request.args.getlist("filter.name")
@@ -132,14 +166,40 @@ def query():
             query_obj = qu.create_query(user_query, click_prior, filters, sort, sortDir, size=100)
         else:
             query_obj = qu.create_simple_baseline(user_query, click_prior, filters, sort, sortDir, size=100)
+            print("[GET] Plain ol q: %s" % query_obj)
     else:
         query_obj = qu.create_query("*", "", [], sort, sortDir, size=100)
 
     query_class_model = current_app.config["query_model"]
-    query_category = get_query_category(user_query, query_class_model)
-    if query_category is not None:
-        print("IMPLEMENT ME: add this into the filters object so that it gets applied at search time.  This should look like your `term` filter from week 1 for department but for categories instead")
-    #print("query obj: {}".format(query_obj))
+    query_category = get_query_category(user_query, query_class_model, debug = DEBUG)
+    if query_category is not None and len(query_category) > 0:
+        if DEBUG: print("IMPLEMENTED: add this into the filters object so that it gets applied at search time.  This should look like your `term` filter from week 1 for department but for categories instead")
+        predicted_categories_filter = {
+                    'terms': {
+                        'categoryPathIds.keyword': [category[0] for category in query_category]
+                    }
+                }
+        if 'filter' in query_obj['query']['bool'].keys() and query_obj['query']['bool']['filter'] is not None:
+            query_obj['query']['bool']['filter'].append(predicted_categories_filter)
+        else:
+            query_obj['query']['bool']['filter'] = predicted_categories_filter
+        if DEBUG:
+            print(f"Added category classification filter: {query_category}")
+            print(f"Updated Query obj with category filter: {json.dumps(query_obj, indent = 4)}")
+
+        # Lookup the predicated categories' names and paths
+        predicted_categories = []
+        categories_df = current_app.config["categories_df"]
+        predicted_categories_df = categories_df[categories_df['id'].isin([category[0] for category in query_category])]
+        for index, row in predicted_categories_df.iterrows():
+            confidence = 'N/A'
+            for prediction in query_category:
+                if prediction[0] == row['id']:
+                    confidence = prediction[1]
+                    break
+
+            predicted_categories.append(f"{row['name']} [{row['id']}; conf={confidence}]: {row['path']}")
+    
     response = opensearch.search(body=query_obj, index=current_app.config["index_name"], explain=explain)
     # Postprocess results here if you so desire
 
@@ -147,7 +207,7 @@ def query():
     if error is None:
         return render_template("search_results.jinja2", query=user_query, search_response=response,
                                display_filters=display_filters, applied_filters=applied_filters,
-                               sort=sort, sortDir=sortDir, model=model, explain=explain, query_category=query_category)
+                               sort=sort, sortDir=sortDir, model=model, explain=explain, query_category=predicted_categories)
     else:
         redirect(url_for("index"))
 

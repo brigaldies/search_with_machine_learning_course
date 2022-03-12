@@ -4,6 +4,7 @@ from flask import Flask
 from flask import render_template
 
 import fasttext
+import pandas as pd
 
 def create_app(test_config=None):
     # create and configure the app
@@ -18,6 +19,18 @@ def create_app(test_config=None):
         else:
             print("No query model found.  Have you run fasttext?")
         print("QUERY_CLASS_MODEL_LOC: %s" % QUERY_CLASS_MODEL_LOC)
+
+        app.config["classifications_confidence_accumulated_min"] = os.environ.get("QUERY_CLASS_ACC_CONFIDENCE_MIN", 0.8)
+        print(f"classifications_confidence_accumulated_min={app.config['classifications_confidence_accumulated_min']}")
+
+        app.config["classification_confidence_min"] = os.environ.get("QUERY_CLASS_CONFIDENCE_MIN", 0.1)
+        print(f"classification_confidence_min={app.config['classification_confidence_min']}")
+
+        categories_csv = os.environ.get("CATEGORIES", "/workspace/datasets/product_data/categories/categories.csv")
+        cat_df = pd.read_csv(categories_csv, sep='\t')
+        app.config["categories_df"] = cat_df
+        print(f"Loaded {cat_df.shape[0]} categories from {categories_csv}")
+        
     else:
         # load the test config if passed in
         app.config.from_mapping(test_config)

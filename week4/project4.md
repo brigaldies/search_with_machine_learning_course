@@ -434,8 +434,66 @@ QUERY_CLASS_MODEL_LOC: /workspace/datasets/fasttext/labeled_query_data_min_count
 #### Classify the query into a category using your model
 
 ```python
+def get_query_category(user_query, query_class_model, debug = False):
+    if debug: print("IMPLEMENTED: get_query_category")
+    assert query_class_model is not None
+    predictions = query_class_model.predict(user_query, k = 10)
+    assert predictions is not None
+    assert len(predictions) == 2
 
+    # Accumulate the predicted categories
+    classifications = []
+    classifications_confidence_accumulated = 0.0
+    classifications_confidence_accumulated_min = current_app.config["classifications_confidence_accumulated_min"]
+    classification_confidence_min = current_app.config["classification_confidence_min"]
+    for i, classification in enumerate(predictions[0]):
+        print(f"[{i}] classification={predictions[0][i]}, with probability {predictions[1][i]}")
+        if classifications_confidence_accumulated < classifications_confidence_accumulated_min:
+            if predictions[1][i] >= classification_confidence_min:
+                classifications_confidence_accumulated += predictions[1][i]
+                classifications.append(predictions[0][i][9:]) # [9:] removes the "__label__" prefix
+                print(f"\tAcc. confidence: {classifications_confidence_accumulated}")
+            else:
+                print(f"\tConfidence: {predictions[1][i]} is too low (threshold={classification_confidence_min})")
+        else:
+            print(f"Reached targeted min accumulated confidence {classifications_confidence_accumulated_min}")
+    if debug: print(f"Returning: {classifications}")
+    return classifications
 ```
+
+In ```search.py::query()```, a category filter is added when predictions are available (```if query_category is not None and len(query_category) > 0```):
+
+```python
+    query_class_model = current_app.config["query_model"]
+    query_category = get_query_category(user_query, query_class_model, debug = DEBUG)
+    if query_category is not None and len(query_category) > 0:
+        if DEBUG: print("IMPLEMENTED: add this into the filters object so that it gets applied at search time.  This should look like your `term` filter from week 1 for department but for categories instead")
+        query_obj['query']['bool']['filter'].append(
+            {
+                'terms': {
+                    'categoryPathIds.keyword': query_category
+                }
+            }
+        )
+        if DEBUG:
+            print(f"Added category classification filter: {query_category}")
+            print(f"Updated Query obj with category filter: {json.dumps(query_obj, indent = 4)}")
+```
+
+#### Observations
+
+**Good:**
+
+- The recall is significantly reduced
+- The relevance (with my eyes) seems to have increased across sample queries.
+- Sorting by a factor other than Relevance (or by Relevance ascending) provides a way to visit the "bottom" of the results set and observe whether the results are still somewhat relevant thanks to the category filter.
+
+**Bad:**
+
+Some queries did not return any result with the category filter:
+
+- q=laptops
+- 
 
 ### Task 2: Use the query classifier output to filter results
 
