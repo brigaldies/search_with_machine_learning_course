@@ -8,6 +8,7 @@
           {{ hit._source.name[0] }}
         {% endif %}
       </div>
+      <div><span class="search-result-header">Score</span>: {{ hit._score }}</div>
       <div><span class="search-result-header">ID</span>: {{ hit._source.productId[0] }}</div>
       <div><span class="search-result-header">Description</span>:
         {% if hit._source.longDescription %}
@@ -27,6 +28,8 @@
         {% endif %}
       </div>
       <div><span class="search-result-header">Price</span>: {{ hit._source.regularPrice[0] }}</div>
+      <div><span class="search-result-header">Categories</span>: {{ hit._source.categoryPath }}</div>
+      <div><span class="search-result-header">Categories</span>: {{ hit._source.categoryPathIds }}</div>
       {% if hit._source.image and hit._source.image[0] %}<img src="{{ hit._source.image[0] }}"/>{% endif %}
     </div>
   {% endfor %}

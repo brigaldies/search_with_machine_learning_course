@@ -81,17 +81,19 @@ def get_query_category(user_query, query_class_model, debug = False):
     # Accumulate!
     for i, classification in enumerate(predictions[0]):
         print(f"[{i}] classification={predictions[0][i]}, with probability {predictions[1][i]}")
-        if classifications_confidence_accumulated < classifications_confidence_accumulated_min:
-            if predictions[1][i] >= classification_confidence_min:
-                classifications_confidence_accumulated += predictions[1][i]
-                classifications.append((predictions[0][i][9:], predictions[1][i])) # [9:] removes the "__label__" prefix
-                print(f"\tAcc. confidence: {classifications_confidence_accumulated}")
-            else:
-                print(f"\tConfidence: {predictions[1][i]} is too low (threshold={classification_confidence_min})")
-                # Note: We can break here too b/c the predicted categories are in descending confidence order.
+        if predictions[1][i] >= classification_confidence_min:
+            classifications_confidence_accumulated += predictions[1][i]
+            classifications.append((predictions[0][i][9:], predictions[1][i])) # [9:] removes the "__label__" prefix
+            print(f"\tAcc. confidence: {classifications_confidence_accumulated}")
         else:
-            print(f"Reached targeted min accumulated confidence {classifications_confidence_accumulated_min}")
-            break
+            print(f"\tConfidence: {predictions[1][i]} is too low (threshold={classification_confidence_min})")
+            # Note: We can break here too b/c the predicted categories are in descending confidence order.
+        # else:
+        #     print(f"Reached targeted min accumulated confidence {classifications_confidence_accumulated_min}")
+        #     break
+    if classifications_confidence_accumulated < classifications_confidence_accumulated_min:
+        # Not enough accumulated confidence, return no prediction!
+        classifications = []
     if debug: print(f"Returning: {classifications}")
     return classifications
 
@@ -170,35 +172,54 @@ def query():
     else:
         query_obj = qu.create_query("*", "", [], sort, sortDir, size=100)
 
-    query_class_model = current_app.config["query_model"]
-    query_category = get_query_category(user_query, query_class_model, debug = DEBUG)
-    if query_category is not None and len(query_category) > 0:
-        if DEBUG: print("IMPLEMENTED: add this into the filters object so that it gets applied at search time.  This should look like your `term` filter from week 1 for department but for categories instead")
-        predicted_categories_filter = {
-                    'terms': {
-                        'categoryPathIds.keyword': [category[0] for category in query_category]
+    if current_app.config["query_classification_enabled"]:
+        query_class_model = current_app.config["query_model"]
+        query_category = get_query_category(user_query, query_class_model, debug = DEBUG)
+        if query_category is not None and len(query_category) > 0:
+            if DEBUG: print("IMPLEMENTED: add this into the filters object so that it gets applied at search time.  This should look like your `term` filter from week 1 for department but for categories instead")
+            predicted_categories_clause = {
+                        'terms': {
+                            'categoryPathIds.keyword': [category[0] for category in query_category]
+                        }
                     }
-                }
-        if 'filter' in query_obj['query']['bool'].keys() and query_obj['query']['bool']['filter'] is not None:
-            query_obj['query']['bool']['filter'].append(predicted_categories_filter)
+            if current_app.config["query_classification_as_filter"]:
+                if 'filter' in query_obj['query']['bool'].keys() and query_obj['query']['bool']['filter'] is not None:
+                    query_obj['query']['bool']['filter'].append(predicted_categories_clause)
+                else:
+                    query_obj['query']['bool']['filter'] = predicted_categories_clause
+                if DEBUG:
+                    print(f"Added category filter: {query_category}")
+            else:
+                predicted_categories_clause['terms']['boost'] = current_app.config["query_classification_boost"]
+                if 'bool' in query_obj['query']:
+                    if 'should' in query_obj['query']['bool'].keys() and query_obj['query']['bool']['should'] is not None:
+                        query_obj['query']['bool']['should'].append(predicted_categories_clause)
+                    else:
+                        query_obj['query']['bool']['should'] = predicted_categories_clause
+                    if DEBUG:
+                        print(f"Added category boost: {query_category}")
+                else:
+                    print(f"WARN: Did not find the expected boolean query.")
+            print(f"Updated Query obj with category filter or boost: {json.dumps(query_obj, indent = 4)}")
+
+            # Lookup the predicated categories' names and paths (to be displayed at the top of the page)
+            predicted_categories = []
+            categories_df = current_app.config["categories_df"]
+            predicted_categories_df = categories_df[categories_df['id'].isin([category[0] for category in query_category])]
+            for index, row in predicted_categories_df.iterrows():
+                confidence = 'N/A'
+                for prediction in query_category:
+                    if prediction[0] == row['id']:
+                        confidence = prediction[1]
+                        break
+
+                predicted_categories.append(f"{row['name']} [{row['id']}; conf={confidence:.2f}]: {row['path']}")
         else:
-            query_obj['query']['bool']['filter'] = predicted_categories_filter
-        if DEBUG:
-            print(f"Added category classification filter: {query_category}")
-            print(f"Updated Query obj with category filter: {json.dumps(query_obj, indent = 4)}")
-
-        # Lookup the predicated categories' names and paths
+            print(f"No query classification available!")
+            predicted_categories = []
+    else:
+        print(f"WARN: Query classification is disabled")
         predicted_categories = []
-        categories_df = current_app.config["categories_df"]
-        predicted_categories_df = categories_df[categories_df['id'].isin([category[0] for category in query_category])]
-        for index, row in predicted_categories_df.iterrows():
-            confidence = 'N/A'
-            for prediction in query_category:
-                if prediction[0] == row['id']:
-                    confidence = prediction[1]
-                    break
-
-            predicted_categories.append(f"{row['name']} [{row['id']}; conf={confidence}]: {row['path']}")
     
     response = opensearch.search(body=query_obj, index=current_app.config["index_name"], explain=explain)
     # Postprocess results here if you so desire

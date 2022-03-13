@@ -20,7 +20,7 @@ def create_app(test_config=None):
             print("No query model found.  Have you run fasttext?")
         print("QUERY_CLASS_MODEL_LOC: %s" % QUERY_CLASS_MODEL_LOC)
 
-        app.config["classifications_confidence_accumulated_min"] = os.environ.get("QUERY_CLASS_ACC_CONFIDENCE_MIN", 0.8)
+        app.config["classifications_confidence_accumulated_min"] = os.environ.get("QUERY_CLASS_ACC_CONFIDENCE_MIN", 0.5)
         print(f"classifications_confidence_accumulated_min={app.config['classifications_confidence_accumulated_min']}")
 
         app.config["classification_confidence_min"] = os.environ.get("QUERY_CLASS_CONFIDENCE_MIN", 0.1)
@@ -30,6 +30,20 @@ def create_app(test_config=None):
         cat_df = pd.read_csv(categories_csv, sep='\t')
         app.config["categories_df"] = cat_df
         print(f"Loaded {cat_df.shape[0]} categories from {categories_csv}")
+
+        query_classification_enabled = True if os.environ.get("QUERY_CLASS_ENABLED", "true").lower() == "true" else False
+        # Override
+        # query_classification_enabled = False
+        app.config["query_classification_enabled"] = query_classification_enabled
+        print(f"query_classification_enabled={query_classification_enabled}")
+
+        query_classification_as_filter = True if os.environ.get("QUERY_CLASS_AS_FILTER", "false").lower() == "true" else False
+        app.config["query_classification_as_filter"] = query_classification_as_filter
+        print(f"query_classification_as_filter={query_classification_as_filter}")
+
+        query_classification_boost = os.environ.get("QUERY_CLASS_BOOST", 1000)
+        app.config["query_classification_boost"] = query_classification_boost
+        print(f"query_classification_boost={query_classification_boost}")
         
     else:
         # load the test config if passed in

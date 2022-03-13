@@ -461,6 +461,8 @@ def get_query_category(user_query, query_class_model, debug = False):
     return classifications
 ```
 
+### Task 2: Use the query classifier output to filter results
+
 In ```search.py::query()```, a category filter is added when predictions are available (```if query_category is not None and len(query_category) > 0```):
 
 ```python
@@ -484,20 +486,124 @@ In ```search.py::query()```, a category filter is added when predictions are ava
 
 **Good:**
 
-- The recall is significantly reduced
+- As expected, the recall is significantly reduced.
 - The relevance (with my eyes) seems to have increased across sample queries.
 - Sorting by a factor other than Relevance (or by Relevance ascending) provides a way to visit the "bottom" of the results set and observe whether the results are still somewhat relevant thanks to the category filter.
 
+Examples of queries:
+
+**q=ipad**
+
+**Without Query Classification Filter**
+
+![q=ipad, without Query Classification Filter](./images/q%3Dipad_no_query_classification.png)
+
+**With Query Classification Filter**
+
+![q=ipad, with Query Classification Filter](./images/q%3Dipad_with_query_classification_filter.png)
+
+**q=dell laptops**
+
+**Without Query Classification Filter**
+
+![q=dell laptops, without Query Classification Filter](./images/q%3Ddell_laptops_no_query_classification.png)
+
+**With Query Classification Filter**
+
+![q=dell laptops, with Query Classification Filter](./images/q%3Ddell_laptops_with_query_classification_filter.png)
+
 **Bad:**
 
-Some queries did not return any result with the category filter:
+Some seemingly easy to predict queries did not classify properly:
 
-- q=laptops
-- 
+- q=laptops: The classification to "Movies & TV Shows [cat02015; conf=0.41]: Best Buy [cat00000] > Movies & Music [abcat0600000] > Movies & TV Shows [cat02015]" is just horrible!
 
-### Task 2: Use the query classifier output to filter results
+### Task 3: Use the query classifier output to boost results (Optional)
 
-### Task 3: Use the query classifier output to boost results (Optional
+Additional environment variables were introduced in order to enable/disable query classification, and choose between filtering and boosting:
+
+```python
+# Default: Enabled
+query_classification_enabled = True if os.environ.get("QUERY_CLASS_ENABLED", "true").lower() == "true" else False
+app.config["query_classification_enabled"] = query_classification_enabled
+print(f"query_classification_enabled={query_classification_enabled}")
+
+# Default: Do not use the filter; Boost instead
+query_classification_as_filter = True if os.environ.get("QUERY_CLASS_AS_FILTER", "false").lower() == "true" else False
+app.config["query_classification_as_filter"] = query_classification_as_filter
+print(f"query_classification_as_filter={query_classification_as_filter}")
+
+# Default boost value: 1000
+query_classification_boost = os.environ.get("QUERY_CLASS_BOOST", 1000)
+app.config["query_classification_boost"] = query_classification_boost
+print(f"query_classification_boost={query_classification_boost}")
+```
+
+In ```search.py::query()```, in case of boosting, an additional should clause is added to boost on the predicated categories, as shown below:
+
+```python
+    if current_app.config["query_classification_enabled"]:
+        query_class_model = current_app.config["query_model"]
+        query_category = get_query_category(user_query, query_class_model, debug = DEBUG)
+        if query_category is not None and len(query_category) > 0:
+            if DEBUG: print("IMPLEMENTED: add this into the filters object so that it gets applied at search time.  This should look like your `term` filter from week 1 for department but for categories instead")
+            predicted_categories_clause = {
+                        'terms': {
+                            'categoryPathIds.keyword': [category[0] for category in query_category]
+                        }
+                    }
+            if current_app.config["query_classification_as_filter"]:
+                if 'filter' in query_obj['query']['bool'].keys() and query_obj['query']['bool']['filter'] is not None:
+                    query_obj['query']['bool']['filter'].append(predicted_categories_clause)
+                else:
+                    query_obj['query']['bool']['filter'] = predicted_categories_clause
+                if DEBUG:
+                    print(f"Added category filter: {query_category}")
+            else:
+                predicted_categories_clause['terms']['boost'] = current_app.config["query_classification_boost"]
+                if 'bool' in query_obj['query']:
+                    if 'should' in query_obj['query']['bool'].keys() and query_obj['query']['bool']['should'] is not None:
+                        query_obj['query']['bool']['should'].append(predicted_categories_clause)
+                    else:
+                        query_obj['query']['bool']['should'] = predicted_categories_clause
+                    if DEBUG:
+                        print(f"Added category boost: {query_category}")
+                else:
+                    print(f"WARN: Did not find the expected boolean query.")
+            print(f"Updated Query obj with category filter or boost: {json.dumps(query_obj, indent = 4)}")
+
+            # Lookup the predicated categories' names and paths (to be displayed at the top of the page)
+            predicted_categories = []
+            categories_df = current_app.config["categories_df"]
+            predicted_categories_df = categories_df[categories_df['id'].isin([category[0] for category in query_category])]
+            for index, row in predicted_categories_df.iterrows():
+                confidence = 'N/A'
+                for prediction in query_category:
+                    if prediction[0] == row['id']:
+                        confidence = prediction[1]
+                        break
+
+                predicted_categories.append(f"{row['name']} [{row['id']}; conf={confidence:.2f}]: {row['path']}")
+    else:
+        print(f"WARN: Query classification is disabled")
+        predicted_categories = []
+```
+
+#### Observations
+
+**Good:**
+
+- I had to boost with a x1000 multiplier to start seeing the results associated with the predicted categories.
+- In general, the technique seems effective.
+
+TODO: Add some screen shots.
+
+**Bad:**
+
+- ...
+
+TODO: Add some screen shots.
+
 
 
 ## Project Assessment
@@ -508,10 +614,209 @@ To assess your project work, you should be able to answer the following question
 
 - How many unique categories did you see in your rolled up training data when you set the minimum number of queries per category to 100? To 1000?
 
+I ran ./week4/create_labeled_queries.py for min queries 100, 500, 1000, and 1000000 (to test that the rollup algorithm ends at one category left), which generated the following unique categories counts:
+
+```
+100    : 880
+500    : 546
+1000   : 300
+1000000: 1
+```
+
 - What values did you achieve for P@1, R@3, and R@5? You should have tried at least a few different models, varying the minimum number of queries per category as well as trying different fastText parameters or query normalization. Report at least 3 of your runs.
+
+|Min Queries|epochs|wordNgrams|P@1|R@1|P@5|R@5|Comment|
+|----------:|-----:|----:|--:|--:|--:|--:|--|
+|100        |5    |-|0.47 |0.47|0.136|0.679||
+|100        |10   |-|0.507|0.507|0.148|0.741||
+|100        |20   |-|0.519|0.519|0.152|0.762||
+|100        |25   |2|0.52|0.52|0.152|0.76|Slight decline of R@5|
+|500        |25   |2|0.526|0.526|0.154|0.768||
+|1000       |25   |2|0.527|0.527|0.154|0.772|THE BEST RESULT IN MY EXPERIMENTS|
 
 ### For integrating query classification with search:
 
 - Give 2 or 3 examples of queries where you saw a dramatic positive change in the results because of filtering. Make sure to include the classifier output for those queries.
 
+**q=ipad**
+
+See screen shots without and with the category(ies) filter earlier in the report.
+
+**Query classification** - See the ```get_query_category``` output below:
+
+```
+[0] classification=__label__pcmcat209000050007, with probability 0.6183217763900757
+        Acc. confidence: 0.6183217763900757
+[1] classification=__label__pcmcat209000050008, with probability 0.12028033286333084
+        Acc. confidence: 0.7386021092534065
+[2] classification=__label__pcmcat218000050000, with probability 0.03238596394658089
+        Confidence: 0.03238596394658089 is too low (threshold=0.1)
+[3] classification=__label__pcmcat217900050000, with probability 0.03223486989736557
+        Confidence: 0.03223486989736557 is too low (threshold=0.1)
+[4] classification=__label__pcmcat218000050003, with probability 0.02927657775580883
+        Confidence: 0.02927657775580883 is too low (threshold=0.1)
+[5] classification=__label__pcmcat144700050004, with probability 0.016998620703816414
+        Confidence: 0.016998620703816414 is too low (threshold=0.1)
+[6] classification=__label__abcat0208011, with probability 0.01401718333363533
+        Confidence: 0.01401718333363533 is too low (threshold=0.1)
+[7] classification=__label__pcmcat218000050002, with probability 0.01293209008872509
+        Confidence: 0.01293209008872509 is too low (threshold=0.1)
+[8] classification=__label__pcmcat193100050014, with probability 0.010597367770969868
+        Confidence: 0.010597367770969868 is too low (threshold=0.1)
+[9] classification=__label__pcmcat171900050024, with probability 0.008955840952694416
+        Confidence: 0.008955840952694416 is too low (threshold=0.1)
+Returning: [('pcmcat209000050007', 0.6183217763900757), ('pcmcat209000050008', 0.12028033286333084)]
+```
+
+**Category(ies) filter displayed at the top of the page:**
+
+```
+iPad [pcmcat209000050007; conf=0.62]: Best Buy [cat00000] > Computers & Tablets [abcat0500000] > Tablets & iPad [pcmcat209000050006] > iPad [pcmcat209000050007]
+
+Tablets [pcmcat209000050008; conf=0.12]: Best Buy [cat00000] > Computers & Tablets [abcat0500000] > Tablets & iPad [pcmcat209000050006] > Tablets [pcmcat209000050008]
+```
+
+**q=dell laptops**
+
+**Query classification** - See the ```get_query_category``` output below:
+
+```
+[0] classification=__label__pcmcat247400050000, with probability 0.8775404095649719
+        Acc. confidence: 0.8775404095649719
+[1] classification=__label__pcmcat212600050008, with probability 0.03798757493495941
+        Confidence: 0.03798757493495941 is too low (threshold=0.1)
+[2] classification=__label__pcmcat164200050013, with probability 0.03649915009737015
+        Confidence: 0.03649915009737015 is too low (threshold=0.1)
+[3] classification=__label__pcmcat183800050006, with probability 0.012372598983347416
+        Confidence: 0.012372598983347416 is too low (threshold=0.1)
+[4] classification=__label__pcmcat183800050007, with probability 0.005114967469125986
+        Confidence: 0.005114967469125986 is too low (threshold=0.1)
+[5] classification=__label__pcmcat190000050014, with probability 0.0043478114530444145
+        Confidence: 0.0043478114530444145 is too low (threshold=0.1)
+[6] classification=__label__pcmcat219300050014, with probability 0.0038257346022874117
+        Confidence: 0.0038257346022874117 is too low (threshold=0.1)
+[7] classification=__label__pcmcat209000050008, with probability 0.003420345252379775
+        Confidence: 0.003420345252379775 is too low (threshold=0.1)
+[8] classification=__label__abcat0811004, with probability 0.003255515592172742
+        Confidence: 0.003255515592172742 is too low (threshold=0.1)
+[9] classification=__label__pcmcat247400050001, with probability 0.002136114053428173
+        Confidence: 0.002136114053428173 is too low (threshold=0.1)
+Returning: [('pcmcat247400050000', 0.8775404095649719)]
+```
+
+**Category(ies) filter displayed at the top of the page:**
+```
+PC Laptops [pcmcat247400050000; conf=0.88]: Best Buy [cat00000] > Computers & Tablets [abcat0500000] > Laptop & Netbook Computers [abcat0502000] > PC Laptops [pcmcat247400050000]
+```
+
+**q=printer ink**
+
+**Query classification** - See the ```get_query_category``` output below:
+
+```
+[0] classification=__label__abcat0807005, with probability 0.7549535632133484
+        Acc. confidence: 0.7549535632133484
+[1] classification=__label__abcat0807001, with probability 0.12224579602479935
+        Acc. confidence: 0.8771993592381477
+[2] classification=__label__abcat0511004, with probability 0.050132088363170624
+        Confidence: 0.050132088363170624 is too low (threshold=0.1)
+[3] classification=__label__abcat0511002, with probability 0.02771952375769615
+        Confidence: 0.02771952375769615 is too low (threshold=0.1)
+[4] classification=__label__abcat0511001, with probability 0.014386196620762348
+        Confidence: 0.014386196620762348 is too low (threshold=0.1)
+[5] classification=__label__abcat0400000, with probability 0.008122657425701618
+        Confidence: 0.008122657425701618 is too low (threshold=0.1)
+[6] classification=__label__pcmcat245100050028, with probability 0.006479900795966387
+        Confidence: 0.006479900795966387 is too low (threshold=0.1)
+[7] classification=__label__abcat0511007, with probability 0.00522206025198102
+        Confidence: 0.00522206025198102 is too low (threshold=0.1)
+[8] classification=__label__pcmcat172000050000, with probability 0.0027377076912671328
+        Confidence: 0.0027377076912671328 is too low (threshold=0.1)
+[9] classification=__label__abcat0515013, with probability 0.0018335168715566397
+        Confidence: 0.0018335168715566397 is too low (threshold=0.1)
+Returning: [('abcat0807005', 0.7549535632133484), ('abcat0807001', 0.12224579602479935)]
+```
+
+**Category(ies) filter displayed at the top of the page:**
+
+```
+Printer Ink [abcat0807001; conf=0.12]: Best Buy [cat00000] > Office [pcmcat245100050028] > Printer Ink & Toner [abcat0807000] > Printer Ink [abcat0807001]
+
+Hewlett-Packard [abcat0807005; conf=0.75]: Best Buy [cat00000] > Office [pcmcat245100050028] > Printer Ink & Toner [abcat0807000] > Printer Ink [abcat0807001] > Hewlett-Packard [abcat0807005]
+```
+
 - Given 2 or 3 examples of queries where filtering hurt the results, either because the classifier was wrong or for some other reason. Again, include the classifier output for those queries.
+
+**No Classification With Confidence > 0.5**
+
+**q=laptops**
+
+The classifier was unable to classify with a minimum of 0.5 confidence:
+
+```
+[0] classification=__label__cat02015, with probability 0.41393041610717773
+        Acc. confidence: 0.41393041610717773
+[1] classification=__label__cat09000, with probability 0.07070089876651764
+        Confidence: 0.07070089876651764 is too low (threshold=0.1)
+[2] classification=__label__cat02009, with probability 0.04854829981923103
+        Confidence: 0.04854829981923103 is too low (threshold=0.1)
+[3] classification=__label__pcmcat247400050000, with probability 0.02866331674158573
+        Confidence: 0.02866331674158573 is too low (threshold=0.1)
+[4] classification=__label__abcat0101001, with probability 0.02822437696158886
+        Confidence: 0.02822437696158886 is too low (threshold=0.1)
+[5] classification=__label__pcmcat209400050001, with probability 0.016706274822354317
+        Confidence: 0.016706274822354317 is too low (threshold=0.1)
+[6] classification=__label__cat02006, with probability 0.013782092370092869
+        Confidence: 0.013782092370092869 is too low (threshold=0.1)
+[7] classification=__label__pcmcat242800050021, with probability 0.01290363259613514
+        Confidence: 0.01290363259613514 is too low (threshold=0.1)
+[8] classification=__label__abcat0301014, with probability 0.00840129517018795
+        Confidence: 0.00840129517018795 is too low (threshold=0.1)
+[9] classification=__label__pcmcat144700050004, with probability 0.008179730735719204
+        Confidence: 0.008179730735719204 is too low (threshold=0.1)
+Returning: []
+No query classification available!
+```
+
+Same issue (no classification with a confidence > 0.5) for the following queries:
+- apple ipad
+- macbooks
+- computer keywords
+- wifi routers
+- network cables
+
+**Wrong Classification**
+
+**q=monitors**
+
+**Query classification** - See the ```get_query_category``` output below:
+
+```
+[0] classification=__label__cat02015, with probability 0.5299343466758728
+        Acc. confidence: 0.5299343466758728
+[1] classification=__label__abcat0101001, with probability 0.08168108016252518
+        Confidence: 0.08168108016252518 is too low (threshold=0.1)
+[2] classification=__label__cat09000, with probability 0.07261267304420471
+        Confidence: 0.07261267304420471 is too low (threshold=0.1)
+[3] classification=__label__pcmcat247400050000, with probability 0.038371406495571136
+        Confidence: 0.038371406495571136 is too low (threshold=0.1)
+[4] classification=__label__cat02009, with probability 0.02427739091217518
+        Confidence: 0.02427739091217518 is too low (threshold=0.1)
+[5] classification=__label__cat02010, with probability 0.011420287191867828
+        Confidence: 0.011420287191867828 is too low (threshold=0.1)
+[6] classification=__label__pcmcat144700050004, with probability 0.010543576441705227
+        Confidence: 0.010543576441705227 is too low (threshold=0.1)
+[7] classification=__label__pcmcat209400050001, with probability 0.01016100775450468
+        Confidence: 0.01016100775450468 is too low (threshold=0.1)
+[8] classification=__label__pcmcat242800050021, with probability 0.008323170244693756
+        Confidence: 0.008323170244693756 is too low (threshold=0.1)
+[9] classification=__label__abcat0900000, with probability 0.007755163125693798
+        Confidence: 0.007755163125693798 is too low (threshold=0.1)
+Returning: [('cat02015', 0.5299343466758728)]
+```
+
+**Category(ies) filter displayed at the top of the page:**
+
+```
+Movies & TV Shows [cat02015; conf=0.53]: Best Buy [cat00000] > Movies & Music [abcat0600000] > Movies & TV Shows [cat02015]
+```
