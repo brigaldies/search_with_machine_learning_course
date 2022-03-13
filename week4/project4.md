@@ -600,11 +600,7 @@ TODO: Add some screen shots.
 
 **Bad:**
 
-- ...
-
-TODO: Add some screen shots.
-
-
+- See Self-assessment.
 
 ## Project Assessment
 
