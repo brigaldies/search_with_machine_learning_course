@@ -13,7 +13,8 @@ import datetime
 import nltk
 nltk.download("punkt")
 tokenizer = nltk.RegexpTokenizer(r"\w+")
-stemmer = nltk.stem.PorterStemmer()
+porter_stemmer = nltk.stem.PorterStemmer()
+snowball_stemmer = nltk.stem.snowball.SnowballStemmer("english")
 
 DEBUG = False
 
@@ -25,13 +26,15 @@ output_file_name = r'/workspace/datasets/labeled_query_data.txt'
 parser = argparse.ArgumentParser(description='Process arguments.')
 general = parser.add_argument_group("general")
 general.add_argument("--min_queries", default=1,  help="The minimum number of queries per category label (default is 1)")
+general.add_argument("--query_normalize", default="std_tokenizer_porter_stemmer", help="Query normalizer (std_tokenizer_porter_stemmer, daniel_tokenizer_snowball_stemmer")
 general.add_argument("--output", default=output_file_name, help="the file to output to")
 
 args = parser.parse_args()
 output_file_name = args.output
 min_queries = int(args.min_queries)
+query_normalize = args.query_normalize
 
-print(f"min_queries={min_queries}, output_file_name={output_file_name}")
+print(f"min_queries={min_queries}, query_normalize={query_normalize}, output_file_name={output_file_name}")
 
 # The root category, named Best Buy with id cat00000, doesn't have a parent.
 root_category_id = 'cat00000'
@@ -57,8 +60,17 @@ print(f"Processed {len(categories)} categories from {categories_file_name} in {d
 parents_df = pd.DataFrame(list(zip(categories, parents)), columns =['category', 'parent'])
 
 # IMPLEMENTED: Convert queries to lowercase, and optionally implement other normalization, like stemming.
-def normalize_query(query_text):
-    normalized_query = " ".join([stemmer.stem(token.lower()) for token in tokenizer.tokenize(query_text)])
+def normalize_query(query_text, analyzer = "std_tokenizer_porter_stemmer"):
+    if analyzer == 'std_tokenizer_porter_stemmer':
+        normalized_query = " ".join([porter_stemmer.stem(token.lower()) for token in tokenizer.tokenize(query_text)])
+    elif analyzer == 'daniel_tokenizer_snowball_stemmer':
+        # Daniel's transform from week #3
+        ret = query_text.lower()
+        ret = ''.join(c for c in ret if c.isalpha() or c.isnumeric() or c=='-' or c==' ' or c =='.')
+        normalized_query = ' '.join(map(snowball_stemmer.stem, ret.split(' ')))
+    else:
+        raise Exception(f"Unknown analyzer \"{analyzer}\"")
+
     if DEBUG: print(f"Query normalization: {query_text} --> {normalized_query}")
     return normalized_query
 
@@ -66,14 +78,14 @@ def normalize_query(query_text):
 MAX_LOOP_COUNT = 10
 QUERY_COUNT_THRESHOLD = 100
 
-def prune_categories(queries_file_name, parents_df, max_loop_count = -1, query_count_threshold = QUERY_COUNT_THRESHOLD):
+def prune_categories(queries_file_name, categories, parents_df, max_loop_count = -1, query_count_threshold = QUERY_COUNT_THRESHOLD):
     print(f"Pruning {queries_file_name} with max_loop_count={max_loop_count}, query_count_threshold={query_count_threshold}")
     time_start = time.time()
     # Load the training query/category data
     print(f"Loading the train data from {queries_file_name}...")
     df = pd.read_csv(queries_file_name)[['category', 'query']]
 
-    # Keep queries with leaf categories only
+    # Keep queries with known categories only
     df = df[df['category'].isin(categories)]
 
     # Initialize the LABEL to the category as read from train.csv
@@ -133,7 +145,7 @@ def prune_categories(queries_file_name, parents_df, max_loop_count = -1, query_c
     print(f"Processed {df.shape[0]} queries in {datetime.timedelta(seconds=time.time() - time_start)}")
     return df
 
-pruned_df = prune_categories(queries_file_name, parents_df, query_count_threshold = min_queries)
+pruned_df = prune_categories(queries_file_name, categories, parents_df, query_count_threshold = min_queries)
 # [END] IMPLEMENTING: Roll up categories to ancestors to satisfy the minimum number of queries per category.
 
 # Create labels in fastText format.
@@ -142,7 +154,7 @@ pruned_df['fasttext_label'] = '__label__' + pruned_df['label']
 # Normalize the queries
 print(f"Normalizing {pruned_df.shape[0]} queries...")
 time_start = time.time()
-pruned_df['normalized_query'] = pruned_df.apply(lambda row: normalize_query(row['query']), axis = 1)
+pruned_df['normalized_query'] = pruned_df.apply(lambda row: normalize_query(row['query'], analyzer = query_normalize), axis = 1)
 print(f"... in {datetime.timedelta(seconds=time.time() - time_start)}")
 
 # Output labeled query data as a space-separated file, making sure that every category is in the taxonomy.

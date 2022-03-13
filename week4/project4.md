@@ -375,7 +375,31 @@ P@5     0.154
 R@5     0.772 <-- THE BEST IN MY EXPERIMENTS
 ```
 
-#### TODO: Experiment with different text analysis in create_labeled_queries.py
+#### "Daniel" Transformer, Min Queries 1000, -epoch 25, -wordNgrams 2
+
+**Train:**
+
+```shell
+gitpod /workspace/datasets/fasttext $ ~/fastText-0.9.2/fasttext supervised -input labeled_query_data_min_count_1000_daniel_analyzer.train -output labeled_query_data_min_count_1000_daniel_analyzer_epoch_25_bigrams.model -epoch 25 -wordNgrams 2
+Read 0M words
+Number of words:  7769
+Number of labels: 388
+Progress: 100.0% words/sec/thread:     879 lr:  0.000000 avg.loss:  2.178598 ETA:   0h 0m 0s
+```
+
+**Test:**
+
+```shell
+gitpod /workspace/datasets/fasttext $ ~/fastText-0.9.2/fasttext test labeled_query_data_min_count_1000_daniel_analyzer_epoch_25_bigrams.model.bin labeled_query_data_min_count_1000_daniel_analyzer.test
+N       50000
+P@1     0.525
+R@1     0.525
+
+gitpod /workspace/datasets/fasttext $ ~/fastText-0.9.2/fasttext test labeled_query_data_min_count_1000_daniel_analyzer_epoch_25_bigrams.model.bin labeled_query_data_min_count_1000_daniel_analyzer.test 5
+N       50000
+P@5     0.153
+R@5     0.767
+```
 
 ## Level 2: 
 
@@ -621,14 +645,15 @@ I ran ./week4/create_labeled_queries.py for min queries 100, 500, 1000, and 1000
 
 - What values did you achieve for P@1, R@3, and R@5? You should have tried at least a few different models, varying the minimum number of queries per category as well as trying different fastText parameters or query normalization. Report at least 3 of your runs.
 
-|Min Queries|epochs|wordNgrams|P@1|R@1|P@5|R@5|Comment|
-|----------:|-----:|----:|--:|--:|--:|--:|--|
-|100        |5    |-|0.47 |0.47|0.136|0.679||
-|100        |10   |-|0.507|0.507|0.148|0.741||
-|100        |20   |-|0.519|0.519|0.152|0.762||
-|100        |25   |2|0.52|0.52|0.152|0.76|Slight decline of R@5|
-|500        |25   |2|0.526|0.526|0.154|0.768||
-|1000       |25   |2|0.527|0.527|0.154|0.772|THE BEST RESULT IN MY EXPERIMENTS|
+|Query Transformer|Min Queries|epochs|wordNgrams|P@1|R@1|P@5|R@5|Comment|
+|-----------------|----------:|-----:|----:|--:|--:|--:|--:|--|
+|Std Tokenizer + Porter Stemmer|100        |5    |-|0.47 |0.47|0.136|0.679||
+|Std Tokenizer + Porter Stemmer|100        |10   |-|0.507|0.507|0.148|0.741||
+|Std Tokenizer + Porter Stemmer|100        |20   |-|0.519|0.519|0.152|0.762||
+|Std Tokenizer + Porter Stemmer|100        |25   |2|0.52|0.52|0.152|0.76|Slight decline of R@5|
+|Std Tokenizer + Porter Stemmer|500        |25   |2|0.526|0.526|0.154|0.768||
+|Std Tokenizer + Porter Stemmer|1000       |25   |2|0.527|0.527|0.154|0.772|THE BEST R@5 RESULT IN MY EXPERIMENTS|
+|Daniel Tokenizer + Snowball Stemmer|1000|25|2|0.525|0.525|0.153|0.767|
 
 ### For integrating query classification with search:
 
